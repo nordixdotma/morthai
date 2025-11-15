@@ -35,7 +35,14 @@ export default function MoroccoExpertiseSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-white overflow-hidden w-full">
+    <section 
+      ref={sectionRef} 
+      className="py-16 md:py-24 overflow-hidden w-full relative"
+      style={{
+        backgroundImage: "url('/1.jpg')",
+        backgroundRepeat: "no-repeat"
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
           <div

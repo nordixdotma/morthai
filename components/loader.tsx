@@ -24,7 +24,7 @@ export default function Loader({ onLoadingComplete }: LoaderProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white pointer-events-auto overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
       <style>{`
         @keyframes spin-border {
           0% {

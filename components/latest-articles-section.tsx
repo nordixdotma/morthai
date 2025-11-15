@@ -56,7 +56,17 @@ export default function LatestArticlesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 overflow-hidden w-full bg-white">
+    <section 
+      ref={sectionRef} 
+      className="py-16 md:py-24 overflow-hidden w-full relative"
+      style={{
+        backgroundColor: "#fff8f5",
+        backgroundImage: "url('/4.png')",
+        backgroundSize: "300px 300px",
+        backgroundPosition: "left",
+        backgroundRepeat: "no-repeat"
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4">
         <h2
           className={`text-4xl md:text-5xl font-optima font-bold text-gray-900 mb-12 text-center transition-all duration-1000 ease-out ${

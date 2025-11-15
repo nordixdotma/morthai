@@ -65,6 +65,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="overflow-y-scroll">
       <head>
+        <link href="https://fonts.cdnfonts.com/css/optimus-princeps" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/lato" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.cdnfonts.com/css/optima" rel="stylesheet" />
@@ -73,6 +75,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.png" sizes="any" />
       </head>
       <body className={`${workSans.variable} font-work-sans overflow-x-hidden`}>
+        <script dangerouslySetInnerHTML={{
+          __html: `window.scrollTo(0, 0);`
+        }} />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <div className="fixed inset-0 z-[-1]">
             <video

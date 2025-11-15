@@ -63,6 +63,14 @@
 }
 
 /* Updated font classes for new font system */
+.font-optimus-princeps {
+  font-family: "Optimus Princeps", serif;
+}
+
+.font-lato {
+  font-family: "Lato", sans-serif;
+}
+
 .font-optima {
   font-family: "Optima", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

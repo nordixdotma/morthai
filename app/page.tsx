@@ -14,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     if (isLoading) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = ""
     } else {
       document.body.style.overflow = ""
     }
