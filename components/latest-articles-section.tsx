@@ -56,10 +56,10 @@ export default function LatestArticlesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 overflow-hidden w-full ">
+    <section ref={sectionRef} className="py-16 md:py-24 overflow-hidden w-full bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <h2
-          className={`text-4xl md:text-5xl font-optima font-bold text-white mb-12 text-center transition-all duration-1000 ease-out ${
+          className={`text-4xl md:text-5xl font-optima font-bold text-gray-900 mb-12 text-center transition-all duration-1000 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >

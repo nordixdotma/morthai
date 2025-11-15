@@ -1,10 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Work_Sans } from "next/font/google"
+import { Work_Sans } from 'next/font/google'
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import WhatsAppButton from "@/components/whatsapp-button"
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -13,15 +14,14 @@ const workSans = Work_Sans({
   preload: true,
 })
 
-// SEO metadata
 export const metadata: Metadata = {
-  title: "Enchanting Association | Preserving Marrakech's Heritage",
+  title: "Mor Thai | Thai Massage in Marrakech",
   description:
-    "Enchanting is a non-profit Moroccan association established in 2021 with the aim of preserving the tangible and intangible heritage of Marrakech and its surrounding region.",
-  keywords: ["Marrakech", "heritage", "culture", "preservation", "Morocco", "non-profit", "association", "Enchanting"],
-  authors: [{ name: "Enchanting Association" }],
-  creator: "Enchanting Association",
-  publisher: "Enchanting Association",
+    "Mor Thai offers authentic Thai massage and spa services in Marrakech. Located in Gueliz, we provide traditional Thai therapeutic massage, relaxation treatments, and wellness services.",
+  keywords: ["Thai massage", "Marrakech", "Spa", "Massage", "Wellness", "Gueliz", "Traditional Thai massage", "Mor Thai"],
+  authors: [{ name: "Mor Thai" }],
+  creator: "Mor Thai",
+  publisher: "Mor Thai",
   formatDetection: {
     email: false,
     address: false,
@@ -30,24 +30,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://enchanting.org/",
-    title: "Enchanting Association | Preserving Marrakech's Heritage",
-    description: "Preserving the tangible and intangible heritage of Marrakech and its region",
-    siteName: "Enchanting Association",
+    url: "https://morthai-marrakech.com/",
+    title: "Mor Thai | Thai Massage in Marrakech",
+    description: "Authentic Thai massage and spa services in Marrakech, Gueliz",
+    siteName: "Mor Thai",
     images: [
       {
-        url: "https://associationenchanting.org/wp-content/uploads/2023/07/enchanting.png",
+        url: "https://morthai-marrakech.com/og-image.png",
         width: 800,
         height: 600,
-        alt: "Enchanting Association Logo",
+        alt: "Mor Thai Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Enchanting Association | Preserving Marrakech's Heritage",
-    description: "Preserving the tangible and intangible heritage of Marrakech and its region",
-    images: ["https://associationenchanting.org/wp-content/uploads/2023/07/enchanting.png"],
+    title: "Mor Thai | Thai Massage in Marrakech",
+    description: "Authentic Thai massage and spa services in Marrakech, Gueliz",
+    images: ["https://morthai-marrakech.com/og-image.png"],
   },
   viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
   robots: {
@@ -72,9 +72,8 @@ export default function RootLayout({
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style" />
         <link rel="icon" href="/favicon.png" sizes="any" />
       </head>
-      <body className={`${workSans.variable} font-work-sans overflow-x-hidden`}>
+      <body className={`${workSans.variable} font-work-sans overflow-x-hidden overflow-y-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          {/* Background video with poster. Replace `/videos/background.mp4` and the poster URL below with your real files. */}
           <div className="fixed inset-0 z-[-1]">
             <video
               className="w-full h-full object-cover"
@@ -88,7 +87,6 @@ export default function RootLayout({
               Your browser does not support the video tag.
             </video>
 
-            {/* Overlay to tint the video */}
             <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
           </div>
 
@@ -96,6 +94,7 @@ export default function RootLayout({
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
+            <WhatsAppButton />
           </div>
         </ThemeProvider>
       </body>

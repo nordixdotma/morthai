@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Twitter, Instagram, MapPin, Phone, Mail, Heart } from "lucide-react"
+import { Facebook, Instagram, MapPin, Phone, Mail, Heart } from 'lucide-react'
 import { Container } from "@/components/ui/container"
 import { useState } from "react"
 
@@ -11,9 +11,8 @@ export default function Footer() {
   const [isHeartAnimating, setIsHeartAnimating] = useState(false)
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Facebook, href: "https://www.facebook.com/massagethailandaismarrakech.ma/", label: "Facebook" },
+    { icon: Instagram, href: "https://www.instagram.com/morthai_spathailandais/", label: "Instagram" },
   ]
 
   const usefulLinks = [
@@ -30,20 +29,20 @@ export default function Footer() {
     {
       icon: MapPin,
       title: "Address",
-      value: "Boulevard Mozdalifa Immeuble Riad Nawal G Bureau B3 Marrakech 40000",
+      value: "N° 52, 5ème Etage, Immeuble Le Noyer B, Rue Ibn Sina Atlassi, Gueliz, Marrakech (at the back of American Language Center)",
       link: false,
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+212 661 792 104",
-      link: "tel:+212661792104",
+      value: "+212 610 200 040 | +212 610 705 876",
+      link: "tel:+212610200040",
     },
     {
       icon: Mail,
       title: "Email",
-      value: "contact@enchantingmorocco.com",
-      link: "mailto:contact@enchantingmorocco.com",
+      value: "contact@morthai-marrakech.com",
+      link: "mailto:contact@morthai-marrakech.com",
     },
   ]
 
@@ -61,19 +60,17 @@ export default function Footer() {
       style={{ backgroundColor: "#a87e72" }}
     >
       <Container className="max-w-7xl mx-auto relative z-10">
-        {/* Main footer content */}
         <div className="py-16">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
             {/* Vision */}
             <div>
               <Link href="/" className="inline-block mb-6">
                 <div className="relative h-16 w-32">
-                  <Image src="/whitelogo.svg" alt="Enchanting Morocco Logo" fill className="object-contain" priority />
+                  <Image src="/whitelogo.svg" alt="Mor Thai Logo" fill className="object-contain" priority />
                 </div>
               </Link>
               <p className="text-sm leading-relaxed text-white/90 mb-8 font-work-sans">
-                Discover the magic of Morocco with our authentic tours, desert adventures, and cultural experiences.
-                From the bustling souks of Marrakech to the serene Sahara Desert.
+                Experience authentic Thai massage and spa treatments in Marrakech. Mor Thai brings traditional Thai wellness and relaxation to the heart of Gueliz.
               </p>
               <div>
                 <h4 className="mb-4 text-sm font-semibold text-primary font-optima">Follow Us</h4>
@@ -84,6 +81,8 @@ export default function Footer() {
                       href={social.href}
                       aria-label={social.label}
                       className="flex h-10 w-10 items-center justify-center bg-primary/70 text-white hover:bg-primary transition-all duration-300 hover:scale-110"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <social.icon size={18} />
                     </a>
@@ -165,7 +164,7 @@ export default function Footer() {
         <Container className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-white/90 font-work-sans">
-              © {currentYear} Enchanting Morocco. All rights reserved.
+              © {currentYear} Mor Thai. All rights reserved.
             </p>
             <p className="text-sm text-white/90 flex items-center font-work-sans">
               Made with
@@ -178,7 +177,7 @@ export default function Footer() {
                 />
                 {heartClicks > 0 && <span className="sr-only">Heart clicked {heartClicks} times</span>}
               </button>
-              in Morocco
+              in Marrakech
             </p>
           </div>
         </Container>
