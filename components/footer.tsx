@@ -16,13 +16,13 @@ export default function Footer() {
   ]
 
   const usefulLinks = [
-    { href: "#", label: "MOROCCO TOURS" },
-    { href: "#", label: "MOROCCO DESERT TOURS" },
-    { href: "#", label: "MARRAKECH DAY TRIPS" },
-    { href: "#", label: "MOROCCO TREKKING" },
-    { href: "#", label: "SHORE EXCURSIONS" },
-    { href: "#", label: "BLOG" },
-    { href: "#", label: "CONTACT" },
+    { href: "#", label: "Massages" },
+    { href: "#", label: "Hammam massage package" },
+    { href: "#", label: "Facial care" },
+    { href: "#", label: "Prices" },
+    { href: "#", label: "Home massage" },
+    { href: "#", label: "Gift idea" },
+    { href: "#", label: "Contact" },
   ]
 
   const contactInfo = [
@@ -56,7 +56,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative rounded-t-[30px] md:rounded-t-[80px]"
+      className="relative rounded-t-[1rem] md:rounded-t-[2rem]"
       style={{ backgroundColor: "#a87e72" }}
     >
       <Container className="max-w-7xl mx-auto relative z-10">

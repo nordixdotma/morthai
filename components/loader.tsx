@@ -3,16 +3,21 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 
-export default function Loader() {
+interface LoaderProps {
+  onLoadingComplete?: () => void
+}
+
+export default function Loader({ onLoadingComplete }: LoaderProps) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
+      onLoadingComplete?.()
     }, 3000)
 
     return () => clearTimeout(timer)
-  }, [])
+  }, [onLoadingComplete])
 
   if (!isLoading) {
     return null
@@ -38,7 +43,7 @@ export default function Loader() {
       <div className="relative w-32 h-32 flex items-center justify-center">
         {/* Animated border circle */}
         <div
-          className="absolute inset-0 rounded-full border-4 border-transparent border-t-primary border-r-primary animated-border"
+          className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#b0d236] border-r-[#b0d236] animated-border"
           style={{
             animation: "spin-border 3s linear forwards",
           }}

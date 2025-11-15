@@ -35,7 +35,7 @@ export default function MoroccoDiscoverySection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-white overflow-hidden w-full rounded-t-4xl">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-white overflow-hidden w-full" style={{ borderTopLeftRadius: "2rem", borderTopRightRadius: "2rem" }}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
           <div className="md:col-span-3">
