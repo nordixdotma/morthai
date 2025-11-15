@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    /* Updated primary color to #b64a26 */
+    --primary: 15 60% 43%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    /* Updated ring color to match new primary */
+    --ring: 15 60% 43%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    /* Updated primary color in dark mode */
+    --primary: 15 60% 43%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    /* Updated ring color in dark mode */
+    --ring: 15 60% 43%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Updated font classes for new font system */
+.font-optima {
+  font-family: "Optima", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.font-work-sans {
+  font-family: var(--font-work-sans), system-ui, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Transition delay utilities for services component */
+  .transition-delay-0 {
+    transition-delay: 0ms;
+  }
+
+  .transition-delay-50 {
+    transition-delay: 50ms;
+  }
+
+  .transition-delay-100 {
+    transition-delay: 100ms;
+  }
+
+  .transition-delay-150 {
+    transition-delay: 150ms;
+  }
+
+  .transition-delay-200 {
+    transition-delay: 200ms;
+  }
+
+  .transition-delay-250 {
+    transition-delay: 250ms;
+  }
+
+  .transition-delay-300 {
+    transition-delay: 300ms;
+  }
+
+  .transition-delay-350 {
+    transition-delay: 350ms;
+  }
+
+  .transition-delay-400 {
+    transition-delay: 400ms;
+  }
+
+  .transition-delay-450 {
+    transition-delay: 450ms;
+  }
+
+  .transition-delay-500 {
+    transition-delay: 500ms;
+  }
+}
+
+/* Improve text contrast in dark mode */
+.dark .text-gray-700 {
+  color: #d1d5db;
+}
+
+.dark .text-gray-900 {
+  color: #f3f4f6;
+}
+
+/* Adjust for mobile browser chrome */
+body {
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Partners section styles */
+.partners-swiper .swiper-slide {
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.partners-swiper .swiper-slide:hover {
+  opacity: 1;
+}
+
+/* Add hero section styles to replace inline styles */
+.hero-section {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+
+/* Ensure consistent width calculation across browsers */
+* {
+  scrollbar-width: thin; /* For Firefox */
+}
+
+/* Style scrollbars for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Ensure the body doesn't shift when scrollbar appears/disappears */
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Force scrollbar presence */
+html {
+  overflow-y: scroll;
+}
