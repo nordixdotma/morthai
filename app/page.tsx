@@ -1,11 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import HeroSection from "@/components/hero-section"
-import MoroccoDiscoverySection from "@/components/morocco-discovery-section"
-import MoroccoExpertiseSection from "@/components/morocco-expertise-section"
-import WhyChooseMoroccoSection from "@/components/why-choose-morocco-section"
-import LatestArticlesSection from "@/components/latest-articles-section"
+import HeroSection from "@/components/homepage/hero-section"
+import MoroccoDiscoverySection from "@/components/homepage/aboutsection"
+import MoroccoExpertiseSection from "@/components/homepage/servicessection"
+import WhyChooseMoroccoSection from "@/components/homepage/journeysection"
+import LatestArticlesSection from "@/components/homepage/featuresection"
 import LocationSection from "@/components/location-section"
 import Loader from "@/components/loader"
 

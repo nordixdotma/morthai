@@ -20,7 +20,7 @@ const cards = [
   },
 ]
 
-export default function LatestArticlesSection() {
+export default function featuresection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement | null>(null)
 
@@ -53,10 +53,10 @@ export default function LatestArticlesSection() {
     >
       <div className="max-w-7xl mx-auto px-4">
         <h2
-          className={`text-4xl md:text-5xl font-optima font-bold text-gray-900 mb-12 text-center transition-all duration-800 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          className={`text-xl md:text-2xl font-optima font-bold text-gray-900 mb-12 text-center transition-all duration-800 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
             }`}
         >
-          Latest Articles From Enchanting Morocco
+          To facilitate your access to the SPA, we provide a private parking just in front of the building.
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

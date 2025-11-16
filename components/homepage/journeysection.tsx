@@ -11,7 +11,7 @@ const carouselItems = [
   { id: 5, url: "/sections/l5.webp", title: "Misty Mountain Peaks" },
 ];
 
-export default function WhyChooseMoroccoSection() {
+export default function journeysection() {
   const [isVisible, setIsVisible] = useState(false);
   const [index, setIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
@@ -76,7 +76,7 @@ export default function WhyChooseMoroccoSection() {
 
             {/* separator with centered SVG and lines on both sides */}
             <div className="flex items-center gap-4 mb-6" aria-hidden="true" role="presentation">
-              <span className="flex-1 h-[1px] bg-[#ead9d5]" />
+              <span className="flex-1 h-[2px] bg-[#ead9d5]" />
 
               <div className="flex-shrink-0 px-3 flex items-center justify-center text-[#ead9d5]">
                 {/* filled SVG (keeps the fill color) */}
@@ -89,7 +89,7 @@ export default function WhyChooseMoroccoSection() {
                 </svg>
               </div>
 
-              <span className="flex-1 h-[1px] bg-[#ead9d5]" />
+              <span className="flex-1 h-[2px] bg-[#ead9d5]" />
             </div>
 
             {/* collapsible paragraph with framer-motion height animation (no inline CSS) */}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 
-export default function MoroccoDiscoverySection() {
+export default function aboutsection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
 

@@ -70,7 +70,7 @@ export default function Footer() {
                 Experience authentic Thai massage and spa treatments in Marrakech. Mor Thai brings traditional Thai wellness and relaxation to the heart of Gueliz.
               </p>
               <div>
-                <h4 className="mb-4 text-sm font-semibold text-white font-optima">Follow Us</h4>
+                <h4 className="mb-4 text-sm font-semibold text-white font-optima">FOLLOW US</h4>
                 <div className="flex space-x-4">
                   {socialLinks.map((social, index) => (
                     <a
@@ -90,7 +90,7 @@ export default function Footer() {
 
             {/* Useful Links */}
             <div>
-              <h3 className="font-optima mb-6 text-xl font-bold text-white">Quick Links</h3>
+              <h3 className="font-optima mb-6 text-xl font-bold text-white">QUICK LINKS</h3>
               <ul className="space-y-4">
                 {usefulLinks.map((link, index) => (
                   <li key={index}>
@@ -108,7 +108,7 @@ export default function Footer() {
 
             {/* Contact Info */}
             <div>
-              <h3 className="font-optima mb-6 text-xl font-bold text-white">Contact Info</h3>
+              <h3 className="font-optima mb-6 text-xl font-bold text-white">CONTACT INFO</h3>
               <ul className="space-y-6">
                 {contactInfo.map((item, index) => (
                   <li key={index} className="flex items-start">
@@ -138,7 +138,7 @@ export default function Footer() {
 
             {/* Payment Security */}
             <div>
-              <h3 className="font-optima mb-6 text-xl font-bold text-white">Pay Safely With Us</h3>
+              <h3 className="font-optima mb-6 text-xl font-bold text-white">PAY SAFELY WITH US</h3>
               <p className="text-sm leading-relaxed text-white/90 mb-6 font-work-sans">
                 The payment is encrypted and transmitted securely with an SSL protocol.
               </p>

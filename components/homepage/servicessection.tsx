@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
-export default function MoroccoExpertiseSection() {
+export default function servicessection() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const items = [
