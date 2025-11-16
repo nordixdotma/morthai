@@ -3,72 +3,72 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 export default function MoroccoExpertiseSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  
+
   const items = [
     {
       id: 1,
       title: "Hammam",
-      image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop",
+      image: "/sections/e1.webp",
       description: "Live the unforgettable sensory experience or offer yourself a romantic moment in our private hammam reserved for couples.",
       link: "/hammam"
     },
     {
       id: 2,
       title: "Massages",
-      image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&h=600&fit=crop",
+      image: "/sections/e2.jpg",
       description: "We invite you to immerse yourself in a wonderful multi-sensory universe through a variety of exceptional massages.",
       link: "/massages"
     },
     {
       id: 3,
       title: "Hammam and Massage Package",
-      image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&h=600&fit=crop",
+      image: "/sections/e3.jpg",
       description: "Let yourself be carried away by the magic of the peaceful atmosphere of Mor Thai Marrakech!",
       link: "/hammam-massage-package"
     },
     {
       id: 4,
       title: "Face Treatment",
-      image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=600&fit=crop",
+      image: "/sections/e4.webp",
       description: "Are you looking for a hydrating and deep cleansing treatment for your face? This purifying face care.",
       link: "/face-treatment"
     },
     {
       id: 5,
       title: "Home Delivery Massage",
-      image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop",
+      image: "/sections/e5.webp",
       description: "Do you want to relax after a busy week? Or do you simply want to offer yourself a moment of relaxation and well-being, to regenerate your body and mind?",
       link: "/home-delivery-massage"
     },
     {
       id: 6,
       title: "Gift Vouchers",
-      image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800&h=600&fit=crop",
+      image: "/sections/e6.webp",
       description: "Are you looking for an original gift idea to impress your loved ones? Whether it is for a birthday, Christmas, Valentine's Day...",
       link: "/gift-vouchers"
     },
   ]
-  
+
   const next = () => {
     if (currentIndex < items.length - 1) {
       setCurrentIndex(currentIndex + 1)
     }
   }
-  
+
   const prev = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1)
     }
   }
-  
+
   return (
-    <section 
+    <section
       className="py-16 md:py-24 w-full morocco-expertise-section"
     >
-      <div className="max-w-7xl mx-auto px-4">        
+      <div className="max-w-7xl mx-auto px-4">
         <div className="relative pb-16">
           <div className="overflow-hidden">
-            <div 
+            <div
               className="flex transition-transform duration-300 carousel-container"
               style={{ "--carousel-index": currentIndex } as React.CSSProperties}
             >
@@ -83,7 +83,7 @@ export default function MoroccoExpertiseSection() {
                     <div className="p-6 flex-1 flex flex-col">
                       <h3 className="text-xl font-bold mb-3">{item.title}</h3>
                       <p className="text-sm text-gray-600 mb-4 flex-1">{item.description}</p>
-                      <a 
+                      <a
                         href={item.link}
                         className="text-sm font-semibold text-blue-600 hover:text-blue-700 text-left inline-block"
                       >
@@ -95,7 +95,7 @@ export default function MoroccoExpertiseSection() {
               ))}
             </div>
           </div>
-          
+
           <div className="absolute -bottom-1 right-0 flex gap-2">
             <button
               type="button"

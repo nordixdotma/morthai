@@ -72,7 +72,7 @@ export default function RootLayout({
         <link href="https://fonts.cdnfonts.com/css/optima" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style" />
-        <link rel="icon" href="/favicon.png" sizes="any" />
+        <link rel="icon" href="/logo.svg" sizes="any" />
       </head>
       <body className={`${workSans.variable} font-work-sans overflow-x-hidden`}>
         <script dangerouslySetInnerHTML={{

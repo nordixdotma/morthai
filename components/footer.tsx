@@ -164,18 +164,17 @@ export default function Footer() {
               © {currentYear} Mor Thai. All rights reserved.
             </p>
             <p className="text-sm text-white/90 flex items-center font-work-sans">
-              Made with
-              <button onClick={handleHeartClick} className="mx-1 p-1" aria-label="Click the heart">
-                <Heart
-                  className={`h-4 w-4 transition-all duration-300 ${
-                    isHeartAnimating ? "scale-150 text-red-400" : "text-primary"
-                  }`}
-                  fill={heartClicks > 0 ? "#f87171" : "none"}
-                />
-                {heartClicks > 0 && <span className="sr-only">Heart clicked {heartClicks} times</span>}
-              </button>
-              in Marrakech
+              Made by{" "}
+              <Link
+                href="https://nexusdweb.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary font-bold ml-1"
+              >
+                Nexusweb
+              </Link>
             </p>
+
           </div>
         </Container>
       </div>
