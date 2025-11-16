@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion, useMotionValue, animate } from "motion/react"
+import { motion, useMotionValue, animate } from "framer-motion"
 
 const carouselItems = [
   {
@@ -16,12 +16,12 @@ const carouselItems = [
   },
   {
     id: 3,
-    url: "https://images.unsplash.com/photo-1709983966747-58c311fa6976?q=80&w=880&auto=format&fit=crop",
+    url: "https://images.unsplash.com/photo-1709983966747-58c311fa6976?q=80&w=436&auto=format&fit=crop",
     title: "Autumn Mountain Retreat",
   },
   {
     id: 4,
-    url: "https://images.unsplash.com/photo-1683722319473-f851deb3fdf2?q=80&w=880&auto=format&fit=crop",
+    url: "https://images.unsplash.com/photo-1683722319473-f851deb3fdf2?q=80&w=871&auto=format&fit=crop",
     title: "Tranquil Lake Reflection",
   },
   {
@@ -105,7 +105,7 @@ export default function WhyChooseMoroccoSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-16 md:py-24 overflow-hidden w-full relative"
+      className="why-choose-section py-16 md:py-24 overflow-hidden w-full relative"
       style={{
         backgroundColor: "#fff8f5",
         backgroundImage: "url('/3.png')",
@@ -156,7 +156,7 @@ export default function WhyChooseMoroccoSection() {
                 {carouselItems.map((item) => (
                   <div key={item.id} className="shrink-0 w-full h-[450px]">
                     <img
-                      src={item.url}
+                      src={item.url || "/placeholder.svg"}
                       alt={item.title}
                       className="w-full h-full object-cover rounded-lg select-none pointer-events-none"
                       draggable={false}

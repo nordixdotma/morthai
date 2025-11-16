@@ -192,6 +192,99 @@ body {
   height: calc(var(--vh, 1vh) * 100);
 }
 
+/* Footer section background styles */
+.footer-section {
+  background-color: #a87e72;
+}
+
+/* Latest articles section background styles */
+.latest-articles-section {
+  background-color: #fff8f5;
+  background-image: url('/4.png');
+  background-size: 300px 300px;
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+/* Add styles for article card with transition delay */
+.article-card {
+  background-color: white;
+}
+
+/* Morocco discovery section background styles */
+.morocco-discovery-section {
+  background-color: #fff8f5;
+  background-image: url('/2.png');
+  background-size: 300px 300px;
+  background-position: right;
+  background-repeat: no-repeat;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+/* Add styles for discovery section heading */
+.discovery-heading {
+  font-family: 'Old Standard TT', serif;
+  color: #43484e;
+}
+
+/* Add styles for decorative separator */
+.separator-line {
+  height: 2px;
+  width: 400px;
+  background-color: #ead9d5;
+  flex-shrink: 0;
+}
+
+/* Add styles for discovery section text */
+.discovery-text {
+  font-size: 17px;
+  line-height: 1.86;
+  color: rgba(67, 72, 78, 0.7);
+}
+
+/* Add styles for SVG stroke in separator */
+.separator-svg {
+  fill: none;
+  stroke: #ead9d5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  stroke-width: 2;
+}
+
+/* Why choose us section background styles */
+.why-choose-section {
+  background-color: #fff8f5;
+  background-image: url('/3.png');
+  background-size: 300px 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Loader animation styles moved from inline */
+.loader-container {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+@keyframes spin-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animated-border {
+  animation: spin-border 3s linear forwards;
+}
 
 /* Ensure consistent width calculation across browsers */
 * {

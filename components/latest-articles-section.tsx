@@ -58,14 +58,7 @@ export default function LatestArticlesSection() {
   return (
     <section 
       ref={sectionRef} 
-      className="py-16 md:py-24 overflow-hidden w-full relative"
-      style={{
-        backgroundColor: "#fff8f5",
-        backgroundImage: "url('/4.png')",
-        backgroundSize: "300px 300px",
-        backgroundPosition: "left",
-        backgroundRepeat: "no-repeat"
-      }}
+      className="latest-articles-section py-16 md:py-24 overflow-hidden w-full relative"
     >
       <div className="max-w-7xl mx-auto px-4">
         <h2
@@ -80,10 +73,10 @@ export default function LatestArticlesSection() {
           {articles.map((article, index) => (
             <div
               key={index}
-              className={`group relative bg-white overflow-hidden cursor-pointer transition-all duration-1000 ease-out ${
+              className={`group article-card relative bg-white overflow-hidden cursor-pointer transition-all duration-1000 ease-out ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
-              style={{ transitionDelay: `${index * 200}ms` }}
+              style={{ transitionDelay: `var(--transition-delay-${index})` }}
             >
               <div className="relative h-80 w-full overflow-hidden">
                 <Image

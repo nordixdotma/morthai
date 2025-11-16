@@ -98,8 +98,8 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>
-            <Footer />
             <WhatsAppButton />
+            <Footer />
           </div>
         </ThemeProvider>
       </body>

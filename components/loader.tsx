@@ -24,30 +24,10 @@ export default function Loader({ onLoadingComplete }: LoaderProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
-      <style>{`
-        @keyframes spin-border {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-
-        .animated-border {
-          animation: spin-border 3s linear forwards;
-        }
-      `}</style>
-
+    <div className="loader-container">
       <div className="relative w-32 h-32 flex items-center justify-center">
         {/* Animated border circle */}
-        <div
-          className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#b0d236] border-r-[#b0d236] animated-border"
-          style={{
-            animation: "spin-border 3s linear forwards",
-          }}
-        ></div>
+        <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#b0d236] border-r-[#b0d236] animated-border"></div>
 
         {/* Logo in center */}
         <div className="relative w-20 h-20 flex items-center justify-center">

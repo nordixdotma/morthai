@@ -55,10 +55,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer
-      className="relative rounded-t-[1rem] md:rounded-t-[2rem]"
-      style={{ backgroundColor: "#a87e72" }}
-    >
+    <footer className="footer-section rounded-t-[1rem] md:rounded-t-[2rem] relative">
       <Container className="max-w-7xl mx-auto relative z-10">
         <div className="py-16">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
