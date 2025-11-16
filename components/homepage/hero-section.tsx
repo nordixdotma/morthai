@@ -43,7 +43,7 @@ export default function HeroSection() {
           <img
             src="/certif.png"
             alt="Mor Thai Spa Reviews on TripAdvisor"
-            className="w-20 h-20 object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+            className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
           />
         </a>
       </div>
