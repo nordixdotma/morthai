@@ -35,11 +35,17 @@ export default function HeroSection() {
       </div>
 
       <div className="absolute bottom-6 right-6">
-        <img
-          src="/certif.png"
-          alt="Decorative accent"
-          className="w-20 h-20 object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity"
-        />
+        <a 
+          href="https://www.tripadvisor.com/Attraction_Review-g293734-d27561262-Reviews-Mor_Thai_Spa-Tetouan_Tanger_Tetouan_Al_Hoceima.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/certif.png"
+            alt="Mor Thai Spa Reviews on TripAdvisor"
+            className="w-20 h-20 object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+          />
+        </a>
       </div>
 
       <style jsx>{`

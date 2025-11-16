@@ -81,7 +81,7 @@ export default function servicessection() {
                     <img
                       src={item.image || "/placeholder.svg"}
                       alt={item.title}
-                      className="w-full h-56 object-cover"
+                      className="w-full h-60 object-cover"
                     />
                     <div className="p-6 flex-1 flex flex-col">
                       <h3 className="text-xl font-bold mb-3 font-optimus-princeps">{item.title}</h3>
