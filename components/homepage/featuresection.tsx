@@ -53,7 +53,7 @@ export default function featuresection() {
     >
       <div className="max-w-7xl mx-auto px-4">
         <h2
-          className={`text-xl md:text-2xl font-optimus-princeps font-bold text-gray-900 mb-12 text-center transition-all duration-800 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          className={`text-xl md:text-2xl font-trajan-pro font-bold text-gray-900 mb-12 text-center transition-all duration-800 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
             }`}
         >
           To facilitate your access to the SPA, we provide a private parking just in front of the building.
@@ -72,7 +72,7 @@ export default function featuresection() {
               }}
             >
               <div className="flex flex-col items-center justify-center h-full text-center gap-4">
-                <h3 id={`card-${index}-title`} className="text-xl font-semibold text-gray-900 font-optimus-princeps">
+                <h3 id={`card-${index}-title`} className="text-xl font-semibold text-gray-900 font-trajan-pro">
                   {card.title}
                 </h3>
                 <p className="text-gray-700 leading-relaxed max-w-prose font-lato">

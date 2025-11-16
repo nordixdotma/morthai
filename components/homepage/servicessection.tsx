@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react'
 
 export default function servicessection() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -64,9 +64,7 @@ export default function servicessection() {
   }
 
   return (
-    <section
-      className="py-16 md:py-24 w-full morocco-expertise-section"
-    >
+    <section className="py-16 md:py-24 w-full morocco-expertise-section">
       <div className="max-w-7xl mx-auto px-4">
         <div className="relative pb-16">
           {/* Desktop carousel view */}
@@ -77,20 +75,38 @@ export default function servicessection() {
             >
               {items.map((item) => (
                 <div key={item.id} className="w-1/3 flex-shrink-0 px-2">
-                  <div className="bg-white rounded-lg overflow-hidden border border-gray-200 flex flex-col h-full shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <img
-                      src={item.image || "/placeholder.svg"}
-                      alt={item.title}
-                      className="w-full h-60 object-cover"
-                    />
+                  <div className="bg-white rounded-xl overflow-hidden flex flex-col h-full border border-gray-100 transition-colors duration-300 hover:border-primary/20">
+                    {/* Image container with improved aspect ratio */}
+                    <div className="relative overflow-hidden bg-gray-100 h-64">
+                      <img
+                        src={item.image || "/placeholder.svg"}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    {/* Content container with improved spacing and hierarchy */}
                     <div className="p-6 flex-1 flex flex-col">
-                      <h3 className="text-xl font-bold mb-3 font-optimus-princeps">{item.title}</h3>
-                      <p className="text-sm text-gray-600 mb-4 flex-1 font-lato">{item.description}</p>
+                      {/* Title with enhanced typography */}
+                      <h3 className="text-lg font-bold mb-4 font-trajan-pro text-gray-900 leading-tight">
+                        {item.title}
+                      </h3>
+
+                      {/* Decorative accent line */}
+                      <div className="w-12 h-0.5 bg-primary mb-4"></div>
+
+                      {/* Description with improved line height and color */}
+                      <p className="text-sm text-gray-600 mb-6 flex-1 font-lato leading-relaxed">
+                        {item.description}
+                      </p>
+
+                      {/* CTA link with icon and better styling */}
                       <a
                         href={item.link}
-                        className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors duration-300 text-left inline-block font-lato"
+                        className="flex items-center gap-2 text-primary font-semibold text-sm transition-colors duration-300 hover:text-primary/80 inline-flex font-lato group"
                       >
-                        Discover →
+                        <span>Discover</span>
+                        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                       </a>
                     </div>
                   </div>
@@ -99,22 +115,38 @@ export default function servicessection() {
             </div>
           </div>
 
+          {/* Mobile grid view */}
           <div className="md:hidden grid grid-cols-2 gap-4">
             {items.map((item) => (
-              <div key={item.id} className="bg-white rounded-lg overflow-hidden border border-gray-200 flex flex-col h-full shadow-md hover:shadow-lg transition-shadow duration-300">
-                <img
-                  src={item.image || "/placeholder.svg"}
-                  alt={item.title}
-                  className="w-full h-32 object-cover"
-                />
+              <div key={item.id} className="bg-white rounded-xl overflow-hidden flex flex-col h-full border border-gray-100 transition-colors duration-300 hover:border-primary/20">
+                {/* Image container */}
+                <div className="relative overflow-hidden bg-gray-100 h-40">
+                  <img
+                    src={item.image || "/placeholder.svg"}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Content container */}
                 <div className="p-4 flex-1 flex flex-col">
-                  <h3 className="text-base font-bold mb-2 font-optimus-princeps">{item.title}</h3>
-                  <p className="text-xs text-gray-600 mb-3 flex-1 font-lato line-clamp-2">{item.description}</p>
+                  <h3 className="text-base font-bold mb-2 font-trajan-pro text-gray-900">
+                    {item.title}
+                  </h3>
+
+                  {/* Decorative accent line mobile */}
+                  <div className="w-8 h-0.5 bg-primary mb-3"></div>
+
+                  <p className="text-xs text-gray-600 mb-3 flex-1 font-lato line-clamp-2 leading-relaxed">
+                    {item.description}
+                  </p>
+
                   <a
                     href={item.link}
-                    className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors duration-300 inline-block font-lato"
+                    className="flex items-center gap-2 text-primary font-semibold text-xs transition-colors duration-300 hover:text-primary/80 inline-flex font-lato group"
                   >
-                    Discover →
+                    <span>Discover</span>
+                    <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
                   </a>
                 </div>
               </div>

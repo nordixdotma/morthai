@@ -235,7 +235,7 @@ export default function Header() {
             <div className="flex items-center">
               <Link
                 href="mailto:contact@enchanting.org"
-                className="bg-primary text-white px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-primary/90 font-optimus-princeps uppercase"
+                className="bg-primary text-white px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-primary/90 font-trajan-pro uppercase"
               >
                 CONTACT
               </Link>
@@ -249,7 +249,7 @@ export default function Header() {
             <nav className="flex items-center justify-center gap-8 py-2">
               <Link
                 href="/"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
                   } ${pathname === "/" ? "text-primary" : ""}`}
               >
                 HOME
@@ -258,7 +258,7 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
                   }`}
               >
                 Massages
@@ -266,7 +266,7 @@ export default function Header() {
               </Link>
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
                   }`}
               >
                 Hammam
@@ -275,7 +275,7 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
                   }`}
               >
                 Hammam massage package
@@ -284,7 +284,7 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
                   }`}
               >
                 Facial care
@@ -294,7 +294,7 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
                   }`}
               >
                 Prices
@@ -303,7 +303,7 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
                   }`}
               >
                 Home massage
@@ -311,7 +311,7 @@ export default function Header() {
               </Link>
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
                   }`}
               >
                 Gift idea
@@ -320,7 +320,7 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
                   }`}
               >
                 Contact
@@ -403,7 +403,7 @@ export default function Header() {
                             }`}
                           onClick={toggleMenu}
                         >
-                          <span className="font-medium text-lg font-optimus-princeps uppercase">{link.label}</span>
+                          <span className="font-medium text-lg font-trajan-pro uppercase">{link.label}</span>
                           <ChevronRight className="h-4 w-4 ml-auto" />
                         </Link>
                       </motion.div>
@@ -419,7 +419,7 @@ export default function Header() {
                   >
                     <Link
                       href="tel:+212524207055"
-                      className="flex items-center justify-center py-4 px-6 bg-primary text-white font-medium text-lg font-optimus-princeps uppercase transition-all duration-300 hover:bg-primary/90"
+                      className="flex items-center justify-center py-4 px-6 bg-primary text-white font-medium text-lg font-trajan-pro uppercase transition-all duration-300 hover:bg-primary/90"
                       onClick={toggleMenu}
                     >
                       <Phone className="h-5 w-5 mr-3" />

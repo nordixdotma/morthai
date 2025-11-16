@@ -63,9 +63,9 @@
   }
 }
 
-/* Updated font classes - removed optimus-princeps and work-sans, added optimus-princeps */
-.font-optimus-princeps {
-  font-family: "Optimus Princeps", serif;
+/* Updated font class from optimus-princeps to trajan-pro */
+.font-trajan-pro {
+  font-family: "Trajan Pro", serif;
 }
 
 .font-lato {
@@ -218,16 +218,16 @@ body {
   border-top-right-radius: 2rem;
 }
 
-/* Add styles for discovery section heading */
+/* Updated discovery section heading to use Trajan Pro instead of Old Standard TT */
 .discovery-heading {
-  font-family: 'Old Standard TT', serif;
+  font-family: "Trajan Pro", serif;
   color: #43484e;
 }
 
 /* Add styles for decorative separator */
 .separator-line {
   height: 2px;
-  width: 400px;
+  width: 500px;
   background-color: #ead9d5;
   flex-shrink: 0;
 }
