@@ -71,7 +71,7 @@ export default function WhatsAppButton() {
               className="relative group"
             >
               <Link
-                href="https://maps.app.goo.gl/QZQBGdF7PDCX6M8A6"
+                href="https://maps.app.goo.gl/5s7M9n7gumnJfyRp8"
                 target="_blank"
                 className="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg hover:shadow-green-300/30 transition-all duration-300 hover:scale-110"
                 aria-label="Notre adresse"
@@ -135,7 +135,7 @@ export default function WhatsAppButton() {
               className="relative group"
             >
               <Link
-                href="tel:+212661412303"
+                href="tel:+212524207055"
                 className="w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:shadow-green-300/30 transition-all duration-300 hover:scale-110"
                 aria-label="Appeler"
               >

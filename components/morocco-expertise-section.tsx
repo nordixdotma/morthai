@@ -65,11 +65,7 @@ export default function MoroccoExpertiseSection() {
     <section 
       className="py-16 md:py-24 w-full morocco-expertise-section"
     >
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-          Our Expertise
-        </h2>
-        
+      <div className="max-w-7xl mx-auto px-4">        
         <div className="relative pb-16">
           <div className="overflow-hidden">
             <div 
@@ -100,7 +96,7 @@ export default function MoroccoExpertiseSection() {
             </div>
           </div>
           
-          <div className="absolute -bottom-10 right-0 flex gap-2">
+          <div className="absolute -bottom-1 right-0 flex gap-2">
             <button
               type="button"
               onClick={prev}
