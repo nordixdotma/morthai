@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Phone } from "lucide-react"
+import { ChevronRight, Phone, ChevronDown } from "lucide-react"
 import { Container } from "@/components/ui/container"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
@@ -91,7 +91,7 @@ export default function Header() {
           <div className="relative z-20 language-dropdown-container">
             <button
               onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors ${
+              className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${
                 scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
               }`}
             >
@@ -105,10 +105,15 @@ export default function Header() {
               >
                 {language}
               </span>
+              <ChevronDown 
+                className={`w-4 h-4 transition-transform duration-300 ${
+                  languageDropdownOpen ? "rotate-180" : ""
+                } ${scrolled ? "text-gray-800" : "text-white"}`}
+              />
             </button>
 
             {languageDropdownOpen && (
-              <div className="absolute left-0 top-12 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200 py-2 min-w-[140px] z-50">
+              <div className="absolute left-0 top-14 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 py-2 min-w-[140px] z-50 overflow-hidden">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
@@ -116,7 +121,7 @@ export default function Header() {
                       setLanguage(lang.code as "en" | "fr")
                       setLanguageDropdownOpen(false)
                     }}
-                    className={`flex items-center space-x-3 w-full px-4 py-2 text-left hover:bg-primary/20 transition-colors ${
+                    className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${
                       lang.code === language ? "bg-primary/10" : ""
                     }`}
                   >
@@ -171,9 +176,56 @@ export default function Header() {
 
         {/* Desktop layout - two rows */}
         <div className="hidden md:block">
-          {/* First row: Logo and Contact */}
-          <div className="flex h-20 items-center justify-between">
-            <Link href="/" className="flex items-center z-20">
+          {/* First row: Language Switcher, Logo (centered), and Contact */}
+          <div className="flex h-20 items-center justify-between relative">
+            {/* Left: Language Switcher */}
+            <div className="relative language-dropdown-container">
+              <button
+                onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
+                  scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+                }`}
+              >
+                <img
+                  src={languages.find((lang) => lang.code === language)?.flag}
+                  alt={language}
+                  className="w-6 h-4 object-cover rounded"
+                />
+                <span
+                  className={`text-sm font-medium uppercase ${scrolled ? "text-gray-800" : "text-white"}`}
+                >
+                  {language}
+                </span>
+                <ChevronDown 
+                  className={`w-4 h-4 transition-transform duration-300 ${
+                    languageDropdownOpen ? "rotate-180" : ""
+                  } ${scrolled ? "text-gray-800" : "text-white"}`}
+                />
+              </button>
+
+              {languageDropdownOpen && (
+                <div className="absolute left-0 top-14 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 py-2 min-w-[160px] z-50 overflow-hidden">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        setLanguage(lang.code as "en" | "fr")
+                        setLanguageDropdownOpen(false)
+                      }}
+                      className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${
+                        lang.code === language ? "bg-primary/10" : ""
+                      }`}
+                    >
+                      <img src={lang.flag} alt={lang.name} className="w-6 h-4 object-cover rounded" />
+                      <span className="text-sm font-medium text-gray-800">{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Center: Logo */}
+            <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center z-10">
               <div className="relative h-16 w-32">
                 <Image
                   src={scrolled ? "/logo.svg" : "/whitelogo.svg"}
@@ -185,6 +237,7 @@ export default function Header() {
               </div>
             </Link>
 
+            {/* Right: Contact */}
             <div className="flex items-center">
               <Link
                 href="mailto:contact@enchanting.org"
