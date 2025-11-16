@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from "react"
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
@@ -50,7 +52,7 @@ export default function servicessection() {
   ]
 
   const next = () => {
-    if (currentIndex < items.length - 1) {
+    if (currentIndex < items.length - 3) {
       setCurrentIndex(currentIndex + 1)
     }
   }
@@ -67,25 +69,26 @@ export default function servicessection() {
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="relative pb-16">
-          <div className="overflow-hidden">
+          {/* Desktop carousel view */}
+          <div className="hidden md:block overflow-hidden">
             <div
               className="flex transition-transform duration-300 carousel-container"
               style={{ "--carousel-index": currentIndex } as React.CSSProperties}
             >
               {items.map((item) => (
                 <div key={item.id} className="w-1/3 flex-shrink-0 px-2">
-                  <div className="bg-white rounded-lg overflow-hidden border border-gray-200 flex flex-col h-full">
+                  <div className="bg-white rounded-lg overflow-hidden border border-gray-200 flex flex-col h-full shadow-md hover:shadow-lg transition-shadow duration-300">
                     <img
                       src={item.image || "/placeholder.svg"}
                       alt={item.title}
-                      className="w-full h-48 object-cover"
+                      className="w-full h-56 object-cover"
                     />
                     <div className="p-6 flex-1 flex flex-col">
-                      <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                      <p className="text-sm text-gray-600 mb-4 flex-1">{item.description}</p>
+                      <h3 className="text-xl font-bold mb-3 font-optimus-princeps">{item.title}</h3>
+                      <p className="text-sm text-gray-600 mb-4 flex-1 font-lato">{item.description}</p>
                       <a
                         href={item.link}
-                        className="text-sm font-semibold text-blue-600 hover:text-blue-700 text-left inline-block"
+                        className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors duration-300 text-left inline-block font-lato"
                       >
                         Discover →
                       </a>
@@ -96,22 +99,45 @@ export default function servicessection() {
             </div>
           </div>
 
-          <div className="absolute -bottom-1 right-0 flex gap-2">
+          <div className="md:hidden grid grid-cols-2 gap-4">
+            {items.map((item) => (
+              <div key={item.id} className="bg-white rounded-lg overflow-hidden border border-gray-200 flex flex-col h-full shadow-md hover:shadow-lg transition-shadow duration-300">
+                <img
+                  src={item.image || "/placeholder.svg"}
+                  alt={item.title}
+                  className="w-full h-32 object-cover"
+                />
+                <div className="p-4 flex-1 flex flex-col">
+                  <h3 className="text-base font-bold mb-2 font-optimus-princeps">{item.title}</h3>
+                  <p className="text-xs text-gray-600 mb-3 flex-1 font-lato line-clamp-2">{item.description}</p>
+                  <a
+                    href={item.link}
+                    className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors duration-300 inline-block font-lato"
+                  >
+                    Discover →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop carousel controls */}
+          <div className="hidden md:flex absolute -bottom-1 right-0 gap-2">
             <button
               type="button"
               onClick={prev}
               disabled={currentIndex === 0}
               aria-label="Previous item"
-              className="h-8 w-8 rounded-full bg-zinc-200 flex items-center justify-center disabled:opacity-50"
+              className="h-8 w-8 rounded-full bg-zinc-200 flex items-center justify-center disabled:opacity-50 hover:bg-zinc-300 transition-colors duration-300"
             >
               <ArrowLeft className="h-4 w-4" />
             </button>
             <button
               type="button"
               onClick={next}
-              disabled={currentIndex === items.length - 1}
+              disabled={currentIndex >= items.length - 3}
               aria-label="Next item"
-              className="h-8 w-8 rounded-full bg-zinc-200 flex items-center justify-center disabled:opacity-50"
+              className="h-8 w-8 rounded-full bg-zinc-200 flex items-center justify-center disabled:opacity-50 hover:bg-zinc-300 transition-colors duration-300"
             >
               <ArrowRight className="h-4 w-4" />
             </button>

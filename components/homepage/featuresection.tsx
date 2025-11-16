@@ -53,7 +53,7 @@ export default function featuresection() {
     >
       <div className="max-w-7xl mx-auto px-4">
         <h2
-          className={`text-xl md:text-2xl font-optima font-bold text-gray-900 mb-12 text-center transition-all duration-800 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          className={`text-xl md:text-2xl font-optimus-princeps font-bold text-gray-900 mb-12 text-center transition-all duration-800 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
             }`}
         >
           To facilitate your access to the SPA, we provide a private parking just in front of the building.
@@ -64,7 +64,7 @@ export default function featuresection() {
             <article
               key={index}
               aria-labelledby={`card-${index}-title`}
-              className={`group transform transition-all duration-700 ease-out rounded-md p-8 bg-gray-50 border border-gray-200 shadow-sm hover:shadow-md hover:scale-[1.01]`}
+              className={`group transform transition-all duration-700 ease-out rounded-xl p-8 bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:scale-105 hover:border-primary cursor-pointer`}
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(16px)",
@@ -72,10 +72,10 @@ export default function featuresection() {
               }}
             >
               <div className="flex flex-col items-center justify-center h-full text-center gap-4">
-                <h3 id={`card-${index}-title`} className="text-xl font-semibold text-gray-900">
+                <h3 id={`card-${index}-title`} className="text-xl font-semibold text-gray-900 font-optimus-princeps">
                   {card.title}
                 </h3>
-                <p className="text-gray-700 leading-relaxed max-w-prose">
+                <p className="text-gray-700 leading-relaxed max-w-prose font-lato">
                   {card.content}
                 </p>
               </div>

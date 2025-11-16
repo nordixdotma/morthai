@@ -13,14 +13,18 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     if (isLoading) {
-      document.body.style.overflow = "hidden"
+      document.documentElement.style.overflow = "hidden"
     } else {
-      document.body.style.overflow = ""
+      document.documentElement.style.overflow = ""
     }
 
     return () => {
-      document.body.style.overflow = ""
+      document.documentElement.style.overflow = ""
     }
   }, [isLoading])
 

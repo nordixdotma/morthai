@@ -63,8 +63,6 @@ const config: Config = {
         },
       },
       fontFamily: {
-        "work-sans": ["var(--font-work-sans)", "system-ui", "sans-serif"],
-        optima: ["Optima", "Segoe UI", "Tahoma", "Geneva", "Verdana", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

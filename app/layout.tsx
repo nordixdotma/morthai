@@ -1,15 +1,16 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Work_Sans } from 'next/font/google'
+import { Lato } from 'next/font/google'
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import WhatsAppButton from "@/components/whatsapp-button"
 
-const workSans = Work_Sans({
+const lato = Lato({
   subsets: ["latin"],
-  variable: "--font-work-sans",
+  weight: ["400", "700", "900"],
+  variable: "--font-lato",
   display: "swap",
   preload: true,
 })
@@ -54,7 +55,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -66,18 +66,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className="overflow-y-scroll">
       <head>
         <link href="https://fonts.cdnfonts.com/css/optimus-princeps" rel="stylesheet" />
-        <link href="https://fonts.cdnfonts.com/css/lato" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.cdnfonts.com/css/optima" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style" />
         <link rel="icon" href="/logo.svg" sizes="any" />
       </head>
-      <body className={`${workSans.variable} font-work-sans overflow-x-hidden`}>
-        <script dangerouslySetInnerHTML={{
-          __html: `window.scrollTo(0, 0);`
-        }} />
+      <body className={`${lato.variable} font-lato overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <div className="fixed inset-0 z-[-1]">
             <video

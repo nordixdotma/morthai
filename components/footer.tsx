@@ -23,6 +23,7 @@ export default function Footer() {
     { href: "#", label: "Home massage" },
     { href: "#", label: "Gift idea" },
     { href: "#", label: "Contact" },
+    { href: "#", label: "General sales conditions" },
   ]
 
   const contactInfo = [
@@ -66,11 +67,11 @@ export default function Footer() {
                   <Image src="/whitelogo.svg" alt="Mor Thai Logo" fill className="object-contain" priority />
                 </div>
               </Link>
-              <p className="text-sm leading-relaxed text-white/90 mb-8 font-work-sans">
+              <p className="text-sm leading-relaxed text-white/90 mb-8 font-lato">
                 Experience authentic Thai massage and spa treatments in Marrakech. Mor Thai brings traditional Thai wellness and relaxation to the heart of Gueliz.
               </p>
               <div>
-                <h4 className="mb-4 text-sm font-semibold text-white font-optima">FOLLOW US</h4>
+                <h4 className="mb-4 text-sm font-semibold text-white font-optimus-princeps">FOLLOW US</h4>
                 <div className="flex space-x-4">
                   {socialLinks.map((social, index) => (
                     <a
@@ -88,15 +89,14 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Useful Links */}
             <div>
-              <h3 className="font-optima mb-6 text-xl font-bold text-white">QUICK LINKS</h3>
-              <ul className="space-y-4">
+              <h3 className="font-optimus-princeps mb-6 text-xl font-bold text-white">QUICK LINKS</h3>
+              <ul className="grid grid-cols-2 md:grid-cols-1 gap-4">
                 {usefulLinks.map((link, index) => (
                   <li key={index}>
                     <Link
                       href={link.href}
-                      className="inline-block text-white/90 text-sm transition-all duration-300 hover:text-primary relative group font-work-sans"
+                      className="inline-block text-white/90 text-sm transition-all duration-300 hover:text-primary relative group font-lato"
                     >
                       {link.label}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -108,7 +108,7 @@ export default function Footer() {
 
             {/* Contact Info */}
             <div>
-              <h3 className="font-optima mb-6 text-xl font-bold text-white">CONTACT INFO</h3>
+              <h3 className="font-optimus-princeps mb-6 text-xl font-bold text-white">CONTACT INFO</h3>
               <ul className="space-y-6">
                 {contactInfo.map((item, index) => (
                   <li key={index} className="flex items-start">
@@ -116,9 +116,9 @@ export default function Footer() {
                       <item.icon className="h-5 w-5 text-white" />
                     </div>
                     <div>
-                      <p className="font-medium text-white font-optima">{item.title}</p>
+                      <p className="font-medium text-white font-optimus-princeps">{item.title}</p>
                       {item.link ? (
-                        <p className="mt-1 text-sm text-white/90 font-work-sans">
+                        <p className="mt-1 text-sm text-white/90 font-lato">
                           <a
                             href={typeof item.link === "string" ? item.link : undefined}
                             className="transition-all duration-300 hover:text-primary relative group"
@@ -128,7 +128,7 @@ export default function Footer() {
                           </a>
                         </p>
                       ) : (
-                        <p className="mt-1 text-sm text-white/90 font-work-sans">{item.value}</p>
+                        <p className="mt-1 text-sm text-white/90 font-lato">{item.value}</p>
                       )}
                     </div>
                   </li>
@@ -136,13 +136,12 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Payment Security */}
             <div>
-              <h3 className="font-optima mb-6 text-xl font-bold text-white">PAY SAFELY WITH US</h3>
-              <p className="text-sm leading-relaxed text-white/90 mb-6 font-work-sans">
+              <h3 className="font-optimus-princeps mb-6 text-xl font-bold text-white">PAY SAFELY WITH US</h3>
+              <p className="text-sm leading-relaxed text-white/90 mb-4 font-lato">
                 The payment is encrypted and transmitted securely with an SSL protocol.
               </p>
-              <div className="mt-6">
+              <div className="mt-6 mb-8">
                 <Image
                   src="/creditcard-logo.png"
                   alt="Accepted Payment Methods"
@@ -151,6 +150,11 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
+
+              <h4 className="font-optimus-princeps mb-3 text-sm font-bold text-white">OUR AWARDS</h4>
+              <p className="text-xs leading-relaxed text-white/90 font-lato">
+                Because of our excellent reputation, our SPA has been awarded with the prestigious award of: <span className="font-semibold">"Certificate of Excellence"</span> of the TripAdvisor Travellers' Choice Awards for <span className="font-semibold">2021, 2022, 2023</span>.
+              </p>
             </div>
           </div>
         </div>
@@ -160,10 +164,10 @@ export default function Footer() {
       <div className="border-t border-white/30 py-6 relative z-10">
         <Container className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-white/90 font-work-sans">
+            <p className="text-sm text-white/90 font-lato">
               © {currentYear} Mor Thai. All rights reserved.
             </p>
-            <p className="text-sm text-white/90 flex items-center font-work-sans">
+            <p className="text-sm text-white/90 flex items-center font-lato">
               Made by{" "}
               <Link
                 href="https://nexusdweb.com/"

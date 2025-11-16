@@ -34,6 +34,14 @@ export default function HeroSection() {
         <span className="block w-3 h-3 border-b-2 border-r-2 border-white transform rotate-45 animate-slide-down delay-300"></span>
       </div>
 
+      <div className="absolute bottom-6 right-6">
+        <img
+          src="/certif.png"
+          alt="Decorative accent"
+          className="w-20 h-20 object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity"
+        />
+      </div>
+
       <style jsx>{`
         @keyframes slideDown {
           0% { opacity: 0; transform: translateY(-4px) rotate(45deg); }

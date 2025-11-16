@@ -63,21 +63,13 @@
   }
 }
 
-/* Updated font classes for new font system */
+/* Updated font classes - removed optimus-princeps and work-sans, added optimus-princeps */
 .font-optimus-princeps {
   font-family: "Optimus Princeps", serif;
 }
 
 .font-lato {
   font-family: "Lato", sans-serif;
-}
-
-.font-optima {
-  font-family: "Optima", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.font-work-sans {
-  font-family: var(--font-work-sans), system-ui, sans-serif;
 }
 
 @layer utilities {
@@ -280,11 +272,11 @@ body {
   transform: translateX(calc(var(--carousel-index, 0) * -33.333%));
 }
 
-/* Loader animation styles moved from inline */
+/* Updated loader z-index to 60 to ensure it's above WhatsApp button */
 .loader-container {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 60;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -333,9 +325,4 @@ body {
 body {
   width: 100%;
   overflow-x: hidden;
-}
-
-/* Force scrollbar presence */
-html {
-  overflow-y: scroll;
 }

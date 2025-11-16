@@ -4,11 +4,11 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Phone, ChevronDown } from "lucide-react"
+import { ChevronRight, Phone, ChevronDown } from 'lucide-react'
 import { Container } from "@/components/ui/container"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
-import { usePathname } from "next/navigation"
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -52,30 +52,31 @@ export default function Header() {
 
   useEffect(() => {
     if (isMenuOpen) {
-      const scrollY = window.scrollY
-      document.body.style.position = "fixed"
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.width = "100%"
+      document.body.style.overflow = "hidden"
     } else {
-      const scrollY = document.body.style.top
-      document.body.style.position = ""
-      document.body.style.top = ""
-      document.body.style.width = ""
-      if (scrollY) {
-        window.scrollTo(0, Number.parseInt(scrollY || "0", 10) * -1)
-      }
+      document.body.style.overflow = ""
     }
 
     return () => {
-      document.body.style.position = ""
-      document.body.style.top = ""
-      document.body.style.width = ""
+      document.body.style.overflow = ""
     }
   }, [isMenuOpen])
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
+
+  const navigationLinks = [
+    { href: "/", label: "HOME" },
+    { href: "#", label: "Massages" },
+    { href: "#", label: "Hammam" },
+    { href: "#", label: "Hammam massage package" },
+    { href: "#", label: "Facial care" },
+    { href: "#", label: "Prices" },
+    { href: "#", label: "Home massage" },
+    { href: "#", label: "Gift idea" },
+    { href: "#", label: "Contact" },
+  ]
 
   return (
     <header
@@ -91,12 +92,11 @@ export default function Header() {
           <div className="relative z-20 language-dropdown-container">
             <button
               onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${
-                scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-              }`}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+                }`}
             >
               <img
-                src={languages.find((lang) => lang.code === language)?.flag}
+                src={languages.find((lang) => lang.code === language)?.flag || "/placeholder.svg"}
                 alt={language}
                 className="w-6 h-4 object-cover rounded"
               />
@@ -105,10 +105,9 @@ export default function Header() {
               >
                 {language}
               </span>
-              <ChevronDown 
-                className={`w-4 h-4 transition-transform duration-300 ${
-                  languageDropdownOpen ? "rotate-180" : ""
-                } ${scrolled ? "text-gray-800" : "text-white"}`}
+              <ChevronDown
+                className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""
+                  } ${scrolled ? "text-gray-800" : "text-white"}`}
               />
             </button>
 
@@ -121,11 +120,10 @@ export default function Header() {
                       setLanguage(lang.code as "en" | "fr")
                       setLanguageDropdownOpen(false)
                     }}
-                    className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${
-                      lang.code === language ? "bg-primary/10" : ""
-                    }`}
+                    className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${lang.code === language ? "bg-primary/10" : ""
+                      }`}
                   >
-                    <img src={lang.flag} alt={lang.name} className="w-6 h-4 object-cover rounded" />
+                    <img src={lang.flag || "/placeholder.svg"} alt={lang.name} className="w-6 h-4 object-cover rounded" />
                     <span className="text-sm font-medium text-gray-800">{lang.name}</span>
                   </button>
                 ))}
@@ -149,9 +147,8 @@ export default function Header() {
           {/* Right: Modern Menu Button */}
           <button
             onClick={toggleMenu}
-            className={`relative z-20 flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors ${
-              scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-            }`}
+            className={`relative z-20 flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+              }`}
             aria-label="Toggle menu"
           >
             <svg
@@ -182,12 +179,11 @@ export default function Header() {
             <div className="relative language-dropdown-container">
               <button
                 onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
-                  scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-                }`}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+                  }`}
               >
                 <img
-                  src={languages.find((lang) => lang.code === language)?.flag}
+                  src={languages.find((lang) => lang.code === language)?.flag || "/placeholder.svg"}
                   alt={language}
                   className="w-6 h-4 object-cover rounded"
                 />
@@ -196,10 +192,9 @@ export default function Header() {
                 >
                   {language}
                 </span>
-                <ChevronDown 
-                  className={`w-4 h-4 transition-transform duration-300 ${
-                    languageDropdownOpen ? "rotate-180" : ""
-                  } ${scrolled ? "text-gray-800" : "text-white"}`}
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""
+                    } ${scrolled ? "text-gray-800" : "text-white"}`}
                 />
               </button>
 
@@ -212,11 +207,10 @@ export default function Header() {
                         setLanguage(lang.code as "en" | "fr")
                         setLanguageDropdownOpen(false)
                       }}
-                      className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${
-                        lang.code === language ? "bg-primary/10" : ""
-                      }`}
+                      className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${lang.code === language ? "bg-primary/10" : ""
+                        }`}
                     >
-                      <img src={lang.flag} alt={lang.name} className="w-6 h-4 object-cover rounded" />
+                      <img src={lang.flag || "/placeholder.svg"} alt={lang.name} className="w-6 h-4 object-cover rounded" />
                       <span className="text-sm font-medium text-gray-800">{lang.name}</span>
                     </button>
                   ))}
@@ -241,7 +235,7 @@ export default function Header() {
             <div className="flex items-center">
               <Link
                 href="mailto:contact@enchanting.org"
-                className="bg-primary text-white px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-primary/90 font-optima uppercase"
+                className="bg-primary text-white px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-primary/90 font-optimus-princeps uppercase"
               >
                 CONTACT
               </Link>
@@ -255,9 +249,8 @@ export default function Header() {
             <nav className="flex items-center justify-center gap-8 py-2">
               <Link
                 href="/"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optima uppercase tracking-wider ${
-                  scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                } ${pathname === "/" ? "text-primary" : ""}`}
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                  } ${pathname === "/" ? "text-primary" : ""}`}
               >
                 HOME
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -265,18 +258,16 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optima uppercase tracking-wider ${
-                  scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                }`}
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                  }`}
               >
                 Massages
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optima uppercase tracking-wider ${
-                  scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                }`}
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                  }`}
               >
                 Hammam
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -284,9 +275,8 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optima uppercase tracking-wider ${
-                  scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                }`}
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                  }`}
               >
                 Hammam massage package
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -294,9 +284,8 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optima uppercase tracking-wider ${
-                  scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                }`}
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                  }`}
               >
                 Facial care
 
@@ -305,9 +294,8 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optima uppercase tracking-wider ${
-                  scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                }`}
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                  }`}
               >
                 Prices
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -315,18 +303,16 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optima uppercase tracking-wider ${
-                  scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                }`}
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                  }`}
               >
                 Home massage
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optima uppercase tracking-wider ${
-                  scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                }`}
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                  }`}
               >
                 Gift idea
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -334,9 +320,8 @@ export default function Header() {
 
               <Link
                 href="#"
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optima uppercase tracking-wider ${
-                  scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                }`}
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-optimus-princeps uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                  }`}
               >
                 Contact
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -405,112 +390,24 @@ export default function Header() {
                 <div className="flex-1 overflow-y-auto py-6 px-4">
                   <nav className="space-y-1">
                     {/* Navigation links */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 }}
-                    >
-                      <Link
-                        href="/"
-                        className={`flex items-center py-3 px-4 rounded-xl text-white hover:bg-white/10 transition-colors ${
-                          pathname === "/" ? "bg-primary/20 text-primary" : ""
-                        }`}
-                        onClick={toggleMenu}
+                    {navigationLinks.map((link, index) => (
+                      <motion.div
+                        key={link.href}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.05 + index * 0.05 }}
                       >
-                        <span className="font-medium text-lg font-optima uppercase">HOME</span>
-                        <ChevronRight className="h-4 w-4 ml-auto" />
-                      </Link>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.15 }}
-                    >
-                      <Link
-                        href="#"
-                        className="flex items-center py-3 px-4 rounded-xl text-white hover:bg-white/10 transition-colors"
-                        onClick={toggleMenu}
-                      >
-                        <span className="font-medium text-lg font-optima uppercase">MOROCCO TOURS</span>
-                        <ChevronRight className="h-4 w-4 ml-auto" />
-                      </Link>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      <Link
-                        href="#"
-                        className="flex items-center py-3 px-4 rounded-xl text-white hover:bg-white/10 transition-colors"
-                        onClick={toggleMenu}
-                      >
-                        <span className="font-medium text-lg font-optima uppercase">MOROCCO DESERT TOURS</span>
-                        <ChevronRight className="h-4 w-4 ml-auto" />
-                      </Link>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.25 }}
-                    >
-                      <Link
-                        href="#"
-                        className="flex items-center py-3 px-4 rounded-xl text-white hover:bg-white/10 transition-colors"
-                        onClick={toggleMenu}
-                      >
-                        <span className="font-medium text-lg font-optima uppercase">MARRAKECH DAY TRIPS</span>
-                        <ChevronRight className="h-4 w-4 ml-auto" />
-                      </Link>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      <Link
-                        href="#"
-                        className="flex items-center py-3 px-4 rounded-xl text-white hover:bg-white/10 transition-colors"
-                        onClick={toggleMenu}
-                      >
-                        <span className="font-medium text-lg font-optima uppercase">MOROCCO TREKKING</span>
-                        <ChevronRight className="h-4 w-4 ml-auto" />
-                      </Link>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.35 }}
-                    >
-                      <Link
-                        href="#"
-                        className="flex items-center py-3 px-4 rounded-xl text-white hover:bg-white/10 transition-colors"
-                        onClick={toggleMenu}
-                      >
-                        <span className="font-medium text-lg font-optima uppercase">SHORE EXCURSIONS</span>
-                        <ChevronRight className="h-4 w-4 ml-auto" />
-                      </Link>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 }}
-                    >
-                      <Link
-                        href="#"
-                        className="flex items-center py-3 px-4 rounded-xl text-white hover:bg-white/10 transition-colors"
-                        onClick={toggleMenu}
-                      >
-                        <span className="font-medium text-lg font-optima uppercase">BLOG</span>
-                        <ChevronRight className="h-4 w-4 ml-auto" />
-                      </Link>
-                    </motion.div>
+                        <Link
+                          href={link.href}
+                          className={`flex items-center py-3 px-4 rounded-xl text-white hover:bg-white/10 transition-colors ${pathname === link.href ? "bg-primary/20 text-primary" : ""
+                            }`}
+                          onClick={toggleMenu}
+                        >
+                          <span className="font-medium text-lg font-optimus-princeps uppercase">{link.label}</span>
+                          <ChevronRight className="h-4 w-4 ml-auto" />
+                        </Link>
+                      </motion.div>
+                    ))}
                   </nav>
                 </div>
 
@@ -521,8 +418,8 @@ export default function Header() {
                     transition={{ delay: 0.45 }}
                   >
                     <Link
-                      href="mailto:contact@enchanting.org"
-                      className="flex items-center justify-center py-4 px-6 bg-primary text-white font-medium text-lg font-optima uppercase transition-all duration-300 hover:bg-primary/90"
+                      href="tel:+212524207055"
+                      className="flex items-center justify-center py-4 px-6 bg-primary text-white font-medium text-lg font-optimus-princeps uppercase transition-all duration-300 hover:bg-primary/90"
                       onClick={toggleMenu}
                     >
                       <Phone className="h-5 w-5 mr-3" />

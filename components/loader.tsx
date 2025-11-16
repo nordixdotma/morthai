@@ -24,7 +24,7 @@ export default function Loader({ onLoadingComplete }: LoaderProps) {
   }
 
   return (
-    <div className="loader-container">
+    <div className="loader-container z-60">
       <div className="relative w-32 h-32 flex items-center justify-center">
         {/* Animated border circle */}
         <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#b0d236] border-r-[#b0d236] animated-border"></div>
