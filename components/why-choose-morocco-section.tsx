@@ -50,8 +50,8 @@ const carouselItems = [
 export default function WhyChooseMoroccoSection() {
   const [isVisible, setIsVisible] = useState(false)
   const [index, setIndex] = useState(0)
-  const sectionRef = useRef(null)
-  const containerRef = useRef(null)
+  const sectionRef = useRef<HTMLElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const x = useMotionValue(0)
 
   // observe section visibility
@@ -79,7 +79,7 @@ export default function WhyChooseMoroccoSection() {
   // animate x when index changes
   useEffect(() => {
     if (!containerRef.current) return
-    const containerWidth = containerRef.current.offsetWidth || 1
+    const containerWidth = (containerRef.current as HTMLDivElement).offsetWidth || 1
     const targetX = -index * containerWidth
 
     animate(x, targetX, {
@@ -92,9 +92,8 @@ export default function WhyChooseMoroccoSection() {
   // handle resize so width stays correct
   useEffect(() => {
     const onResize = () => {
-      // re-run animation to correct x to new width
       if (!containerRef.current) return
-      const containerWidth = containerRef.current.offsetWidth || 1
+      const containerWidth = (containerRef.current as HTMLDivElement).offsetWidth || 1
       const targetX = -index * containerWidth
       x.set(targetX)
     }
@@ -105,14 +104,7 @@ export default function WhyChooseMoroccoSection() {
   return (
     <section
       ref={sectionRef}
-      className="why-choose-section py-16 md:py-24 overflow-hidden w-full relative"
-      style={{
-        backgroundColor: "#fff8f5",
-        backgroundImage: "url('/3.png')",
-        backgroundSize: "300px 300px",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="why-choose-section py-16 md:py-24 overflow-hidden w-full relative bg-pattern"
     >
       <div className="max-w-7xl mx-auto px-4">
         {/* 2-column layout (50% / 50%) */}

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 export default function MoroccoExpertiseSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -63,12 +63,7 @@ export default function MoroccoExpertiseSection() {
   
   return (
     <section 
-      className="py-16 md:py-24 w-full"
-      style={{
-        backgroundImage: "url('/1.jpg')",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover"
-      }}
+      className="py-16 md:py-24 w-full morocco-expertise-section"
     >
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
@@ -78,14 +73,14 @@ export default function MoroccoExpertiseSection() {
         <div className="relative pb-16">
           <div className="overflow-hidden">
             <div 
-              className="flex transition-transform duration-300"
-              style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
+              className="flex transition-transform duration-300 carousel-container"
+              style={{ "--carousel-index": currentIndex } as React.CSSProperties}
             >
               {items.map((item) => (
                 <div key={item.id} className="w-1/3 flex-shrink-0 px-2">
                   <div className="bg-white rounded-lg overflow-hidden border border-gray-200 flex flex-col h-full">
                     <img
-                      src={item.image}
+                      src={item.image || "/placeholder.svg"}
                       alt={item.title}
                       className="w-full h-48 object-cover"
                     />
@@ -107,15 +102,19 @@ export default function MoroccoExpertiseSection() {
           
           <div className="absolute -bottom-10 right-0 flex gap-2">
             <button
+              type="button"
               onClick={prev}
               disabled={currentIndex === 0}
+              aria-label="Previous item"
               className="h-8 w-8 rounded-full bg-zinc-200 flex items-center justify-center disabled:opacity-50"
             >
               <ArrowLeft className="h-4 w-4" />
             </button>
             <button
+              type="button"
               onClick={next}
               disabled={currentIndex === items.length - 1}
+              aria-label="Next item"
               className="h-8 w-8 rounded-full bg-zinc-200 flex items-center justify-center disabled:opacity-50"
             >
               <ArrowRight className="h-4 w-4" />

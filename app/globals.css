@@ -262,6 +262,20 @@ body {
   background-repeat: no-repeat;
 }
 
+/* Add Morocco expertise section background and carousel styles */
+.morocco-expertise-section {
+  background-image: url('/1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.carousel-container {
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  /* use CSS custom property for dynamic carousel position */
+  transform: translateX(calc(var(--carousel-index, 0) * -33.333%));
+}
+
 /* Loader animation styles moved from inline */
 .loader-container {
   position: fixed;
