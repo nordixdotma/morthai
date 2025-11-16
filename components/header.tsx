@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Menu, X, ChevronRight, Phone } from "lucide-react"
+import { ChevronRight, Phone } from "lucide-react"
 import { Container } from "@/components/ui/container"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
@@ -13,16 +13,42 @@ import { usePathname } from "next/navigation"
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false)
+  const [language, setLanguage] = useState<"en" | "fr">("en")
   const pathname = usePathname()
+
+  const languages = [
+    {
+      code: "fr",
+      name: "Français",
+      flag: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg",
+    },
+    {
+      code: "en",
+      name: "English",
+      flag: "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
+    },
+  ]
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10)
     }
 
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      if (languageDropdownOpen && !target.closest('.language-dropdown-container')) {
+        setLanguageDropdownOpen(false)
+      }
+    }
+
     window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [languageDropdownOpen])
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -59,9 +85,51 @@ export default function Header() {
       )}
     >
       <Container className="max-w-7xl mx-auto">
-        {/* Mobile layout - single row */}
+        {/* Mobile layout - three columns */}
         <div className="md:hidden flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center z-20">
+          {/* Left: Language Switcher */}
+          <div className="relative z-20 language-dropdown-container">
+            <button
+              onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors ${
+                scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+              }`}
+            >
+              <img
+                src={languages.find((lang) => lang.code === language)?.flag}
+                alt={language}
+                className="w-6 h-4 object-cover rounded"
+              />
+              <span
+                className={`text-sm font-medium uppercase ${scrolled ? "text-gray-800" : "text-white"}`}
+              >
+                {language}
+              </span>
+            </button>
+
+            {languageDropdownOpen && (
+              <div className="absolute left-0 top-12 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200 py-2 min-w-[140px] z-50">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      setLanguage(lang.code as "en" | "fr")
+                      setLanguageDropdownOpen(false)
+                    }}
+                    className={`flex items-center space-x-3 w-full px-4 py-2 text-left hover:bg-primary/20 transition-colors ${
+                      lang.code === language ? "bg-primary/10" : ""
+                    }`}
+                  >
+                    <img src={lang.flag} alt={lang.name} className="w-6 h-4 object-cover rounded" />
+                    <span className="text-sm font-medium text-gray-800">{lang.name}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Center: Logo */}
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center z-10">
             <div className="relative h-14 w-28">
               <Image
                 src={scrolled ? "/logo.svg" : "/whitelogo.svg"}
@@ -73,18 +141,32 @@ export default function Header() {
             </div>
           </Link>
 
-          <div className="flex items-center gap-4">
-            {/* Mobile menu button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className={`${scrolled ? "text-gray-800 hover:bg-gray-100" : "text-white hover:bg-white/20"}`}
-              onClick={toggleMenu}
+          {/* Right: Modern Menu Button */}
+          <button
+            onClick={toggleMenu}
+            className={`relative z-20 flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors ${
+              scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+            }`}
+            aria-label="Toggle menu"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="transition-transform duration-300"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </div>
+              <path
+                d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M3 12h18M3 6h18M3 18h18"}
+                stroke={scrolled ? "#1f2937" : "#ffffff"}
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-all duration-300"
+              />
+            </svg>
+          </button>
         </div>
 
         {/* Desktop layout - two rows */}
@@ -228,7 +310,21 @@ export default function Header() {
                     onClick={toggleMenu}
                     className="rounded-full hover:bg-white/10 text-white"
                   >
-                    <X className="h-5 w-5" />
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6 18L18 6M6 6l12 12"
+                        stroke="#ffffff"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                     <span className="sr-only">Close menu</span>
                   </Button>
                 </div>

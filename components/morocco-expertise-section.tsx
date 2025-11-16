@@ -1,77 +1,125 @@
-"use client"
-
-import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
+import React, { useState } from "react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 
 export default function MoroccoExpertiseSection() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "0px 0px -100px 0px",
-      },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  
+  const items = [
+    {
+      id: 1,
+      title: "Hammam",
+      image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop",
+      description: "Live the unforgettable sensory experience or offer yourself a romantic moment in our private hammam reserved for couples.",
+      link: "/hammam"
+    },
+    {
+      id: 2,
+      title: "Massages",
+      image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&h=600&fit=crop",
+      description: "We invite you to immerse yourself in a wonderful multi-sensory universe through a variety of exceptional massages.",
+      link: "/massages"
+    },
+    {
+      id: 3,
+      title: "Hammam and Massage Package",
+      image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&h=600&fit=crop",
+      description: "Let yourself be carried away by the magic of the peaceful atmosphere of Mor Thai Marrakech!",
+      link: "/hammam-massage-package"
+    },
+    {
+      id: 4,
+      title: "Face Treatment",
+      image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=600&fit=crop",
+      description: "Are you looking for a hydrating and deep cleansing treatment for your face? This purifying face care.",
+      link: "/face-treatment"
+    },
+    {
+      id: 5,
+      title: "Home Delivery Massage",
+      image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop",
+      description: "Do you want to relax after a busy week? Or do you simply want to offer yourself a moment of relaxation and well-being, to regenerate your body and mind?",
+      link: "/home-delivery-massage"
+    },
+    {
+      id: 6,
+      title: "Gift Vouchers",
+      image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800&h=600&fit=crop",
+      description: "Are you looking for an original gift idea to impress your loved ones? Whether it is for a birthday, Christmas, Valentine's Day...",
+      link: "/gift-vouchers"
+    },
+  ]
+  
+  const next = () => {
+    if (currentIndex < items.length - 1) {
+      setCurrentIndex(currentIndex + 1)
     }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
+  }
+  
+  const prev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1)
     }
-  }, [])
-
+  }
+  
   return (
     <section 
-      ref={sectionRef} 
-      className="py-16 md:py-24 overflow-hidden w-full relative"
+      className="py-16 md:py-24 w-full"
       style={{
         backgroundImage: "url('/1.jpg')",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover"
       }}
     >
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
-          <div
-            className={`md:col-span-2 aspect-[4/5] bg-gray-200 rounded-lg overflow-hidden relative transition-all duration-1200 ease-out delay-300 flex items-center justify-center ${
-              isVisible ? "opacity-100 translate-x-0 scale-100" : "opacity-0 -translate-x-8 scale-95"
-            }`}
-          >
-            <div className="text-center">
-              <p className="text-gray-400 font-work-sans">Coming Soon</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+          Our Expertise
+        </h2>
+        
+        <div className="relative pb-16">
+          <div className="overflow-hidden">
+            <div 
+              className="flex transition-transform duration-300"
+              style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
+            >
+              {items.map((item) => (
+                <div key={item.id} className="w-1/3 flex-shrink-0 px-2">
+                  <div className="bg-white rounded-lg overflow-hidden border border-gray-200 flex flex-col h-full">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="p-6 flex-1 flex flex-col">
+                      <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                      <p className="text-sm text-gray-600 mb-4 flex-1">{item.description}</p>
+                      <a 
+                        href={item.link}
+                        className="text-sm font-semibold text-blue-600 hover:text-blue-700 text-left inline-block"
+                      >
+                        Discover →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-
-          <div className="md:col-span-3">
-            <h2
-              className={`text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-8 font-optima transition-all duration-1000 ease-out ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-              }`}
+          
+          <div className="absolute -bottom-10 right-0 flex gap-2">
+            <button
+              onClick={prev}
+              disabled={currentIndex === 0}
+              className="h-8 w-8 rounded-full bg-zinc-200 flex items-center justify-center disabled:opacity-50"
             >
-              Expertise Section
-            </h2>
-            <div className="text-gray-600">
-              <p
-                className={`mb-6 text-sm md:text-base leading-relaxed text-justify transition-all duration-1000 ease-out delay-200 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-              >
-                Coming soon. We are working on bringing you amazing content and experiences.
-              </p>
-            </div>
+              <ArrowLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={next}
+              disabled={currentIndex === items.length - 1}
+              className="h-8 w-8 rounded-full bg-zinc-200 flex items-center justify-center disabled:opacity-50"
+            >
+              <ArrowRight className="h-4 w-4" />
+            </button>
           </div>
         </div>
       </div>
