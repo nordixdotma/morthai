@@ -104,7 +104,7 @@ export default function Footer({ isHomepage = false }: FooterProps) {
                   <li key={index}>
                     <Link
                       href={link.href}
-                      className="inline-block text-white/90 text-sm transition-all duration-300 hover:text-primary relative group font-lato"
+                      className="inline-block font-nb-international text-white/90 text-sm transition-all duration-300 hover:text-primary relative group font-lato"
                     >
                       {link.label}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>

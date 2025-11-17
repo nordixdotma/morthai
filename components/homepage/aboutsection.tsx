@@ -70,7 +70,7 @@ export default function aboutsection() {
           </div>
 
           <div
-            className={`discovery-text space-y-6 transition-all duration-1000 ease-out delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            className={`discovery-text font-nb-international space-y-6 transition-all duration-1000 ease-out delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">

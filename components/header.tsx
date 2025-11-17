@@ -252,7 +252,7 @@ export default function Header() {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setReservationModalOpen(true)}
-                className="relative inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white rounded-lg p-2.5 transition-colors"
+                className="relative inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white rounded-sm p-2.5 transition-colors"
                 aria-label="Reservation history"
               >
                 <Calendar className="w-5 h-5" />
