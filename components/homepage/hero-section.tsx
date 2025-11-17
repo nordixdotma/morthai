@@ -36,7 +36,7 @@ export default function HeroSection() {
 
       <div className="absolute bottom-6 right-6">
         <a 
-          href="https://www.tripadvisor.com/Attraction_Review-g293734-d27561262-Reviews-Mor_Thai_Spa-Tetouan_Tanger_Tetouan_Al_Hoceima.html"
+          href="https://www.tripadvisor.ca/Attraction_Review-g293734-d9980774-Reviews-or10-Mor_Thai_Spa-Marrakech_Marrakech_Safi.html"
           target="_blank"
           rel="noopener noreferrer"
         >
