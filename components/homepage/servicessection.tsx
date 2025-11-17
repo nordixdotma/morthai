@@ -153,7 +153,7 @@ export default function servicessection() {
           </div>
 
           {/* Desktop carousel controls */}
-          <div className="hidden md:flex absolute -bottom-1 right-0 gap-2">
+          <div className="hidden md:flex absolute -bottom-0 right-3 gap-2">
             <button
               type="button"
               onClick={prev}

@@ -5,8 +5,16 @@ import Image from "next/image"
 import { Facebook, Instagram, MapPin, Phone, Mail, Heart } from 'lucide-react'
 import { Container } from "@/components/ui/container"
 import { useState } from "react"
+import { usePathname } from 'next/navigation'
 
-export default function Footer() {
+interface FooterProps {
+  isHomepage?: boolean
+}
+
+export default function Footer({ isHomepage = false }: FooterProps) {
+  const pathname = usePathname()
+  const shouldRound = isHomepage || pathname === "/"
+
   const [heartClicks, setHeartClicks] = useState(0)
   const [isHeartAnimating, setIsHeartAnimating] = useState(false)
 
@@ -56,7 +64,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="footer-section rounded-t-xl md:rounded-t-3xl relative">
+    <footer className={`footer-section relative ${shouldRound ? 'rounded-t-xl md:rounded-t-3xl' : ''}`}>
       <Container className="max-w-7xl mx-auto relative z-10">
         <div className="py-16">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
@@ -178,7 +186,6 @@ export default function Footer() {
                 Nexusweb
               </Link>
             </p>
-
           </div>
         </Container>
       </div>

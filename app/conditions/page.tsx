@@ -196,7 +196,7 @@ export default function ConditionsPage() {
           {/* Last Updated Info */}
           <div className="mt-12 p-6 bg-blue-50 border border-blue-200 rounded-lg">
             <p className="text-sm text-blue-900 font-lato">
-              <strong>Last Updated:</strong> July 27, 2020. These General Conditions of Sale are applicable to all orders placed on our website or directly with our establishment.
+              <strong>Last Updated:</strong> Novomber 17, 2025. These General Conditions of Sale are applicable to all orders placed on our website or directly with our establishment.
             </p>
           </div>
         </Container>

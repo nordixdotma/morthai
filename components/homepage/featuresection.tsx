@@ -64,7 +64,7 @@ export default function featuresection() {
             <article
               key={index}
               aria-labelledby={`card-${index}-title`}
-              className={`group transform transition-all duration-700 ease-out rounded-xl p-8 bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:scale-105 hover:border-primary cursor-pointer`}
+              className={`group transform transition-all duration-300 ease-out rounded-xl p-8 bg-white border-2 border-gray-200 hover:border-primary cursor-pointer`}
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(16px)",
@@ -72,7 +72,7 @@ export default function featuresection() {
               }}
             >
               <div className="flex flex-col items-center justify-center h-full text-center gap-4">
-                <h3 id={`card-${index}-title`} className="text-xl font-semibold text-gray-900 font-trajan-pro">
+                <h3 id={`card-${index}-title`} className="text-xl font-semibold text-gray-900 font-trajan-pro text-primary">
                   {card.title}
                 </h3>
                 <p className="text-gray-700 leading-relaxed max-w-prose font-lato">

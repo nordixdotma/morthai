@@ -73,13 +73,15 @@ export default function aboutsection() {
             className={`discovery-text space-y-6 transition-all duration-1000 ease-out delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
           >
-            <p className="text-sm md:text-base leading-relaxed text-justify">
-              Mor Thai Marrakech is a Thai massage SPA, located in the heart of Marrakech in a quiet and discreet street, which overlooks Yacoub El Mansour avenue, near and in between the famous Majorelle garden, Yves Saint Laurent museum and the centre of Gueliz. We invite you to come and enjoy a pure moment of relaxation and well-being, in an oasis of peace, a true temple where a great sensation of calm and relaxation reigns.
-            </p>
-            <p className="text-sm md:text-base leading-relaxed text-justify">
-              Mor Thai Marrakech creates for its guests a great atmosphere of happiness and serenity, where colours, perfume, decoration, light and oils combine to immerse you in the heart of Thailand, while retaining an authentic Moroccan touch, with traditional Moroccan hammams, creating a sublime cultural atmosphere that combines harmoniously Eastern traditions with Western heritage.
-            </p>
-            <p className="text-sm md:text-base leading-relaxed text-justify">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              <p className="text-sm md:text-base leading-relaxed text-justify">
+                Mor Thai Marrakech is a Thai massage SPA, located in the heart of Marrakech in a quiet and discreet street, which overlooks Yacoub El Mansour avenue, near and in between the famous Majorelle garden, Yves Saint Laurent museum and the centre of Gueliz. We invite you to come and enjoy a pure moment of relaxation and well-being, in an oasis of peace, a true temple where a great sensation of calm and relaxation reigns.
+              </p>
+              <p className="text-sm md:text-base leading-relaxed text-justify">
+                Mor Thai Marrakech creates for its guests a great atmosphere of happiness and serenity, where colours, perfume, decoration, light and oils combine to immerse you in the heart of Thailand, while retaining an authentic Moroccan touch, with traditional Moroccan hammams, creating a sublime cultural atmosphere that combines harmoniously Eastern traditions with Western heritage.
+              </p>
+            </div>
+            <p className="text-sm md:text-base leading-relaxed text-center font-trajan-pro font-bold">
               Mor Thai Marrakech is the perfect place to experience a real moment of escape and relaxation!
             </p>
           </div>

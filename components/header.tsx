@@ -86,7 +86,7 @@ export default function Header() {
     { href: "#", label: "Hammam" },
     { href: "#", label: "Hammam massage package" },
     { href: "#", label: "Facial care" },
-    { href: "#", label: "Prices" },
+    { href: "/tariffs", label: "Prices" }, // updated Prices link to point to /tariffs
     { href: "#", label: "Home massage" },
     { href: "#", label: "Gift idea" },
     { href: "/contact", label: "Contact" },
