@@ -115,7 +115,6 @@ export default function servicessection() {
             </div>
           </div>
 
-          {/* Mobile grid view */}
           <div className="md:hidden grid grid-cols-2 gap-4">
             {items.map((item) => (
               <div key={item.id} className="bg-white rounded-xl overflow-hidden flex flex-col h-full border border-gray-100 transition-colors duration-300 hover:border-primary/20">
@@ -128,16 +127,16 @@ export default function servicessection() {
                   />
                 </div>
 
-                {/* Content container */}
-                <div className="p-4 flex-1 flex flex-col">
-                  <h3 className="text-base font-bold mb-2 font-trajan-pro text-gray-900">
+                {/* Content container with reduced padding on mobile */}
+                <div className="p-2 flex-1 flex flex-col">
+                  <h3 className="text-base font-bold mb-1 font-trajan-pro text-gray-900">
                     {item.title}
                   </h3>
 
                   {/* Decorative accent line mobile */}
-                  <div className="w-8 h-0.5 bg-primary mb-3"></div>
+                  <div className="w-8 h-0.5 bg-primary mb-1"></div>
 
-                  <p className="text-xs text-gray-600 mb-3 flex-1 font-lato line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-gray-600 mb-2 flex-1 font-lato line-clamp-2 leading-relaxed">
                     {item.description}
                   </p>
 

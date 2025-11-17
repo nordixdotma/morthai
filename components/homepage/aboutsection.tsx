@@ -35,7 +35,7 @@ export default function aboutsection() {
   return (
     <section
       ref={sectionRef}
-      className="morocco-discovery-section py-16 md:py-24 overflow-hidden w-full relative"
+      className="morocco-discovery-section py-16 md:py-24 overflow-hidden w-full relative rounded-t-xl md:rounded-t-3xl"
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center max-w-6xl mx-auto">

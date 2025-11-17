@@ -56,7 +56,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="footer-section rounded-t-[1rem] md:rounded-t-[2rem] relative">
+    <footer className="footer-section rounded-t-xl md:rounded-t-3xl relative">
       <Container className="max-w-7xl mx-auto relative z-10">
         <div className="py-16">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">

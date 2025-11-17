@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Phone, ChevronDown } from 'lucide-react'
+import { ChevronRight, Phone, ChevronDown, Calendar } from 'lucide-react'
 import { Container } from "@/components/ui/container"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
@@ -15,6 +15,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false)
   const [language, setLanguage] = useState<"en" | "fr">("en")
+  const [reservationModalOpen, setReservationModalOpen] = useState(false)
+  const [reservationCount] = useState(3) // Mock data - replace with real data
   const pathname = usePathname()
 
   const languages = [
@@ -61,6 +63,18 @@ export default function Header() {
       document.body.style.overflow = ""
     }
   }, [isMenuOpen])
+
+  useEffect(() => {
+    if (reservationModalOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [reservationModalOpen])
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -144,36 +158,39 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Right: Modern Menu Button */}
-          <button
-            onClick={toggleMenu}
-            className={`relative z-20 flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-              }`}
-            aria-label="Toggle menu"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="transition-transform duration-300"
+          {/* Right: Menu Button */}
+          <div className="flex items-center gap-2 z-20">
+            {/* Modern Menu Button */}
+            <button
+              onClick={toggleMenu}
+              className={`relative flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+                }`}
+              aria-label="Toggle menu"
             >
-              <path
-                d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M3 12h18M3 6h18M3 18h18"}
-                stroke={scrolled ? "#1f2937" : "#ffffff"}
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="transition-all duration-300"
-              />
-            </svg>
-          </button>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="transition-transform duration-300"
+              >
+                <path
+                  d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M3 12h18M3 6h18M3 18h18"}
+                  stroke={scrolled ? "#1f2937" : "#ffffff"}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="transition-all duration-300"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Desktop layout - two rows */}
         <div className="hidden md:block">
-          {/* First row: Language Switcher, Logo (centered), and Contact */}
+          {/* First row: Language Switcher, Logo (centered), and Reservation Badge */}
           <div className="flex h-20 items-center justify-between relative">
             {/* Left: Language Switcher */}
             <div className="relative language-dropdown-container">
@@ -231,14 +248,20 @@ export default function Header() {
               </div>
             </Link>
 
-            {/* Right: Contact */}
-            <div className="flex items-center">
-              <Link
-                href="mailto:contact@enchanting.org"
-                className="bg-primary text-white px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-primary/90 font-trajan-pro uppercase"
+            {/* Right: Reservation Button */}
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setReservationModalOpen(true)}
+                className="relative inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white rounded-lg p-2.5 transition-colors"
+                aria-label="Reservation history"
               >
-                CONTACT
-              </Link>
+                <Calendar className="w-5 h-5" />
+                {reservationCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                    {reservationCount}
+                  </span>
+                )}
+              </button>
             </div>
           </div>
 
@@ -345,27 +368,26 @@ export default function Header() {
               onClick={toggleMenu}
             />
 
-            {/* Menu panel */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-[350px] z-50 md:hidden overflow-y-auto bg-black/80 backdrop-blur-md shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-[350px] z-50 md:hidden overflow-y-auto bg-white shadow-2xl"
             >
               <div className="h-full flex flex-col">
                 {/* Header with logo and close button */}
-                <div className="flex items-center justify-between p-6 border-b border-white/10">
+                <div className="flex items-center justify-between p-6 border-b border-gray-200">
                   <Link href="/" className="inline-block" onClick={toggleMenu}>
                     <div className="relative h-10 w-28">
-                      <Image src="/whitelogo.svg" alt="Enchanting Logo" fill className="object-contain" priority />
+                      <Image src="/logo.svg" alt="Enchanting Logo" fill className="object-contain" priority />
                     </div>
                   </Link>
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={toggleMenu}
-                    className="rounded-full hover:bg-white/10 text-white"
+                    className="rounded-full hover:bg-gray-100 text-black"
                   >
                     <svg
                       width="20"
@@ -375,14 +397,12 @@ export default function Header() {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M6 18L18 6M6 6l12 12"
-                        stroke="#ffffff"
-                        strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
-                    <span className="sr-only">Close menu</span>
                   </Button>
                 </div>
 
@@ -399,7 +419,7 @@ export default function Header() {
                       >
                         <Link
                           href={link.href}
-                          className={`flex items-center py-3 px-4 rounded-xl text-white hover:bg-white/10 transition-colors ${pathname === link.href ? "bg-primary/20 text-primary" : ""
+                          className={`flex items-center py-3 px-4 rounded-xl text-gray-800 hover:bg-gray-100 transition-colors ${pathname === link.href ? "bg-primary/20 text-primary" : ""
                             }`}
                           onClick={toggleMenu}
                         >
@@ -411,7 +431,28 @@ export default function Header() {
                   </nav>
                 </div>
 
-                <div className="p-6 border-t border-white/10">
+                <div className="p-6 border-t border-gray-200 space-y-3">
+                  {/* Reservation Button */}
+                  <motion.button
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    onClick={() => {
+                      setReservationModalOpen(true)
+                      toggleMenu()
+                    }}
+                    className="relative w-full flex items-center justify-center py-3 px-6 bg-primary text-white font-medium text-base font-trajan-pro uppercase transition-all duration-300 hover:bg-primary/90 rounded-lg"
+                  >
+                    <Calendar className="h-5 w-5 mr-2" />
+                    Reservations
+                    {reservationCount > 0 && (
+                      <span className="ml-auto bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                        {reservationCount}
+                      </span>
+                    )}
+                  </motion.button>
+
+                  {/* Contact Button */}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -419,13 +460,98 @@ export default function Header() {
                   >
                     <Link
                       href="tel:+212524207055"
-                      className="flex items-center justify-center py-4 px-6 bg-primary text-white font-medium text-lg font-trajan-pro uppercase transition-all duration-300 hover:bg-primary/90"
+                      className="flex items-center justify-center py-3 px-6 bg-gray-200 text-gray-800 font-medium text-base font-trajan-pro uppercase transition-all duration-300 hover:bg-gray-300 rounded-lg"
                       onClick={toggleMenu}
                     >
                       <Phone className="h-5 w-5 mr-3" />
                       CONTACT
                     </Link>
                   </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Reservation Modal */}
+      <AnimatePresence>
+        {reservationModalOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+              onClick={() => setReservationModalOpen(false)}
+            />
+
+            {/* Modal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
+              onClick={() => setReservationModalOpen(false)}
+            >
+              <div
+                className="bg-white rounded-lg shadow-2xl w-full max-w-md pointer-events-auto"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Header */}
+                <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                  <h2 className="text-lg font-bold font-trajan-pro text-gray-900">Reservation History</h2>
+                  <button
+                    onClick={() => setReservationModalOpen(false)}
+                    className="text-gray-500 hover:text-gray-700 transition-colors"
+                    aria-label="Close modal"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Content */}
+                <div className="p-4 max-h-80 overflow-y-auto">
+                  <div className="space-y-2">
+                    {/* Sample reservation items - replace with real data */}
+                    <div className="p-3 bg-gray-50 rounded border border-gray-200">
+                      <h3 className="font-semibold text-gray-900 text-sm mb-1">Thai Massage</h3>
+                      <p className="text-xs text-gray-600">Nov 15, 2025 - 2:00 PM</p>
+                    </div>
+                    <div className="p-3 bg-gray-50 rounded border border-gray-200">
+                      <h3 className="font-semibold text-gray-900 text-sm mb-1">Hammam Treatment</h3>
+                      <p className="text-xs text-gray-600">Nov 10, 2025 - 4:30 PM</p>
+                    </div>
+                    <div className="p-3 bg-gray-50 rounded border border-gray-200">
+                      <h3 className="font-semibold text-gray-900 text-sm mb-1">Facial Care</h3>
+                      <p className="text-xs text-gray-600">Nov 5, 2025 - 11:00 AM</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footer */}
+                <div className="p-4 border-t border-gray-200">
+                  <button
+                    onClick={() => setReservationModalOpen(false)}
+                    className="w-full bg-primary text-white py-2 px-4 rounded font-medium text-sm hover:bg-primary/90 transition-colors"
+                  >
+                    Close
+                  </button>
                 </div>
               </div>
             </motion.div>

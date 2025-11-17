@@ -164,7 +164,7 @@ export default function journeysection() {
             <div className="relative overflow-hidden rounded-lg" ref={containerRef}>
               <motion.div className="flex" style={{ x }}>
                 {carouselItems.map((item) => (
-                  <div key={item.id} className="shrink-0 w-full h-[450px]">
+                  <div key={item.id} className="shrink-0 w-full h-[250px] md:h-[450px]">
                     <img
                       src={item.url || "/placeholder.svg"}
                       alt={item.title}
