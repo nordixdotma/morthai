@@ -22,8 +22,8 @@ export default function Footer() {
     { href: "#", label: "Prices" },
     { href: "#", label: "Home massage" },
     { href: "#", label: "Gift idea" },
-    { href: "#", label: "Contact" },
-    { href: "#", label: "General sales conditions" },
+    { href: "/contact", label: "Contact" },
+    { href: "/conditions", label: "General sales conditions" },
   ]
 
   const contactInfo = [
