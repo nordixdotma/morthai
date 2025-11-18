@@ -399,7 +399,7 @@ export default function Header() {
                       onClick={toggleMenu}
                     >
                       <Phone className="h-5 w-5 mr-3" />
-                      CONTACT
+                      Appeler
                     </Link>
                   </motion.div>
                 </div>

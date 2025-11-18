@@ -34,7 +34,7 @@ export default function HeroSection() {
         <span className="block w-3 h-3 border-b-2 border-r-2 border-white transform rotate-45 animate-slide-down delay-300"></span>
       </div>
 
-      <div className="absolute bottom-6 right-6">
+      <div className="absolute bottom-6 left-6">
         <a 
           href="https://www.tripadvisor.ca/Attraction_Review-g293734-d9980774-Reviews-or10-Mor_Thai_Spa-Marrakech_Marrakech_Safi.html"
           target="_blank"
@@ -43,7 +43,7 @@ export default function HeroSection() {
           <img
             src="/certif.png"
             alt="Mor Thai Spa Reviews on TripAdvisor"
-            className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+            className="w-12 h-12 md:w-16 md:h-16 object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
           />
         </a>
       </div>
