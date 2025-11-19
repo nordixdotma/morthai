@@ -6,26 +6,17 @@ export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const setHeight = () => {
-      const vh = window.innerHeight * 0.01
-      document.documentElement.style.setProperty("--vh", `${vh}px`)
-    }
-
-    setHeight()
-    window.addEventListener("resize", setHeight)
-
     const timer = setTimeout(() => {
       setIsVisible(true)
     }, 100)
 
     return () => {
-      window.removeEventListener("resize", setHeight)
       clearTimeout(timer)
     }
   }, [])
 
   return (
-    <section className="relative bg-transparent hero-section h-screen flex items-center justify-center">
+    <section className="relative bg-transparent h-dvh flex items-center justify-center">
 
       {/* Completely New Floating Arrow */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce-slow cursor-pointer">
