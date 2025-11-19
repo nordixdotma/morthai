@@ -67,7 +67,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen">
       <PageHeroSection 
-        title="Get in Touch"
+        title="Contact"
       />
 
       {/* Contact Info Cards */}
@@ -101,7 +101,7 @@ export default function ContactPage() {
 
       {/* Contact Form Section */}
       <section className="py-16 md:py-20 bg-white">
-        <Container className="max-w-4xl mx-auto">
+        <Container className="max-w-4xl mx-auto px-2 md:px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-trajan-pro font-bold text-gray-900 mb-4">
               Send us a Message

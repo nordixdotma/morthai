@@ -65,7 +65,7 @@ export default function servicessection() {
 
   return (
     <section className="py-16 md:py-24 w-full morocco-expertise-section">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-2 md:px-4">
         <div className="relative pb-16">
           {/* Desktop carousel view */}
           <div className="hidden md:block overflow-hidden">
@@ -86,7 +86,7 @@ export default function servicessection() {
                     </div>
 
                     {/* Content container with improved spacing and hierarchy */}
-                    <div className="p-6 flex-1 flex flex-col">
+                    <div className="p-4 flex-1 flex flex-col">
                       {/* Title with enhanced typography */}
                       <h3 className="text-lg font-bold mb-4 font-trajan-pro text-gray-900 leading-tight">
                         {item.title}
@@ -115,7 +115,7 @@ export default function servicessection() {
             </div>
           </div>
 
-          <div className="md:hidden grid grid-cols-2 gap-4">
+          <div className="md:hidden grid grid-cols-2 gap-3 px-1">
             {items.map((item) => (
               <div key={item.id} className="bg-white rounded-xl overflow-hidden flex flex-col h-full border border-gray-100 transition-colors duration-300 hover:border-primary/20">
                 {/* Image container */}
@@ -129,14 +129,14 @@ export default function servicessection() {
 
                 {/* Content container with reduced padding on mobile */}
                 <div className="p-2 flex-1 flex flex-col">
-                  <h3 className="text-base font-bold mb-1 font-trajan-pro text-gray-900">
+                  <h3 className="text-sm font-bold mb-1 font-trajan-pro text-gray-900">
                     {item.title}
                   </h3>
 
                   {/* Decorative accent line mobile */}
                   <div className="w-8 h-0.5 bg-primary mb-1"></div>
 
-                  <p className="text-xs text-gray-600 mb-2 flex-1 font-lato line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-gray-600 mb-2 flex-1 font-lato leading-relaxed">
                     {item.description}
                   </p>
 

@@ -330,7 +330,7 @@ export default function Header() {
                       aria-hidden="true"
                     >
                       <path
-                        stroke="currentColor"          // <- make path use currentColor
+                        stroke="currentColor"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
@@ -338,13 +338,11 @@ export default function Header() {
                       />
                     </svg>
                   </Button>
-
                 </div>
 
                 {/* Navigation links */}
                 <div className="flex-1 overflow-y-auto py-6 px-4">
                   <nav className="space-y-1">
-                    {/* Navigation links */}
                     {navigationLinks.map((link, index) => (
                       <motion.div
                         key={link.href}
@@ -354,11 +352,11 @@ export default function Header() {
                       >
                         <Link
                           href={link.href}
-                          className={`flex items-center py-3 px-4 rounded-xl text-gray-800 hover:bg-gray-100 transition-colors ${pathname === link.href ? "bg-primary/20 text-primary" : ""
+                          className={`flex items-center py-2 md:py-3 px-4 rounded-xl text-gray-800 hover:bg-gray-100 transition-colors text-sm md:text-base ${pathname === link.href ? "bg-primary/20 text-primary" : ""
                             }`}
                           onClick={toggleMenu}
                         >
-                          <span className="font-medium text-lg font-trajan-pro uppercase">{link.label}</span>
+                          <span className="font-medium font-trajan-pro uppercase">{link.label}</span>
                           <ChevronRight className="h-4 w-4 ml-auto" />
                         </Link>
                       </motion.div>

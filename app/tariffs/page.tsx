@@ -31,16 +31,16 @@ const PriceTable = ({ title, data }: { title: string; data: typeof massageServic
       {title}
     </h2>
     <div className="overflow-x-auto rounded-lg border border-[#e5d5cc]">
-      <table className="w-full">
+      <table className="w-full min-w-full">
         <thead>
           <tr className="bg-[#f5ede5] border-b border-[#e5d5cc]">
-            <th className="text-left py-3 px-4 font-lato font-semibold text-[#333] text-sm md:text-base min-w-[180px]">
+            <th className="text-left py-3 px-2 md:px-4 font-lato font-semibold text-[#333] text-xs md:text-base min-w-[140px] md:min-w-[180px]">
               Service
             </th>
-            <th className="text-center py-3 px-3 font-lato font-semibold text-[#333] text-xs md:text-sm">30 min</th>
-            <th className="text-center py-3 px-3 font-lato font-semibold text-[#333] text-xs md:text-sm">60 min</th>
-            <th className="text-center py-3 px-3 font-lato font-semibold text-[#333] text-xs md:text-sm">90 min</th>
-            <th className="text-center py-3 px-3 font-lato font-semibold text-[#333] text-xs md:text-sm">120 min</th>
+            <th className="text-center py-3 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">30 min</th>
+            <th className="text-center py-3 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">60 min</th>
+            <th className="text-center py-3 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">90 min</th>
+            <th className="text-center py-3 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">120 min</th>
           </tr>
         </thead>
         <tbody>
@@ -49,19 +49,19 @@ const PriceTable = ({ title, data }: { title: string; data: typeof massageServic
               key={index}
               className="border-b border-[#e5d5cc] hover:bg-[#fef9f6] transition-colors"
             >
-              <td className="py-3 px-4 font-lato text-[#333] text-sm md:text-base">
+              <td className="py-3 px-2 md:px-4 font-lato text-[#333] text-xs md:text-base">
                 {service.name}
               </td>
-              <td className="text-center py-3 px-3 font-lato text-[#b64a26] font-semibold text-sm">
+              <td className="text-center py-3 px-1 md:px-3 font-lato text-[#b64a26] font-semibold text-xs">
                 {service["30"] === "-" ? "—" : `${service["30"]}`}
               </td>
-              <td className="text-center py-3 px-3 font-lato text-[#b64a26] font-semibold text-sm">
+              <td className="text-center py-3 px-1 md:px-3 font-lato text-[#b64a26] font-semibold text-xs">
                 {service["60"] === "-" ? "—" : `${service["60"]}`}
               </td>
-              <td className="text-center py-3 px-3 font-lato text-[#b64a26] font-semibold text-sm">
+              <td className="text-center py-3 px-1 md:px-3 font-lato text-[#b64a26] font-semibold text-xs">
                 {service["90"] === "-" ? "—" : `${service["90"]}`}
               </td>
-              <td className="text-center py-3 px-3 font-lato text-[#b64a26] font-semibold text-sm">
+              <td className="text-center py-3 px-1 md:px-3 font-lato text-[#b64a26] font-semibold text-xs">
                 {service["120"] === "-" ? "—" : `${service["120"]}`}
               </td>
             </tr>
@@ -77,7 +77,7 @@ export default function TariffsPage() {
     <div className="min-h-screen">
       <PageHeroSection title="Our Prices" />
       <section className="py-16 md:py-20 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl">
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-6 py-12 md:py-16">
+      <div className="w-full max-w-5xl mx-auto px-2 md:px-4 py-12 md:py-16">
         <div className="space-y-14">
           <PriceTable title="Massage" data={massageServices} />
           <PriceTable title="Facial Care" data={facialServices} />
