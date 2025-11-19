@@ -99,33 +99,43 @@
   .transition-delay-0 {
     transition-delay: 0ms;
   }
+
   .transition-delay-50 {
     transition-delay: 50ms;
   }
+
   .transition-delay-100 {
     transition-delay: 100ms;
   }
+
   .transition-delay-150 {
     transition-delay: 150ms;
   }
+
   .transition-delay-200 {
     transition-delay: 200ms;
   }
+
   .transition-delay-250 {
     transition-delay: 250ms;
   }
+
   .transition-delay-300 {
     transition-delay: 300ms;
   }
+
   .transition-delay-350 {
     transition-delay: 350ms;
   }
+
   .transition-delay-400 {
     transition-delay: 400ms;
   }
+
   .transition-delay-450 {
     transition-delay: 450ms;
   }
+
   .transition-delay-500 {
     transition-delay: 500ms;
   }
@@ -149,6 +159,7 @@ body {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -180,7 +191,7 @@ body {
   background-color: #fff8f5;
   background-image: url('/4.png');
   background-size: 300px 300px;
-  background-position: left;
+  background-position: right bottom;
   background-repeat: no-repeat;
 }
 
@@ -190,11 +201,20 @@ body {
 
 .morocco-discovery-section {
   background-color: #fff8f5;
-  background-image: url('/2.png');
-  background-size: 300px 300px;
-  background-position: right;
+
+  /* Two images */
+  background-image: url('/8.png'), url('/7.png');
+
+  /* First image (7.png) then second image (6.png) */
+  background-position: left top, right top;
+
+  /* Sizes for each image */
+  background-size: 300px 300px, 300px 300px;
+
   background-repeat: no-repeat;
 }
+
+
 
 .discovery-heading {
   font-family: "Trajan Pro", serif;
@@ -225,9 +245,9 @@ body {
 
 .why-choose-section {
   background-color: #fff8f5;
-  background-image: url('/3.png');
+  background-image: url('/8.png');
   background-size: 300px 300px;
-  background-position: center;
+  background-position: top left;
   background-repeat: no-repeat;
 }
 
@@ -257,6 +277,7 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
