@@ -264,7 +264,7 @@ body {
 }
 
 .animated-border {
-  animation: spin-border 3s linear forwards;
+  animation: spin-border 3s infinite forwards;
 }
 
 * {
