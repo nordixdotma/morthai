@@ -189,7 +189,7 @@ body {
 
 .latest-articles-section {
   background-color: #fff8f5;
-  background-image: url('/4.png');
+  background-image: url("/4.png");
   background-size: 300px 300px;
   background-position: right bottom;
   background-repeat: no-repeat;
@@ -203,7 +203,7 @@ body {
   background-color: #fff8f5;
 
   /* Two images */
-  background-image: url('/8.png'), url('/7.png');
+  background-image: url("/8.png"), url("/7.png");
 
   /* First image (7.png) then second image (6.png) */
   background-position: left top, right top;
@@ -214,7 +214,38 @@ body {
   background-repeat: no-repeat;
 }
 
+/* Added tariffs page styling with same background images as about section */
+.tariffs-section {
+  background-color: #fff8f5;
+  background-image: url("/8.png"), url("/7.png"), url("/6.png"), url("/4.png");
+  background-position: left top, right top, center left, right bottom;
+  background-size: 300px 300px, 300px 300px, 300px 300px, 300px 300px;
+  background-repeat: no-repeat;
+}
 
+/* reduce background image sizes on mobile */
+@media (max-width: 768px) {
+  .morocco-discovery-section {
+    background-size: 150px 150px, 150px 150px;
+  }
+
+  /* Added mobile styling for tariffs section */
+  .tariffs-section {
+    background-size: 150px 150px, 150px 150px, 150px 150px, 150px 150px;
+  }
+
+  .why-choose-section {
+    background-size: 150px 150px !important;
+  }
+
+  .latest-articles-section {
+    background-size: 150px 150px !important;
+  }
+
+  .morocco-expertise-section {
+    background-size: 60% !important;
+  }
+}
 
 .discovery-heading {
   font-family: "Trajan Pro", serif;
@@ -245,14 +276,14 @@ body {
 
 .why-choose-section {
   background-color: #fff8f5;
-  background-image: url('/8.png');
+  background-image: url("/8.png");
   background-size: 300px 300px;
   background-position: top left;
   background-repeat: no-repeat;
 }
 
 .morocco-expertise-section {
-  background-image: url('/5.png');
+  background-image: url("/5.png");
   background-repeat: no-repeat;
   background-size: cover;
 }

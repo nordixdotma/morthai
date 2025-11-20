@@ -75,7 +75,7 @@ export default function featuresection() {
                 <h3 id={`card-${index}-title`} className="text-xl font-semibold text-gray-900 font-trajan-pro text-primary">
                   {card.title}
                 </h3>
-                <p className="text-gray-700 font-nb-international leading-relaxed max-w-prose font-lato">
+                <p className="text-gray-700 font-nb-international text-justify leading-relaxed max-w-prose font-lato">
                   {card.content}
                 </p>
               </div>
