@@ -107,7 +107,7 @@ export default function servicessection() {
                       <div className="flex justify-end">
                         <a
                           href={item.link}
-                          className="px-4 py-2 bg-primary text-white font-semibold text-sm rounded-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-md active:scale-95 inline-flex items-center gap-2 group"
+                          className="px-4 py-2 bg-primary text-white font-semibold text-sm rounded-md transition-all duration-300 hover:bg-primary/90 hover:shadow-md active:scale-95 inline-flex items-center gap-2 group"
                         >
                           <span>Discover</span>
                           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -145,7 +145,7 @@ export default function servicessection() {
                   <div className="flex justify-end">
                     <a
                       href={item.link}
-                      className="px-2 py-1 bg-primary text-white font-semibold text-xs rounded-md transition-all duration-300 hover:bg-primary/90 inline-flex items-center gap-1 group"
+                      className="px-2 py-2 bg-primary text-white font-semibold text-xs rounded-sm transition-all duration-300 hover:bg-primary/90 inline-flex items-center gap-1 group"
                     >
                       <span>Discover</span>
                       <span className="transition-transform duration-300 group-hover:translate-x-0.5 text-xs">→</span>
