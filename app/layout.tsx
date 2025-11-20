@@ -3,9 +3,8 @@ import type { Metadata } from "next"
 import { Lato } from 'next/font/google'
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import WhatsAppButton from "@/components/whatsapp-button"
+import ConditionalLayout from "@/components/conditional-layout"
+import { Toaster } from "@/components/ui/sonner"
 
 const lato = Lato({
   subsets: ["latin"],
@@ -74,29 +73,11 @@ export default function RootLayout({
       </head>
       <body className={`${lato.variable} font-lato overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <div className="fixed inset-0 z-[-1]">
-            <video
-              className="w-full h-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/videoframe_0.png"
-            >
-              <source src="/background.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-
-            <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
-          </div>
-
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <WhatsAppButton />
-            <Footer />
-          </div>
+          <ConditionalLayout>
+            {children}
+          </ConditionalLayout>
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   )
