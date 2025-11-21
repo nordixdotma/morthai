@@ -99,6 +99,32 @@ export const en = {
       ],
     },
   },
+  massages: {
+    pageTitle: "Massages",
+    introTitle: "Free foot ritual before your massage!",
+    introText:
+      "At Mor Thai, we invite you to immerse yourself in a wonderful multi-sensory universe through a variety of exceptional massages. Each massage begins with a welcome ceremony where the therapist makes her first contact with you by listening carefully to your body. During this ritual, your feet are immersed in a soothing bath of warm water with coarse salt where flowers gently sway. This relaxing pause allows you to break away from an often hectic daily pace and provides an intense letting go. The combination of warm water and coarse salt ensures perfect cleansing of your feet, which helps stimulate blood circulation and soothe both your muscular and nervous tensions.",
+    closingText:
+      "Mor Thai Marrakech offers you a whole universe of relaxation through our diverse selection of traditional massages, an unforgettable sensory escape!",
+    priceFrom: "From",
+    readMore: "Read more",
+    services: [
+      { title: "Traditional Thai Massage", priceMAD: 400, priceEUR: 38, image: "/5.png" },
+      { title: "Californian Massage", priceMAD: 450, priceEUR: 43, image: "/5.png" },
+      { title: "Swedish Massage", priceMAD: 450, priceEUR: 43, image: "/5.png" },
+      { title: "Ayurvedic Massage", priceMAD: 500, priceEUR: 48, image: "/5.png" },
+      { title: "Relaxing Massage", priceMAD: 400, priceEUR: 38, image: "/5.png" },
+      { title: "Energy Massage", priceMAD: 450, priceEUR: 43, image: "/5.png" },
+      { title: "Shiatsu Massage", priceMAD: 500, priceEUR: 48, image: "/5.png" },
+      { title: "Hot Stone Massage", priceMAD: 550, priceEUR: 52, image: "/5.png" },
+      { title: "Foot Massage", priceMAD: 300, priceEUR: 29, image: "/5.png" },
+      { title: "Back Massage", priceMAD: 350, priceEUR: 33, image: "/5.png" },
+      { title: "Cranial Massage", priceMAD: 350, priceEUR: 33, image: "/5.png" },
+      { title: "Sports Massage", priceMAD: 450, priceEUR: 43, image: "/5.png" },
+      { title: "Intuitive Massage", priceMAD: 400, priceEUR: 38, image: "/5.png" },
+      { title: "Tantra Massage", priceMAD: 550, priceEUR: 52, image: "/5.png" },
+    ],
+  },
   contact: {
     pageTitle: "Contact",
     heading: "Send us a Message",

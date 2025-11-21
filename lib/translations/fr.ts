@@ -100,6 +100,32 @@ export const fr = {
       ],
     },
   },
+  massages: {
+    pageTitle: "Massages",
+    introTitle: "Rituel des pieds offert avant votre massage !",
+    introText:
+      "Chez Mor Thai, nous vous invitons à s'immerger dans un univers multi-sensoriel merveilleux à travers une diversité de massages d'exception. Chaque massage débute par un cérémonial de bienvenue ou la thérapeute prend son premier contact avec vous en écoutant attentivement votre corps. Lors de ce rituel, vos pieds sont plongés dans un bain apaisant à l'eau tiède avec du gros sel où les fleurs se balancent doucement. Cette pause-détente vous permet de faire une coupure dans un rythme de vie quotidienne souvent effréné et vous procurer dans un premier lâcher prise intense. La combinaison de l'eau tiède et du gros sel assure un nettoyage parfait de vos pieds, ce qui permet de stimuler la circulation sanguine et d'apaiser vos tensions musculaires et nerveuses à la fois.",
+    closingText:
+      "Mor Thai Marrakech, vous offre tout un univers de détente grâce à notre sélection variées de massages traditionnels, une escapade sensorielle inoubliable !",
+    priceFrom: "À partir de",
+    readMore: "Lire plus",
+    services: [
+      { title: "Massage Thaï Traditionnel", priceMAD: 400, priceEUR: 38, image: "/5.png" },
+      { title: "Massage Californien", priceMAD: 450, priceEUR: 43, image: "/5.png" },
+      { title: "Massage Suédois", priceMAD: 450, priceEUR: 43, image: "/5.png" },
+      { title: "Massage Ayurvédique", priceMAD: 500, priceEUR: 48, image: "/5.png" },
+      { title: "Massage Relaxant", priceMAD: 400, priceEUR: 38, image: "/5.png" },
+      { title: "Massage Énergétique", priceMAD: 450, priceEUR: 43, image: "/5.png" },
+      { title: "Massage Shiatsu", priceMAD: 500, priceEUR: 48, image: "/5.png" },
+      { title: "Massage aux Pierres Chaudes", priceMAD: 550, priceEUR: 52, image: "/5.png" },
+      { title: "Massage des Pieds", priceMAD: 300, priceEUR: 29, image: "/5.png" },
+      { title: "Massage du Dos", priceMAD: 350, priceEUR: 33, image: "/5.png" },
+      { title: "Massage Crânien", priceMAD: 350, priceEUR: 33, image: "/5.png" },
+      { title: "Massage Sportif", priceMAD: 450, priceEUR: 43, image: "/5.png" },
+      { title: "Massage Intuitif", priceMAD: 400, priceEUR: 38, image: "/5.png" },
+      { title: "Massage Tantra", priceMAD: 550, priceEUR: 52, image: "/5.png" },
+    ],
+  },
   contact: {
     pageTitle: "Contact",
     heading: "Envoyez-nous un message",
