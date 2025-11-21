@@ -47,11 +47,11 @@ export default function MassagesPage() {
             </h3>
 
             {/* Desktop Grid (3 columns) and Mobile Grid (2 columns) */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6">
               {massageData?.services?.map((service, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-200 transition-all duration-300 hover:border-primary"
+                  className="bg-white rounded-md overflow-hidden flex flex-col h-full border border-gray-200 transition-all duration-300 hover:border-primary"
                 >
                   {/* Image Container */}
                   <div className="relative overflow-hidden bg-gray-200 h-40 md:h-56">
