@@ -3,15 +3,15 @@
 import { useState, useCallback, useMemo } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTranslations } from "@/lib/use-translations"
 
 export default function WhatsAppButton() {
   const [isOpen, setIsOpen] = useState(false)
+  const t = useTranslations()
 
   const phoneNumber = "+212610200040"
-  const message = "Bonjour Mor Thai, je suis intéressé(e) par vos services de massage!"
-  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, "")}?text=${encodeURIComponent(
-    message,
-  )}`
+  const message = t.whatsappButton.defaultMessage
+  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, "")}?text=${encodeURIComponent(message)}`
 
   const toggleOpen = useCallback(() => {
     setIsOpen((p) => !p)
@@ -29,9 +29,9 @@ export default function WhatsAppButton() {
       exit: { opacity: 0, scale: 0.5, y: 10 },
       transition: {
         duration: 0.5,
-        scale: { repeat: Infinity, repeatType: "reverse", duration: 1.5, ease: "easeInOut" },
-        y: { repeat: Infinity, repeatType: "reverse", duration: 1.5, ease: "easeInOut" },
-        rotate: { repeat: Infinity, repeatType: "reverse", duration: 1.8, ease: "easeInOut" },
+        scale: { repeat: Number.POSITIVE_INFINITY, repeatType: "reverse", duration: 1.5, ease: "easeInOut" },
+        y: { repeat: Number.POSITIVE_INFINITY, repeatType: "reverse", duration: 1.5, ease: "easeInOut" },
+        rotate: { repeat: Number.POSITIVE_INFINITY, repeatType: "reverse", duration: 1.8, ease: "easeInOut" },
       },
     }),
     [],
@@ -44,8 +44,8 @@ export default function WhatsAppButton() {
         scale: [1, 1.05, 1],
       },
       transition: {
-        y: { repeat: Infinity, duration: 1.2, ease: "easeInOut", repeatDelay: 0.5 },
-        scale: { repeat: Infinity, duration: 1.2, ease: "easeInOut", repeatDelay: 0.5 },
+        y: { repeat: Number.POSITIVE_INFINITY, duration: 1.2, ease: "easeInOut", repeatDelay: 0.5 },
+        scale: { repeat: Number.POSITIVE_INFINITY, duration: 1.2, ease: "easeInOut", repeatDelay: 0.5 },
       },
     }),
     [],
@@ -74,7 +74,7 @@ export default function WhatsAppButton() {
                 href="https://maps.app.goo.gl/5s7M9n7gumnJfyRp8"
                 target="_blank"
                 className="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg hover:shadow-green-300/30 transition-all duration-300 hover:scale-110"
-                aria-label="Notre adresse"
+                aria-label={t.whatsappButton.address}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +93,7 @@ export default function WhatsAppButton() {
                 </svg>
               </Link>
               <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-red-600 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                Notre adresse
+                {t.whatsappButton.tooltipAddress}
               </span>
             </motion.div>
 
@@ -109,7 +109,7 @@ export default function WhatsAppButton() {
                 target="_blank"
                 rel="noreferrer"
                 className="w-14 h-14 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg hover:shadow-green-300/30 transition-all duration-300 hover:scale-110"
-                aria-label="WhatsApp"
+                aria-label={t.whatsappButton.whatsapp}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +123,7 @@ export default function WhatsAppButton() {
                 </svg>
               </a>
               <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-green-500 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                WhatsApp
+                {t.whatsappButton.tooltipWhatsApp}
               </span>
             </motion.div>
 
@@ -137,7 +137,7 @@ export default function WhatsAppButton() {
               <Link
                 href="tel:+212524207055"
                 className="w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:shadow-green-300/30 transition-all duration-300 hover:scale-110"
-                aria-label="Appeler"
+                aria-label={t.whatsappButton.phone}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +155,7 @@ export default function WhatsAppButton() {
                 </svg>
               </Link>
               <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-blue-600 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                Appeler
+                {t.whatsappButton.tooltipPhone}
               </span>
             </motion.div>
           </motion.div>
@@ -167,7 +167,7 @@ export default function WhatsAppButton() {
         onClick={toggleOpen}
         className={`w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 will-change-transform
           ${isOpen ? "bg-green-700 hover:bg-green-800" : "bg-green-500 hover:bg-green-600"}`}
-        aria-label={isOpen ? "Fermer le menu de contact" : "Ouvrir le menu de contact"}
+        aria-label={isOpen ? t.whatsappButton.closeMenu : t.whatsappButton.openMenu}
         animate={buttonAnimation.animate}
         transition={buttonAnimation.transition}
         style={{ willChange: "transform" }}

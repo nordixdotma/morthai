@@ -1,10 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Lato } from 'next/font/google'
+import { Lato } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import ConditionalLayout from "@/components/conditional-layout"
 import { Toaster } from "@/components/ui/sonner"
+import { LanguageProvider } from "@/lib/language-context"
 
 const lato = Lato({
   subsets: ["latin"],
@@ -18,7 +19,16 @@ export const metadata: Metadata = {
   title: "Mor Thai | Thai Massage in Marrakech",
   description:
     "Mor Thai offers authentic Thai massage and spa services in Marrakech. Located in Gueliz, we provide traditional Thai therapeutic massage, relaxation treatments, and wellness services.",
-  keywords: ["Thai massage", "Marrakech", "Spa", "Massage", "Wellness", "Gueliz", "Traditional Thai massage", "Mor Thai"],
+  keywords: [
+    "Thai massage",
+    "Marrakech",
+    "Spa",
+    "Massage",
+    "Wellness",
+    "Gueliz",
+    "Traditional Thai massage",
+    "Mor Thai",
+  ],
   authors: [{ name: "Mor Thai" }],
   creator: "Mor Thai",
   publisher: "Mor Thai",
@@ -73,9 +83,9 @@ export default function RootLayout({
       </head>
       <body className={`${lato.variable} font-lato overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <ConditionalLayout>
-            {children}
-          </ConditionalLayout>
+          <LanguageProvider>
+            <ConditionalLayout>{children}</ConditionalLayout>
+          </LanguageProvider>
         </ThemeProvider>
         <Toaster />
       </body>

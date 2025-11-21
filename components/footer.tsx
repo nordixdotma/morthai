@@ -2,10 +2,11 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, MapPin, Phone, Mail, Heart } from 'lucide-react'
+import { Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react"
 import { Container } from "@/components/ui/container"
 import { useState } from "react"
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation"
+import { useTranslations } from "@/lib/use-translations"
 
 interface FooterProps {
   isHomepage?: boolean
@@ -14,6 +15,7 @@ interface FooterProps {
 export default function Footer({ isHomepage = false }: FooterProps) {
   const pathname = usePathname()
   const shouldRound = isHomepage || pathname === "/"
+  const t = useTranslations()
 
   const [heartClicks, setHeartClicks] = useState(0)
   const [isHeartAnimating, setIsHeartAnimating] = useState(false)
@@ -24,32 +26,32 @@ export default function Footer({ isHomepage = false }: FooterProps) {
   ]
 
   const usefulLinks = [
-    { href: "#", label: "Massages" },
-    { href: "#", label: "Hammam massage package" },
-    { href: "#", label: "Facial care" },
-    { href: "#", label: "Prices" },
-    { href: "#", label: "Home massage" },
-    { href: "#", label: "Gift idea" },
-    { href: "/contact", label: "Contact" },
-    { href: "/conditions", label: "General sales conditions" },
+    { href: "/tariffs", label: t.header.prices },
+    { href: "#", label: t.header.hammamPackage },
+    { href: "#", label: t.header.facialCare },
+    { href: "#", label: t.header.homeMassage },
+    { href: "#", label: t.header.giftIdea },
+    { href: "/contact", label: t.header.contact },
+    { href: "/conditions", label: t.footer.conditions },
   ]
 
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Address",
-      value: "N° 52, 5ème Etage, Immeuble Le Noyer B, Rue Ibn Sina Atlassi, Gueliz, Marrakech (at the back of American Language Center)",
+      title: t.footer.address,
+      value:
+        "N° 52, 5ème Etage, Immeuble Le Noyer B, Rue Ibn Sina Atlassi, Gueliz, Marrakech (at the back of American Language Center)",
       link: false,
     },
     {
       icon: Phone,
-      title: "Phone",
+      title: t.footer.phone,
       value: "+212 524 207 055",
       link: "tel:+212524207055",
     },
     {
       icon: Mail,
-      title: "Email",
+      title: t.footer.email,
       value: "contact@morthai-marrakech.com",
       link: "mailto:contact@morthai-marrakech.com",
     },
@@ -64,7 +66,7 @@ export default function Footer({ isHomepage = false }: FooterProps) {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className={`footer-section relative ${shouldRound ? 'rounded-t-xl md:rounded-t-3xl' : ''}`}>
+    <footer className={`footer-section relative ${shouldRound ? "rounded-t-xl md:rounded-t-3xl" : ""}`}>
       <Container className="max-w-7xl mx-auto relative z-10">
         <div className="py-16">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
@@ -75,11 +77,9 @@ export default function Footer({ isHomepage = false }: FooterProps) {
                   <Image src="/whitelogo.svg" alt="Mor Thai Logo" fill className="object-contain" priority />
                 </div>
               </Link>
-              <p className="text-sm leading-relaxed text-white/90 mb-8 font-lato">
-                Experience authentic Thai massage and spa treatments in Marrakech. Mor Thai brings traditional Thai wellness and relaxation to the heart of Gueliz.
-              </p>
+              <p className="text-sm leading-relaxed text-white/90 mb-8 font-lato">{t.footer.vision}</p>
               <div>
-                <h4 className="mb-4 text-sm font-semibold text-white font-trajan-pro">FOLLOW US</h4>
+                <h4 className="mb-4 text-sm font-semibold text-white font-trajan-pro">{t.footer.followUs}</h4>
                 <div className="flex space-x-4">
                   {socialLinks.map((social, index) => (
                     <a
@@ -98,7 +98,7 @@ export default function Footer({ isHomepage = false }: FooterProps) {
             </div>
 
             <div>
-              <h3 className="font-trajan-pro mb-6 text-xl font-bold text-white">QUICK LINKS</h3>
+              <h3 className="font-trajan-pro mb-6 text-lg font-bold text-white">{t.footer.quickLinks}</h3>
               <ul className="grid grid-cols-2 md:grid-cols-1 gap-4">
                 {usefulLinks.map((link, index) => (
                   <li key={index}>
@@ -116,7 +116,7 @@ export default function Footer({ isHomepage = false }: FooterProps) {
 
             {/* Contact Info */}
             <div>
-              <h3 className="font-trajan-pro mb-6 text-xl font-bold text-white">CONTACT INFO</h3>
+              <h3 className="font-trajan-pro mb-6 text-lg font-bold text-white">{t.footer.contactInfo}</h3>
               <ul className="space-y-6">
                 {contactInfo.map((item, index) => (
                   <li key={index} className="flex items-start">
@@ -145,10 +145,8 @@ export default function Footer({ isHomepage = false }: FooterProps) {
             </div>
 
             <div>
-              <h3 className="font-trajan-pro mb-6 text-xl font-bold text-white">PAY SAFELY WITH US</h3>
-              <p className="text-sm leading-relaxed text-white/90 mb-4 font-lato">
-                The payment is encrypted and transmitted securely with an SSL protocol.
-              </p>
+              <h3 className="font-trajan-pro mb-6 text-lg font-bold text-white">{t.footer.paySafely}</h3>
+              <p className="text-sm leading-relaxed text-white/90 mb-4 font-lato">{t.footer.paymentEncryption}</p>
               <div className="mt-6 mb-8">
                 <Image
                   src="/creditcard-logo.png"
@@ -159,10 +157,8 @@ export default function Footer({ isHomepage = false }: FooterProps) {
                 />
               </div>
 
-              <h4 className="font-trajan-pro mb-3 text-sm font-bold text-white">OUR AWARDS</h4>
-              <p className="text-xs leading-relaxed text-white/90 font-lato">
-                Because of our excellent reputation, our SPA has been awarded with the prestigious award of: <span className="font-semibold">"Certificate of Excellence"</span> of the TripAdvisor Travellers' Choice Awards for <span className="font-semibold">2021, 2022, 2023</span>.
-              </p>
+              <h4 className="font-trajan-pro mb-3 text-sm font-bold text-white">{t.footer.awards}</h4>
+              <p className="text-xs leading-relaxed text-white/90 font-lato">{t.footer.awardsText}</p>
             </div>
           </div>
         </div>
@@ -173,10 +169,10 @@ export default function Footer({ isHomepage = false }: FooterProps) {
         <Container className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-white/90 font-lato">
-              © {currentYear} Mor Thai. All rights reserved.
+              © {currentYear} {t.footer.copyright}
             </p>
             <p className="text-sm text-white/90 flex items-center font-lato">
-              Made by{" "}
+              {t.footer.madeBy}{" "}
               <Link
                 href="https://nexusdweb.com/"
                 target="_blank"

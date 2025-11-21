@@ -1,6 +1,7 @@
 "use client"
 
 import PageHeroSection from "@/components/page-hero-section"
+import { useTranslations } from "@/lib/use-translations"
 
 const massageServices = [
   { name: "Ancestral Thai in Kimono", "30": 530, "60": 730, "90": 930, "120": "-" },
@@ -24,7 +25,7 @@ const facialServices = [
   { name: "Anti-Aging Prestige Facial", "30": 450, "60": 600, "90": "-", "120": "-" },
 ]
 
-const PriceTable = ({ title, data }: { title: string; data: typeof massageServices }) => (
+const PriceTable = ({ title, data, t }: { title: string; data: typeof massageServices; t: any }) => (
   <div className="space-y-4">
     <h2 className="text-2xl md:text-3xl font-trajan-pro font-bold text-[#b64a26]">{title}</h2>
     <div className="overflow-x-auto rounded-lg border border-[#e5d5cc] shadow-sm">
@@ -34,10 +35,18 @@ const PriceTable = ({ title, data }: { title: string; data: typeof massageServic
             <th className="text-left py-4 px-2 md:px-4 font-lato font-semibold text-[#333] text-xs md:text-sm min-w-[140px] md:min-w-[180px]">
               Service
             </th>
-            <th className="text-center py-4 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">30 min</th>
-            <th className="text-center py-4 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">60 min</th>
-            <th className="text-center py-4 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">90 min</th>
-            <th className="text-center py-4 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">120 min</th>
+            <th className="text-center py-4 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">
+              {t.tariffs.duration["30"]}
+            </th>
+            <th className="text-center py-4 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">
+              {t.tariffs.duration["60"]}
+            </th>
+            <th className="text-center py-4 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">
+              {t.tariffs.duration["90"]}
+            </th>
+            <th className="text-center py-4 px-1 md:px-3 font-lato font-semibold text-[#333] text-xs">
+              {t.tariffs.duration["120"]}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -70,23 +79,25 @@ const PriceTable = ({ title, data }: { title: string; data: typeof massageServic
 )
 
 export default function TariffsPage() {
+  const t = useTranslations()
+
   return (
     <div className="min-h-screen">
-      <PageHeroSection title="Our Prices" />
+      <PageHeroSection title={t.tariffs.pageTitle} />
       <section className="tariffs-section py-16 md:py-20 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl relative overflow-hidden">
         <div className="w-full max-w-5xl mx-auto px-2 md:px-4 py-12 md:py-16 relative z-10">
           <div className="space-y-14">
-            <PriceTable title="Massage" data={massageServices} />
-            <PriceTable title="Facial Care" data={facialServices} />
+            <PriceTable title={t.tariffs.massage} data={massageServices} t={t} />
+            <PriceTable title={t.tariffs.facialCare} data={facialServices} t={t} />
           </div>
 
           {/* Info Section */}
           <div className="mt-16 pt-12 border-t border-[#e5d5cc]">
             <p className="font-lato text-[#666] text-center text-sm md:text-base leading-relaxed">
-              All prices are in Moroccan Dirham (MAD). Booking in advance is recommended.
+              {t.tariffs.infoText}
               <br className="hidden sm:block" />
-              Contact us at <span className="font-semibold text-[#b64a26]">+212 610 200 040</span> or{" "}
-              <span className="font-semibold text-[#b64a26]">+212 610 705 876</span>
+              {t.tariffs.contactInfo} <span className="font-semibold text-[#b64a26]">+212 610 200 040</span>{" "}
+              {t.tariffs.or} <span className="font-semibold text-[#b64a26]">+212 610 705 876</span>
             </p>
           </div>
         </div>

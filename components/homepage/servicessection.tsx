@@ -3,59 +3,13 @@
 import type React from "react"
 import { useState } from "react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
+import { useTranslations } from "@/lib/use-translations"
 
 export default function servicessection() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const t = useTranslations()
 
-  const items = [
-    {
-      id: 1,
-      title: "Hammam",
-      image: "/sections/e1.webp",
-      description:
-        "Live the unforgettable sensory experience or offer yourself a romantic moment in our private hammam reserved for couples.",
-      link: "/hammam",
-    },
-    {
-      id: 2,
-      title: "Massages",
-      image: "/sections/e2.jpg",
-      description:
-        "We invite you to immerse yourself in a wonderful multi-sensory universe through a variety of exceptional massages.",
-      link: "/massages",
-    },
-    {
-      id: 3,
-      title: "Hammam and Massage Package",
-      image: "/sections/e3.jpg",
-      description: "Let yourself be carried away by the magic of the peaceful atmosphere of Mor Thai Marrakech!",
-      link: "/hammam-massage-package",
-    },
-    {
-      id: 4,
-      title: "Face Treatment",
-      image: "/sections/e4.webp",
-      description:
-        "Are you looking for a hydrating and deep cleansing treatment for your face? This purifying face care.",
-      link: "/face-treatment",
-    },
-    {
-      id: 5,
-      title: "Home Delivery Massage",
-      image: "/sections/e5.webp",
-      description:
-        "Do you want to relax after a busy week? Or do you simply want to offer yourself a moment of relaxation and well-being, to regenerate your body and mind?",
-      link: "/home-delivery-massage",
-    },
-    {
-      id: 6,
-      title: "Gift Vouchers",
-      image: "/sections/e6.webp",
-      description:
-        "Are you looking for an original gift idea to impress your loved ones? Whether it is for a birthday, Christmas, Valentine's Day...",
-      link: "/gift-vouchers",
-    },
-  ]
+  const items = t.homepage.services.items
 
   const next = () => {
     if (currentIndex < items.length - 3) {
@@ -79,13 +33,13 @@ export default function servicessection() {
               className="flex transition-transform duration-300 carousel-container"
               style={{ "--carousel-index": currentIndex } as React.CSSProperties}
             >
-              {items.map((item) => (
-                <div key={item.id} className="w-1/3 flex-shrink-0 px-2">
+              {items.map((item, itemIndex) => (
+                <div key={itemIndex} className="w-1/3 flex-shrink-0 px-2">
                   <div className="bg-white rounded-xl overflow-hidden flex flex-col h-full border border-gray-100 transition-colors duration-300 hover:border-primary/20 shadow-md hover:shadow-lg">
                     {/* Image container with improved aspect ratio */}
                     <div className="relative overflow-hidden bg-gray-100 h-64">
                       <img
-                        src={item.image || "/placeholder.svg"}
+                        src={`/sections/e${itemIndex + 1}.${itemIndex === 0 || itemIndex === 3 || itemIndex === 4 ? "webp" : "jpg"}`}
                         alt={item.title}
                         className="w-full h-full object-cover"
                       />
@@ -106,10 +60,10 @@ export default function servicessection() {
 
                       <div className="flex justify-end">
                         <a
-                          href={item.link}
+                          href={`/${item.title.toLowerCase().replace(/\s+/g, "-")}`}
                           className="px-4 py-2 bg-primary text-white font-semibold text-sm rounded-md transition-all duration-300 hover:bg-primary/90 hover:shadow-md active:scale-95 inline-flex items-center gap-2 group"
                         >
-                          <span>Discover</span>
+                          <span>{t.homepage.services.discover}</span>
                           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                         </a>
                       </div>
@@ -121,14 +75,18 @@ export default function servicessection() {
           </div>
 
           <div className="md:hidden grid grid-cols-2 gap-2 px-1">
-            {items.map((item) => (
+            {items.map((item, itemIndex) => (
               <div
-                key={item.id}
+                key={itemIndex}
                 className="bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 transition-colors duration-300 hover:border-primary/20"
               >
                 {/* Image container */}
                 <div className="relative overflow-hidden bg-gray-100 h-32">
-                  <img src={item.image || "/placeholder.svg"} alt={item.title} className="w-full h-full object-cover" />
+                  <img
+                    src={`/sections/e${itemIndex + 1}.${itemIndex === 0 || itemIndex === 3 || itemIndex === 4 ? "webp" : "jpg"}`}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 {/* Content container with reduced padding on mobile */}
@@ -144,10 +102,10 @@ export default function servicessection() {
 
                   <div className="flex justify-end">
                     <a
-                      href={item.link}
+                      href={`/${item.title.toLowerCase().replace(/\s+/g, "-")}`}
                       className="px-2 py-2 bg-primary text-white font-semibold text-xs rounded-sm transition-all duration-300 hover:bg-primary/90 inline-flex items-center gap-1 group"
                     >
-                      <span>Discover</span>
+                      <span>{t.homepage.services.discover}</span>
                       <span className="transition-transform duration-300 group-hover:translate-x-0.5 text-xs">→</span>
                     </a>
                   </div>

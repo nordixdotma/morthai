@@ -1,7 +1,8 @@
-"use client";
+"use client"
 
-import React, { useEffect, useRef, useState } from "react";
-import { motion, animate, useMotionValue } from "framer-motion";
+import { useEffect, useRef, useState } from "react"
+import { motion, animate, useMotionValue } from "framer-motion"
+import { useTranslations } from "@/lib/use-translations"
 
 const carouselItems = [
   { id: 1, url: "/sections/l1.webp", title: "Misty Mountain Majesty" },
@@ -9,59 +10,57 @@ const carouselItems = [
   { id: 3, url: "/sections/l3.webp", title: "Autumn Mountain Retreat" },
   { id: 4, url: "/sections/l4.webp", title: "Tranquil Lake Reflection" },
   { id: 5, url: "/sections/l5.webp", title: "Misty Mountain Peaks" },
-];
+]
 
 export default function journeysection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [index, setIndex] = useState(0);
-  const [expanded, setExpanded] = useState(false);
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const x = useMotionValue(0);
+  const [isVisible, setIsVisible] = useState(false)
+  const [index, setIndex] = useState(0)
+  const [expanded, setExpanded] = useState(false)
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const x = useMotionValue(0)
+  const t = useTranslations()
 
   // intersection observer to animate entrance
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
+          if (entry.isIntersecting) setIsVisible(true)
+        })
       },
-      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" },
+    )
+    if (sectionRef.current) observer.observe(sectionRef.current)
     return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
-    };
-  }, []);
+      if (sectionRef.current) observer.unobserve(sectionRef.current)
+    }
+  }, [])
 
   // slide animation for carousel
   useEffect(() => {
-    if (!containerRef.current) return;
-    const containerWidth = containerRef.current.offsetWidth || 1;
-    const targetX = -index * containerWidth;
-    animate(x, targetX, { type: "spring", stiffness: 300, damping: 30 });
-  }, [index, x]);
+    if (!containerRef.current) return
+    const containerWidth = containerRef.current.offsetWidth || 1
+    const targetX = -index * containerWidth
+    animate(x, targetX, { type: "spring", stiffness: 300, damping: 30 })
+  }, [index, x])
 
   // keep x in sync on resize
   useEffect(() => {
     const onResize = () => {
-      if (!containerRef.current) return;
-      const containerWidth = containerRef.current.offsetWidth || 1;
-      x.set(-index * containerWidth);
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, [index, x]);
+      if (!containerRef.current) return
+      const containerWidth = containerRef.current.offsetWidth || 1
+      x.set(-index * containerWidth)
+    }
+    window.addEventListener("resize", onResize)
+    return () => window.removeEventListener("resize", onResize)
+  }, [index, x])
 
   // collapsed height (px) shown when not expanded
-  const COLLAPSED_HEIGHT = 192; // 12rem (approx)
+  const COLLAPSED_HEIGHT = 192 // 12rem (approx)
 
   return (
-    <section
-      ref={sectionRef}
-      className="why-choose-section py-16 md:py-24 overflow-hidden w-full relative bg-pattern"
-    >
+    <section ref={sectionRef} className="why-choose-section py-16 md:py-24 overflow-hidden w-full relative bg-pattern">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* LEFT: TEXT */}
@@ -71,7 +70,7 @@ export default function journeysection() {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
               }`}
             >
-              Your unrivaled sensory journey within Mor Thai Marrakech!
+              {t.homepage.journey.heading}
             </h2>
 
             {/* separator with centered SVG and lines on both sides */}
@@ -105,37 +104,21 @@ export default function journeysection() {
                 aria-expanded={expanded ? "true" : "false"} // valid ARIA string value
               >
                 <div className="space-y-4 text-sm md:text-base leading-relaxed text-justify px-0 py-0">
-                  <p>
-                    We recommend you to arrive 10 to 20 minutes before your appointment to allow you to disconnect from the outside world, and immerse yourself smoothly in the Zen atmosphere of the Spa:
-                  </p>
+                  <p>{t.homepage.journey.introduction}</p>
 
-                  <p>
-                    To facilitate your access to the SPA, we provide a private parking just in front of the building, reserved exclusively for our guests.
-                  </p>
+                  <p>{t.homepage.journey.parking}</p>
 
-                  <p>
-                    On your arrival, you will be welcomed by our hostess and therapist to a pleasant and relaxing atmosphere, with a welcome hot or cold drink depending on the season; also refreshing wet towels with the scent of green tea, Ylang Ylang or lavender.
-                  </p>
+                  <p>{t.homepage.journey.welcome}</p>
 
-                  <p>
-                    Our hostess will guide you through choosing the best treatment depending on your desires and needs. She will ensure that you have no allergies to any products or oils used in your treatment.
-                  </p>
+                  <p>{t.homepage.journey.treatmentChoice}</p>
 
-                  <p>
-                    Once you have chosen your treatment, your therapist will accompany you to our comfortable and private changing room. To ensure complete comfort and well-being we provide everything you need: Lockers, bathrobes, disposable underwear and slippers.
-                  </p>
+                  <p>{t.homepage.journey.comfort}</p>
 
-                  <p>
-                    In your treatment room, to make your massage even more pleasant, the temperature will be adjusted according to the season and your preference. During winter and for your comfort, we have heated mattresses on the massage table.
-                  </p>
+                  <p>{t.homepage.journey.massage}</p>
 
-                  <p>
-                    After your massage, you are welcomed to take a shower, you will be provided with everything you need—towels and a hair dryer. However we do recommend not taking a shower immediately after the massage to allow your body to continue enjoying the benefits of the organic oils used. Especially as certain essential oils can take more than an hour to be absorbed by your skin.
-                  </p>
+                  <p>{t.homepage.journey.afterMassage}</p>
 
-                  <p>
-                    Finally, to prolong this feeling of well-being and relaxation, you will be invited to the relaxing area to enjoy a hot herbal tea in peace.
-                  </p>
+                  <p>{t.homepage.journey.conclusion}</p>
                 </div>
 
                 {/* gradient overlay when collapsed using Tailwind classes (no inline style) */}
@@ -151,8 +134,13 @@ export default function journeysection() {
                 aria-controls="why-choose-content"
                 aria-expanded={expanded ? "true" : "false"} // valid ARIA string value for linters
               >
-                {expanded ? "Read less" : "Read more"}
-                <svg className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : "rotate-0"}`} viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                {expanded ? t.homepage.journey.readLess : t.homepage.journey.readMore}
+                <svg
+                  className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : "rotate-0"}`}
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 8l4 4 4-4" />
                 </svg>
               </button>
@@ -160,7 +148,9 @@ export default function journeysection() {
           </div>
 
           {/* RIGHT: CAROUSEL */}
-          <div className={`transition-all duration-700 ease-out delay-150 ${isVisible ? "opacity-100 translate-x-0 scale-100" : "opacity-0 translate-x-8 scale-95"}`}>
+          <div
+            className={`transition-all duration-700 ease-out delay-150 ${isVisible ? "opacity-100 translate-x-0 scale-100" : "opacity-0 translate-x-8 scale-95"}`}
+          >
             <div className="relative overflow-hidden rounded-lg" ref={containerRef}>
               <motion.div className="flex" style={{ x }}>
                 {carouselItems.map((item) => (
@@ -218,5 +208,5 @@ export default function journeysection() {
         </div>
       </div>
     </section>
-  );
+  )
 }

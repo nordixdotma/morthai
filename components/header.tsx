@@ -4,20 +4,23 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Phone, ChevronDown, Calendar } from 'lucide-react'
+import { ChevronRight, Phone, ChevronDown, Calendar } from "lucide-react"
 import { Container } from "@/components/ui/container"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation"
+import { useLanguage } from "@/lib/language-context"
+import { useTranslations } from "@/lib/use-translations"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false)
-  const [language, setLanguage] = useState<"en" | "fr">("en")
   const [reservationModalOpen, setReservationModalOpen] = useState(false)
   const [reservationCount] = useState(3) // Mock data - replace with real data
   const pathname = usePathname()
+  const { language, setLanguage } = useLanguage()
+  const t = useTranslations()
 
   const languages = [
     {
@@ -39,7 +42,7 @@ export default function Header() {
 
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement
-      if (languageDropdownOpen && !target.closest('.language-dropdown-container')) {
+      if (languageDropdownOpen && !target.closest(".language-dropdown-container")) {
         setLanguageDropdownOpen(false)
       }
     }
@@ -76,20 +79,16 @@ export default function Header() {
     }
   }, [reservationModalOpen])
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
   const navigationLinks = [
-    { href: "/", label: "HOME" },
-    { href: "#", label: "Massages" },
-    { href: "#", label: "Hammam" },
-    { href: "#", label: "Hammam massage package" },
-    { href: "#", label: "Facial care" },
-    { href: "/tariffs", label: "Prices" }, // updated Prices link to point to /tariffs
-    { href: "#", label: "Home massage" },
-    { href: "#", label: "Gift idea" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: t.header.home },
+    { href: "#", label: t.header.massages },
+    { href: "#", label: t.header.hammam },
+    { href: "#", label: t.header.hammamPackage },
+    { href: "#", label: t.header.facialCare },
+    { href: "/tariffs", label: t.header.prices },
+    { href: "#", label: t.header.homeMassage },
+    { href: "#", label: t.header.giftIdea },
+    { href: "/contact", label: t.header.contact },
   ]
 
   return (
@@ -106,22 +105,22 @@ export default function Header() {
           <div className="relative z-20 language-dropdown-container">
             <button
               onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-                }`}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${
+                scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+              }`}
             >
               <img
                 src={languages.find((lang) => lang.code === language)?.flag || "/placeholder.svg"}
                 alt={language}
                 className="w-6 h-4 object-cover rounded"
               />
-              <span
-                className={`text-sm font-medium uppercase ${scrolled ? "text-gray-800" : "text-white"}`}
-              >
+              <span className={`text-sm font-medium uppercase ${scrolled ? "text-gray-800" : "text-white"}`}>
                 {language}
               </span>
               <ChevronDown
-                className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""
-                  } ${scrolled ? "text-gray-800" : "text-white"}`}
+                className={`w-4 h-4 transition-transform duration-300 ${
+                  languageDropdownOpen ? "rotate-180" : ""
+                } ${scrolled ? "text-gray-800" : "text-white"}`}
               />
             </button>
 
@@ -134,10 +133,15 @@ export default function Header() {
                       setLanguage(lang.code as "en" | "fr")
                       setLanguageDropdownOpen(false)
                     }}
-                    className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${lang.code === language ? "bg-primary/10" : ""
-                      }`}
+                    className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${
+                      lang.code === language ? "bg-primary/10" : ""
+                    }`}
                   >
-                    <img src={lang.flag || "/placeholder.svg"} alt={lang.name} className="w-6 h-4 object-cover rounded" />
+                    <img
+                      src={lang.flag || "/placeholder.svg"}
+                      alt={lang.name}
+                      className="w-6 h-4 object-cover rounded"
+                    />
                     <span className="text-sm font-medium text-gray-800">{lang.name}</span>
                   </button>
                 ))}
@@ -162,9 +166,10 @@ export default function Header() {
           <div className="flex items-center gap-2 z-20">
             {/* Modern Menu Button */}
             <button
-              onClick={toggleMenu}
-              className={`relative flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-                }`}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className={`relative flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors ${
+                scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+              }`}
               aria-label="Toggle menu"
             >
               <svg
@@ -196,22 +201,22 @@ export default function Header() {
             <div className="relative language-dropdown-container">
               <button
                 onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-                  }`}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
+                  scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+                }`}
               >
                 <img
                   src={languages.find((lang) => lang.code === language)?.flag || "/placeholder.svg"}
                   alt={language}
                   className="w-6 h-4 object-cover rounded"
                 />
-                <span
-                  className={`text-sm font-medium uppercase ${scrolled ? "text-gray-800" : "text-white"}`}
-                >
+                <span className={`text-sm font-medium uppercase ${scrolled ? "text-gray-800" : "text-white"}`}>
                   {language}
                 </span>
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""
-                    } ${scrolled ? "text-gray-800" : "text-white"}`}
+                  className={`w-4 h-4 transition-transform duration-300 ${
+                    languageDropdownOpen ? "rotate-180" : ""
+                  } ${scrolled ? "text-gray-800" : "text-white"}`}
                 />
               </button>
 
@@ -224,10 +229,15 @@ export default function Header() {
                         setLanguage(lang.code as "en" | "fr")
                         setLanguageDropdownOpen(false)
                       }}
-                      className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${lang.code === language ? "bg-primary/10" : ""
-                        }`}
+                      className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${
+                        lang.code === language ? "bg-primary/10" : ""
+                      }`}
                     >
-                      <img src={lang.flag || "/placeholder.svg"} alt={lang.name} className="w-6 h-4 object-cover rounded" />
+                      <img
+                        src={lang.flag || "/placeholder.svg"}
+                        alt={lang.name}
+                        className="w-6 h-4 object-cover rounded"
+                      />
                       <span className="text-sm font-medium text-gray-800">{lang.name}</span>
                     </button>
                   ))}
@@ -269,13 +279,14 @@ export default function Header() {
           <div
             className={cn("border-t transition-colors duration-300", scrolled ? "border-gray-200" : "border-white/20")}
           >
-            <nav className="flex items-center justify-center gap-8 py-2">
+            <nav className="flex items-center justify-center gap-5 py-2">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                    } ${pathname === link.href ? "text-primary" : ""}`}
+                  className={`text-sm font-medium transition-all duration-300  relative group font-trajan-pro uppercase tracking-wider ${
+                    scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                  } ${pathname === link.href ? "text-primary" : ""}`}
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -297,7 +308,7 @@ export default function Header() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 md:hidden"
-              onClick={toggleMenu}
+              onClick={() => setIsMenuOpen(false)}
             />
 
             <motion.div
@@ -310,7 +321,7 @@ export default function Header() {
               <div className="h-full flex flex-col">
                 {/* Header with logo and close button */}
                 <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                  <Link href="/" className="inline-block" onClick={toggleMenu}>
+                  <Link href="/" className="inline-block" onClick={() => setIsMenuOpen(false)}>
                     <div className="relative h-10 w-28">
                       <Image src="/logo.svg" alt="Enchanting Logo" fill className="object-contain" priority />
                     </div>
@@ -318,7 +329,7 @@ export default function Header() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    onClick={toggleMenu}
+                    onClick={() => setIsMenuOpen(false)}
                     className="rounded-full hover:bg-gray-100 text-black"
                   >
                     <svg
@@ -352,9 +363,10 @@ export default function Header() {
                       >
                         <Link
                           href={link.href}
-                          className={`flex items-center py-2 md:py-3 px-4 rounded-xl text-gray-800 hover:bg-gray-100 transition-colors text-sm md:text-base ${pathname === link.href ? "bg-primary/20 text-primary" : ""
-                            }`}
-                          onClick={toggleMenu}
+                          className={`flex items-center py-2 md:py-3 px-4 rounded-xl text-gray-800 hover:bg-gray-100 transition-colors text-sm md:text-base ${
+                            pathname === link.href ? "bg-primary/20 text-primary" : ""
+                          }`}
+                          onClick={() => setIsMenuOpen(false)}
                         >
                           <span className="font-medium font-trajan-pro uppercase">{link.label}</span>
                           <ChevronRight className="h-4 w-4 ml-auto" />
@@ -372,12 +384,12 @@ export default function Header() {
                     transition={{ delay: 0.4 }}
                     onClick={() => {
                       setReservationModalOpen(true)
-                      toggleMenu()
+                      setIsMenuOpen(false)
                     }}
                     className="relative w-full flex items-center justify-center py-3 px-6 bg-primary text-white font-medium text-base font-trajan-pro uppercase transition-all duration-300 hover:bg-primary/90 rounded-lg"
                   >
                     <Calendar className="h-5 w-5 mr-2" />
-                    Reservations
+                    {t.header.reservations}
                     {reservationCount > 0 && (
                       <span className="ml-auto bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
                         {reservationCount}
@@ -394,10 +406,10 @@ export default function Header() {
                     <Link
                       href="/contact"
                       className="flex items-center justify-center py-3 px-6 bg-gray-200 text-gray-800 font-medium text-base font-trajan-pro uppercase transition-all duration-300 hover:bg-gray-300 rounded-lg"
-                      onClick={toggleMenu}
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       <Phone className="h-5 w-5 mr-3" />
-                      Appeler
+                      {t.header.call}
                     </Link>
                   </motion.div>
                 </div>
@@ -436,24 +448,14 @@ export default function Header() {
               >
                 {/* Header */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-200">
-                  <h2 className="text-lg font-bold font-trajan-pro text-gray-900">Reservation History</h2>
+                  <h2 className="text-lg font-bold font-trajan-pro text-gray-900">{t.header.reservationHistory}</h2>
                   <button
                     onClick={() => setReservationModalOpen(false)}
                     className="text-gray-500 hover:text-gray-700 transition-colors"
                     aria-label="Close modal"
                   >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
                 </div>

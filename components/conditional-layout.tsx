@@ -1,31 +1,26 @@
-'use client';
+"use client"
 
-import { usePathname } from 'next/navigation';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
-import WhatsAppButton from '@/components/whatsapp-button';
+import type React from "react"
+
+import { usePathname } from "next/navigation"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
+import WhatsAppButton from "@/components/whatsapp-button"
 
 export default function ConditionalLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const pathname = usePathname();
-  const isAdminRoute = pathname?.startsWith('/admin');
+  const pathname = usePathname()
+  const isAdminRoute = pathname?.startsWith("/admin")
 
   return (
     <>
       {!isAdminRoute && (
         <>
           <div className="fixed inset-0 z-[-1]">
-            <video
-              className="w-full h-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/videoframe_0.png"
-            >
+            <video className="w-full h-full object-cover" autoPlay muted loop playsInline poster="/videoframe_0.png">
               <source src="/background.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
@@ -44,6 +39,5 @@ export default function ConditionalLayout({
         )}
       </div>
     </>
-  );
+  )
 }
-

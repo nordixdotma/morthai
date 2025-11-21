@@ -1,9 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useTranslations } from "@/lib/use-translations"
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const t = useTranslations()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -17,7 +19,6 @@ export default function HeroSection() {
 
   return (
     <section className="relative bg-transparent h-dvh flex items-center justify-center">
-
       {/* Completely New Floating Arrow */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce-slow cursor-pointer">
         <span className="block w-3 h-3 border-b-2 border-r-2 border-white transform rotate-45 animate-slide-down"></span>
@@ -26,7 +27,7 @@ export default function HeroSection() {
       </div>
 
       <div className="absolute bottom-6 left-6">
-        <a 
+        <a
           href="https://www.tripadvisor.ca/Attraction_Review-g293734-d9980774-Reviews-or10-Mor_Thai_Spa-Marrakech_Marrakech_Safi.html"
           target="_blank"
           rel="noopener noreferrer"
@@ -58,7 +59,6 @@ export default function HeroSection() {
           animation: bounce 2s infinite;
         }
       `}</style>
-
     </section>
   )
 }
