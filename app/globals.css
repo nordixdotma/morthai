@@ -223,6 +223,15 @@ body {
   background-repeat: no-repeat;
 }
 
+/* Add service-section styling for all new service pages */
+.service-section {
+  background-color: #fff8f5;
+  background-image: url("/8.png"), url("/7.png"), url("/6.png"), url("/4.png");
+  background-position: left top, right top, center left, right bottom;
+  background-size: 300px 300px, 300px 300px, 300px 300px, 300px 300px;
+  background-repeat: no-repeat;
+}
+
 /* reduce background image sizes on mobile */
 @media (max-width: 768px) {
   .morocco-discovery-section {
@@ -231,6 +240,10 @@ body {
 
   /* Added mobile styling for tariffs section */
   .tariffs-section {
+    background-size: 150px 150px, 150px 150px, 150px 150px, 150px 150px;
+  }
+
+  .service-section {
     background-size: 150px 150px, 150px 150px, 150px 150px, 150px 150px;
   }
 

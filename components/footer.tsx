@@ -27,10 +27,12 @@ export default function Footer({ isHomepage = false }: FooterProps) {
 
   const usefulLinks = [
     { href: "/tariffs", label: t.header.prices },
-    { href: "#", label: t.header.hammamPackage },
-    { href: "#", label: t.header.facialCare },
-    { href: "#", label: t.header.homeMassage },
-    { href: "#", label: t.header.giftIdea },
+    { href: "/massages", label: t.header.massages },
+    { href: "/hammam", label: t.header.hammam },
+    { href: "/hammam-massage-package", label: t.header.hammamPackage },
+    { href: "/facial-care", label: t.header.facialCare },
+    { href: "/home-massage", label: t.header.homeMassage },
+    { href: "/gift-idea", label: t.header.giftIdea },
     { href: "/contact", label: t.header.contact },
     { href: "/conditions", label: t.footer.conditions },
   ]

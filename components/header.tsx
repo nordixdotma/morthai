@@ -81,13 +81,13 @@ export default function Header() {
 
   const navigationLinks = [
     { href: "/", label: t.header.home },
-    { href: "#", label: t.header.massages },
-    { href: "#", label: t.header.hammam },
-    { href: "#", label: t.header.hammamPackage },
-    { href: "#", label: t.header.facialCare },
+    { href: "/massages", label: t.header.massages },
+    { href: "/hammam", label: t.header.hammam },
+    { href: "/hammam-massage-package", label: t.header.hammamPackage },
+    { href: "/facial-care", label: t.header.facialCare },
     { href: "/tariffs", label: t.header.prices },
-    { href: "#", label: t.header.homeMassage },
-    { href: "#", label: t.header.giftIdea },
+    { href: "/home-massage", label: t.header.homeMassage },
+    { href: "/gift-idea", label: t.header.giftIdea },
     { href: "/contact", label: t.header.contact },
   ]
 
