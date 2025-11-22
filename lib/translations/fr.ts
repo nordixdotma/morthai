@@ -126,6 +126,215 @@ export const fr = {
       { title: "Massage Tantra", priceMAD: 550, priceEUR: 52, image: "/5.png" },
     ],
   },
+  facialCare: {
+    pageTitle: "Soins du visage",
+    heroTitle:
+      "Laissez-vous tenter par un traitement facial sublime au SPA Mor Thai Marrakech pour une peau profondément nettoyée et rajeunie, infusée d'hydratation et de vitalité !",
+    offers: [
+      {
+        title: "Facial Pureté Rayonnante",
+        description:
+          "Vous cherchez un traitement hydratant et nettoyant en profondeur pour votre visage ? Ce soin facial purifiant, combiné avec des produits cosmétiques naturels de haute qualité en provenance de Thaïlande et l'expertise des techniques manuelles traditionnelles, élimine efficacement les cellules mortes, dynamise la peau et offre une hydratation profonde. Il commence par des compresses chaudes pour ouvrir les pores, suivies d'un nettoyage en profondeur à l'aide de l'huile de noix de coco vierge.",
+        cta: "En savoir plus",
+      },
+      {
+        title: "Facial Prestige Anti-Âge",
+        description:
+          "Inspiré par les rituels de beauté thaïs, ce traitement facial apaisant vous enveloppe des délicates fragrances des cosmétiques naturels de la Thaïlande. Il commence par des compresses chaudes pour ouvrir les pores, suivi d'un nettoyage en profondeur à l'aide d'huile de noix de coco vierge et d'eau de rose pour une peau parfaitement nettoyée et hydratée. Une légère exfoliation est ensuite effectuée, suivie d'un masque hydratant et nourrissant.",
+        cta: "En savoir plus",
+      },
+    ],
+  },
+  giftIdea: {
+    pageTitle: "Idée cadeau",
+    heroTitle: "Idées pour lui - Idées pour elle - Idées pour eux",
+    aboutHeading: "Choyez vos proches avec les Cartes Cadeaux du SPA Mor Thai Marrakech",
+    aboutDescription1:
+      "Vous cherchez une idée cadeau originale pour impressionner vos proches ? Que ce soit pour un anniversaire, Noël, la Saint-Valentin, la Fête des Mères et des Pères ou simplement pour faire plaisir à quelqu'un, vous êtes au bon endroit !",
+    aboutDescription2:
+      "Mor Thai Marrakech vous offre l'opportunité de choyer vos proches en leur offrant des chèques cadeaux de notre sélection complète de rituels : massages, hammams, soins du visage, une collection de traitements de qualité, authentiques et cérémonials pour leur permettre de trouver l'harmonie du corps et de l'esprit dans une atmosphère exceptionnelle dédiée au bien-être, à la détente et à la libération totale.",
+    aboutDescription3:
+      "Vous pouvez également surprendre vos proches avec notre forfait d'abonnement, pour leur permettre de profiter de moments de détente et de bien-être régulièrement. C'est un cadeau parfait !",
+    optionsTitle: "Pour offrir une carte cadeau, rien de plus simple ! Mor Thai vous propose 6 options :",
+    giftOptions: [
+      { title: "Carte Cadeau Numérique", description: "Livraison instantanée par email" },
+      { title: "Carte Cadeau Physique", description: "Belle carte imprimée" },
+      { title: "Montant Personnalisé", description: "Choisissez votre montant" },
+      { title: "Abonnement Mensuel", description: "Bien-être régulier" },
+      { title: "Forfait Couple", description: "Parfait pour deux" },
+      { title: "Journée Spa Complète", description: "Expérience de bien-être complète" },
+      { title: "Collection Massage", description: "Plusieurs options de massage" },
+      { title: "Forfait Luxe", description: "Traitements premium" },
+      { title: "Spécial Anniversaire", description: "Célébrez en style" },
+    ],
+  },
+  homeMassage: {
+    pageTitle: "Massage à domicile",
+    heroTitle:
+      "Abandonnez-vous aux sensations les plus délicieuses avec un massage à domicile de Mor Thai Marrakech, dispensé par les mains dorées de nos thérapeutes thaïs !",
+    mainTitle: "Le massage de vos rêves dans le confort de votre maison !",
+    mainDescription:
+      "Vous voulez vous détendre après une semaine chargée ? Ou vous souhaitez simplement vous offrir un moment de relaxation et de bien-être pour régénérer votre corps et votre esprit ? Mais vous ne voulez pas vous stresser avec les transports et les embouteillages ! Mor Thai Marrakech vous offre l'opportunité de profiter des traitements exceptionnels de notre SPA dans le confort de votre maison. Que vous soyez dans votre maison, villa, Riad, maison d'hôtes ou même au travail, nous nous déplaçons à votre place. Notre chauffeur déposera votre thérapeute thaïe avec tous les équipements nécessaires : table de massage, serviettes, huiles, musique et fragrances, afin que vous obteniez tout le confort nécessaire sans quitter le bien-être de votre maison. Vous n'avez que faire en sorte d'avoir une pièce à température modérée. Vous aurez le choix de mettre votre musique préférée ou de diffuser votre huile essentielle habituelle, sinon une fois que la thérapeute arrive, elle se chargera d'installer tout le nécessaire pour créer une atmosphère sereine qui vous donne un vrai sentiment de bien-être, de confort et de relaxation musculaire.",
+    pricesTitle: "Tarifs",
+    prices: [
+      { distance: "1 à 6 km du spa", time60: "650 dhs", time90: "900 dhs" },
+      { distance: "6 à 10 km du spa", time60: "750 dhs", time90: "1 050 dhs" },
+      { distance: "Plus de 10 km de Gueliz", note: "Tarifs personnalisés selon la distance et le nombre de personnes" },
+    ],
+    massagesTitle:
+      "Pour un agréable massage à domicile, au bureau ou lors d'événements, nous vous proposons une large sélection de massages adaptés à tous les besoins et désirs :",
+    massages: [
+      "Thaï Ancestral en Kimono",
+      "Harmonie Énergétique Thaïe",
+      "Toucher Thérapeutique Anti-Stress | Signature MorThai",
+      "Berceau des Paumes",
+      "Secret des Herbes Médicinales de Kalasin",
+      "Moment Sacré Maman à Être",
+      "Escapade Balinaise",
+      "Silhouette Sculptée",
+      "Renaissance Musculaire Sportive",
+      "Symphonie des Quatre Mains Thaïe",
+      "Réflexologie Plantaire",
+      "Libération des Tensions Tête & Cou",
+      "Thérapie Dos & Épaules",
+      "Petit Ange (2–10 ans)",
+      "Soin Radiance Purity Facial",
+      "Anti-Âge Prestige Facial",
+    ],
+    massageDetails: {
+      "Thaï Ancestral en Kimono":
+        "Remontant à plus de 2500 ans, le massage thaï traditionnel a ses racines en Inde, la médecine ayurvédique et le yoga. Holistique, ancestral et énergétique, le massage thaï traditionnel est une source de sérénité et de paix intérieure.\n\nPratiqué allongé sur un futon, vêtu d'un kimono et massé de la tête aux pieds, le thérapeute alterne une séquence de pressions profondes sur différents points et lignes énergétiques de votre corps, des postures d'étirement de vos muscles et des techniques de yoga pour libérer toute forme de tension accumulée par votre corps. L'intensité des mouvements s'adapte parfaitement à vos préférences pour vous procurer une relaxation absolue.\n\nLes bénéfices du massage thaï se font sentir presque immédiatement. Il récupère la vitalité naturelle du corps, supprime les blocages et les tensions musculaires et améliore la circulation sanguine dans votre corps.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Harmonie Énergétique Thaïe":
+        "Notre massage thaï avec des huiles aromatiques biologiques implique un contact direct avec votre peau. Le thérapeute alterne des mouvements fluides, des pressions profondes qui stimulent vos lignes énergétiques et vos points avec des tapotements doux et des étirements musculaires lisses.\n\nLes huiles utilisées pendant le massage nourrissent, hydratent et tonifient votre peau laissant un effet thérapeutique lisse et relaxant. Notre sélection d'huiles varie selon la saison. Pour vous donner un confort parfait, des huiles chaudes sont utilisées pendant la saison froide et des huiles normales en été.\n\nLa combinaison des parfums des huiles essentielles avec des propriétés calmantes, purifiantes et thérapeutiques assure la relaxation absolue et le bien-être créés par votre massage thaï.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Toucher Thérapeutique Anti-Stress | Signature MorThai":
+        "Pour une expérience sensorielle unique, nous avons créé notre Massage Signature. Ce traitement thérapeutique thaï est pratiqué avec des huiles essentielles et un baume maison pour soulager la douleur fabriqué à partir de plantes médicinales de Thaïlande.\n\nDans ce rituel magique et thérapeutique, nous vous invitons à expérimenter une variété de sensation aromatique et émotionnelle. De la tête aux pieds, le thérapeute identifiera les zones de tension, en se concentrant sur leur libération. Elle pratiquera également des mouvements fluides et harmonieux, vous aidant à vous déconnecter à la fois physiquement et mentalement. Ce massage soulage les muscles endoloris et les douleurs articulaires, améliore la circulation sanguine, apportant une relaxation musculaire immédiate et un bien-être.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Berceau des Paumes":
+        "Pendant le massage de relaxation anti-stress, les mouvements du thérapeute, la musique et les arômes sont harmonieusement combinés pour offrir une relaxation luxueuse dans un nuage d'huiles naturelles sensorielles ! Ce massage combine le bonheur céleste, la relaxation musculaire profonde, l'aromathérapie magique et les soins de la peau nourrissants.\n\nC'est un massage doux et relaxant créant une harmonie complète du corps et de l'esprit.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Secret des Herbes Médicinales de Kalasin":
+        "Le massage thaï traditionnel avec des coussins aux herbes chaudes est une thérapie ancienne originaire de Thaïlande. Les coussinets miraculeux contiennent une collection d'herbes thaïlandaises traditionnelles.\n\nChauffés à la vapeur et appliqués sur le corps, les herbes médicinales libèrent leurs principes actifs et leurs arômes bénéfiques. L'effet combiné de la chaleur avec les bienfaits naturels des herbes soulage considérablement la douleur de votre corps, supprime les tensions musculaires et améliore la circulation sanguine.\n\nCe massage aide à traiter le stress, ceux ayant des problèmes de santé ou des muscles douloureux.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Moment Sacré Maman à Être":
+        "Pendant la grossesse, vous attendez avec impatience de vivre la joie d'être une MAMAN. Mais la douleur et l'inconfort vous inquiètent. Notre massage de grossesse vous aidera à minimiser ces sensations pendant cette période, soulagant les tensions du dos, des chevilles et des jambes.\n\nPour ce massage, nous utilisons des huiles naturelles, inodores et hypoallergéniques pour saturer votre peau de nutriments, réduisant l'apparence des vergetures.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Escapade Balinaise":
+        "Plongez dans un voyage sensoriel unique avec notre massage balinais à Marrakech, un rituel ancestral mêlant douceur et énergie. Inspiré par les traditions de Bali, il combine des pressions profondes, des étirements doux et des mouvements fluides pour restaurer l'équilibre du corps et de l'esprit. Parfait pour libérer les tensions musculaires, stimuler la circulation sanguine et atteindre une relaxation profonde, ce traitement vous transporte dans une expérience exotique et revitalisante au cœur de Marrakech.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Silhouette Sculptée":
+        "Chez Mor Thai Marrakech, non seulement vous pouvez vous immerger dans une atmosphère de relaxation et de plaisir, mais vous pouvez également bénéficier d'un massage corrective pour maintenir une forme de corps idéale et une silhouette lisse et sculptée. De plus, avec le mouvement de palpage profond du thérapeute, le roulement, avec un mélange d'huiles naturelles aidera à drainer la graisse, stimuler la circulation lymphatique, éliminer les toxines, améliorer l'élasticité de la peau et réduire considérablement la cellulite.\n\nÀ la fin de ce traitement, vous ressentirez une sensation incroyable de légèreté et une relaxation agréable.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Renaissance Musculaire Sportive":
+        "Après une séance de sport, une longue marche ou un effort physique intense, la douleur musculaire est inévitable. Mor Thai Marrakech vous offre un rituel magique qui peut aider à rajeunir vos muscles. Ce massage est pratiqué en travaillant les muscles en profondeur, il restaure rapidement les performances musculaires, soulage la douleur et augmente considérablement votre endurance physique.\n\nCe traitement est relaxant, énergisant et détoxifiant. Les effets de ce massage peuvent être bénéfiques avant, pendant ou après une compétition pour préparer les muscles, prévenir les blessures, réduire les tensions musculaires et détendre votre corps pour une récupération plus rapide.\n\nAprès avoir dorloté votre corps, le désir de viser de nouvelles victoires sera irrésistible !\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Symphonie des Quatre Mains Thaïe":
+        "Dorloter-vous et tirez le meilleur parti de l'expérience du massage thaï en choisissant le massage à quatre mains. Deux thérapeutes experts, formés et expérimentés dans la pratique de ce massage, exécutent des mouvements parfaitement synchronisés avec une pression identique.\n\nUn massage multisensoriel magique combinant les propriétés des huiles essentielles, la musique relaxante et les mouvements profonds harmonisés, vous emmène dans un voyage de sérénité absolue et de liberté ultime.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Réflexologie Plantaire":
+        "Inspirée par une thérapie ancestrale originaire de la médecine orientale, la réflexologie plantaire implique de stimuler les zones réflexes sous la plante des pieds, qui correspondent aux principaux organes du corps. Avec une touche extrêmement soigneuse, notre thérapeute localise les zones de tension et aide à restaurer l'équilibre à la zone du corps correspondante.\n\nCette technique magique aide à libérer le stress, élimine la tension nerveuse et améliore la circulation sanguine, vous offrant une relaxation complète du corps et de l'esprit.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Libération des Tensions Tête & Cou":
+        "Chez Mor Thai, nous vous offrons le massage de la tête idéal. Notre objectif est de vous offrir la pause bien nécessaire avec le plaisir intense que vous méritez. Les mains expertes de notre thérapeute effectuent une série de mouvements lisses et harmonieux vers la tête pour vous donner une sensation de relaxation profonde et intérieure.\n\nAu-delà de son efficacité pour les personnes souffrant de migraines ou de maux de tête, ce massage garantit une bonne stimulation de la circulation, aidant à libérer la tension accumulée et à soulager thérapeutiquement la douleur.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Thérapie Dos & Épaules":
+        "En raison de notre style de vie accéléré, le dos devient noué et les épaules deviennent lourdes. Nous vous suggérons de vivre un moment ultime inégalé avec notre massage spécialisé du dos et des épaules, soulagant la tension accumulée le long de l'axe vertébral.\n\nUn massage extrêmement relaxant pour éliminer les douleurs du dos et des épaules, soulagant particulièrement l'inconfort ressenti par ceux qui sont souvent assis à un bureau, stimulant ainsi l'énergie du corps.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Petit Ange (2–10 ans)":
+        "Chez Mor Thai, nous ne cessons jamais de penser au bien-être de chacun de nos clients, même les plus jeunes ! C'est pourquoi nous avons créé un massage spécialement dédié aux enfants jusqu'à 12 ans. Les bénéfices de ce massage sont innombrables, idéaux pour aider les enfants à surmonter les difficultés qu'ils peuvent rencontrer.\n\nCela peut être particulièrement utile pendant les périodes d'examens stressants et intenses, offrant aux enfants des moments de relaxation et de bien-être dans un environnement zen et merveilleux. La pression des mains du thérapeute est ajustée, les huiles aromatiques adaptées parfaitement à leur goût, leur offriront de la joie et du plaisir.\n\nPendant ce massage, l'enfant doit être accompagné d'un parent. Le parent peut choisir d'être également dorloté avec un agréable massage ou simplement attendre son enfant tout en profitant de la paix et du calme de notre salon.\n\nPour une expérience inoubliable et intime pour toute la famille, nous avons des cabines doubles ou triples où tout le monde peut être massé côte à côte.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Soin Radiance Purity Facial":
+        "Vous cherchez un traitement hydratant et nettoyant en profondeur pour votre visage ?\n\nCe soin du visage purifiant, combiné à la qualité des produits cosmétiques naturels de Thaïlande et à l'expertise de la modélisation traditionnelle pratiquée manuellement, élimine efficacement les cellules mortes, énergise et hydrate la peau en profondeur.\n\nTout commence par l'application de compresses chaudes pour ouvrir les pores, puis un nettoyage profond à l'huile de noix de coco vierge et à l'eau de rose pour revitaliser la peau, suivi d'un gommage régénérant à l'aide d'un masque hydratant à base d'herbes thaïlandaises, et pour finir paisiblement, un massage facial relaxant avec une crème hydratante pour vous donner une peau douce, lisse et rayonnante et un esprit parfaitement détendu.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+      "Anti-Âge Prestige Facial":
+        "Inspiré par les rituels de beauté thaïlandais, ce traitement facial apaisant vous laissera envahi par les parfums délicats des cosmétiques naturels de Thaïlande.\n\nIl commence par l'application douce de compresses chaudes sur le visage pour ouvrir les pores, suivi d'un nettoyage profond à l'huile de noix de coco vierge et à l'eau de rose pour une peau parfaitement nettoyée et hydratée, puis une exfoliation douce à l'aide d'un masque hydratant et nourrissant à base d'herbes cosmétiques thaïlandaises.\n\nEnfin, un excellent massage facial anti-âge est pratiqué pour cibler les muscles faciaux en profondeur pour lever et raffermir la peau.\n\nPour toutes les réservations le jour même, veuillez nous contacter au +212 524 207 055",
+    },
+  },
+  hammam: {
+    pageTitle: "Hammam",
+    heroTitle:
+      "Vivez l'expérience sensorielle inoubliable ou offrez-vous un moment romantique dans notre hammam privé réservé aux couples.",
+    introDescription:
+      "Dans une atmosphère sereine et raffinée où le temps semble s'arrêter, nous vous invitons à découvrir notre authentique hammam traditionnel. Laissez-vous porter par le parfum de la vapeur d'eucalyptus, le plafond en ciel étoilé avec des lumiures tamisées, la chaleur humide apaisante et une musique relaxante paisible — le tout combiné avec une sélection des meilleurs produits naturels qui apportent la sérénité au corps et à l'esprit tout en vous donnant une peau lisse et saine.",
+    offers: [
+      {
+        title: "Hammam Secret Ghassoul – 45 minutes",
+        description:
+          "Inspiré de la pure tradition marocaine, ce rituel de bien-être authentique présente de nombreux avantages. Il commence par l'application douce du savon noir à l'eucalyptus, suivie d'un agréable gommage du corps pour une peau parfaitement nettoyée et lisse. Vient ensuite le rhassoul enrichi de sept plantes aromatiques, laissant la peau douce et soyeuse, suivi de l'application d'un masque facial aux herbes thaïlandaises, idéal pour affiner et nourrir la peau.",
+        cta: "Lire la suite",
+      },
+      {
+        title: "Hammam Atlas Majesty – 60 minutes",
+        description:
+          "Un rituel de bien-être ultime qui combine la relaxation du hammam avec le plaisir d'un massage. Il commence par du savon noir hydratant à l'eucalyptus, suivi d'un gommage du corps pour une peau parfaitement nettoyée. Vient ensuite un enveloppement de rhassoul enrichi de sept plantes aromatiques pour une peau douce et lisse, puis un shampooing nourrissant et un masque au germe de blé, suivi d'un traitement revitalisant.",
+        cta: "Lire la suite",
+      },
+    ],
+  },
+  hammamMassagePackage: {
+    pageTitle: "Forfait Hammam Massage",
+    heroTitle:
+      "Avec les rituels de Morthai Marrakech, laissez-vous transporter par la détente de nos hammams et le plaisir de nos massages, et vivez un bien-être ultime.",
+    introDescription:
+      "Laissez-vous porter par la magie de l'atmosphère paisible de Mor Thai Marrakech, et vivez un moment unique de relaxation à travers nos rituels où la détente du massage et la sérénité du hammam s'unissent pour vous plonger dans une \"bulle\" de pureté absolue et de bien-être !",
+    introDescription2: "",
+    rituals: [
+      {
+        title: "Evasion - Rituel Voyage des Sens",
+        hammamTitle: "30 à 40 minutes de Hammam",
+        hammamDescription:
+          "Application du savon noir hydratant à l'eucalyptus suivie d'un gommage du corps agréable pour une peau parfaitement nettoyée et lissée, puis l'application d'un shampooing et d'un masque nourrissants au germe de blé, et enfin une douche relaxante.",
+        massageTitle: "Suivi de :",
+        massageDuration: "Massage 60 min de votre choix",
+        massageOptions:
+          "Thaï Ancestral en Kimono, Harmonie Énergies Thaï, Toucher Guérison Anti-Stress, Évasion Balinaise, Berceau des Paumes.",
+        soloLabel: "En Solo",
+        soloPrice: "830 MAD",
+        soloPriceEur: "€83",
+        duoLabel: "Duo",
+        duoPrice: "1600 MAD",
+        duoPriceEur: "€160",
+        cta: "Réserver",
+      },
+      {
+        title: "Rituel Intemporel",
+        hammamTitle: "30 à 40 minutes de Hammam",
+        hammamDescription:
+          "Application du savon noir hydratant à l'eucalyptus suivie d'un gommage du corps agréable pour une peau parfaitement nettoyée et lissée, puis l'application d'un shampooing et d'un masque nourrissants au germe de blé, et enfin une douche relaxante.",
+        massageTitle: "Suivi de :",
+        massageDuration: "Massage 90 min de votre choix",
+        massageOptions:
+          "Thaï Ancestral en Kimono, Harmonie Énergies Thaï, Toucher Guérison Anti-Stress, Évasion Balinaise, Berceau des Paumes.",
+        soloLabel: "En Solo",
+        soloPrice: "1030 MAD",
+        soloPriceEur: "€103",
+        duoLabel: "Duo",
+        duoPrice: "2000 MAD",
+        duoPriceEur: "€200",
+        cta: "Réserver",
+      },
+      {
+        title: "Rituel L'Éternité en Soi",
+        hammamTitle: "45 à 55 minutes de Hammam",
+        hammamDescription:
+          "45 minutes de Hammam Beldi (Application douce du savon noir à l'eucalyptus suivie d'un gommage du corps agréable pour une peau parfaitement nettoyée et apaisée, puis application du rhassoul enrichi de sept plantes aromatiques rendant la peau douce et soyeuse, sur le visage un masque aux herbes thaïlandaises est appliqué—idéal pour affiner et illuminer le teint, ensuite un shampooing nourrissant et un masque au germe de blé sont appliqués délicatement, et enfin une douche relaxante au parfum rafraîchissant d'aloe vera).",
+        massageTitle: "Suivi de :",
+        massageDuration: "Massage 60 min de votre choix",
+        massageOptions:
+          "Thaï Ancestral en Kimono, Harmonie Énergies Thaï, Toucher Guérison Anti-Stress, Évasion Balinaise, Berceau des Paumes.",
+        soloLabel: "En Solo",
+        soloPrice: "930 MAD",
+        soloPriceEur: "€93",
+        duoLabel: "Duo",
+        duoPrice: "1800 MAD",
+        duoPriceEur: "€180",
+        cta: "Réserver",
+      },
+      {
+        title: "Rituel Renaissance Majestueuse",
+        hammamTitle: "45 à 55 minutes de Hammam",
+        hammamDescription:
+          "45 minutes de Hammam Beldi (Application douce du savon noir à l'eucalyptus suivie d'un gommage du corps agréable pour une peau parfaitement nettoyée et apaisée, puis application du rhassoul enrichi de sept plantes aromatiques rendant la peau douce et soyeuse, sur le visage un masque aux herbes thaïlandaises est appliqué—idéal pour affiner et illuminer le teint, ensuite un shampooing nourrissant et un masque au germe de blé sont appliqués délicatement, et enfin une douche relaxante au parfum rafraîchissant d'aloe vera).",
+        massageTitle: "Suivi de :",
+        massageDuration: "Massage 90 min de votre choix",
+        massageOptions:
+          "Thaï Ancestral en Kimono, Harmonie Énergies Thaï, Toucher Guérison Anti-Stress, Évasion Balinaise, Berceau des Paumes.",
+        soloLabel: "En Solo",
+        soloPrice: "1130 MAD",
+        soloPriceEur: "€113",
+        duoLabel: "Duo",
+        duoPrice: "2200 MAD",
+        duoPriceEur: "€220",
+        cta: "Réserver",
+      },
+    ],
+  },
   contact: {
     pageTitle: "Contact",
     heading: "Envoyez-nous un message",
