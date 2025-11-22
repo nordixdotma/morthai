@@ -41,15 +41,15 @@ export default function GiftIdeaPage() {
 
   // Gift card images cycling
   const giftCardImages = [
-    "/sections/e1.webp",
-    "/sections/e2.jpg",
-    "/sections/e3.jpg",
-    "/sections/e4.webp",
-    "/sections/e5.webp",
-    "/sections/e6.webp",
-    "/sections/l1.webp",
-    "/sections/l2.webp",
-    "/sections/l3.webp",
+    "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    "https://en.morthai-marrakech.com/images/gift/model/default.png",
   ]
 
   return (
@@ -111,32 +111,30 @@ export default function GiftIdeaPage() {
             {giftIdea?.optionsTitle}
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            {giftIdea?.giftOptions?.map((option, index) => {
-              const imageUrl = giftCardImages[index % giftCardImages.length]
-              return (
-                <Link
-                  key={index}
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className={`${
-                    index === 0 ? "col-span-2 md:col-span-1" : "col-span-1"
-                  } relative h-80 md:h-72 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group`}
-                >
-                  {/* Background Image */}
-                  <Image
-                    src={imageUrl || "/placeholder.svg"}
-                    alt={option.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+  {giftIdea?.giftOptions?.map((option, index) => {
+    const imageUrl = giftCardImages[index % giftCardImages.length]
+    return (
+      <Link
+  key={index}
+  href="#"
+  onClick={(e) => e.preventDefault()}
+  className={`${
+    index === 0 ? "col-span-2 md:col-span-1" : "col-span-1"
+  } block relative h-80 md:h-[480px]`}
+>
+  <Image
+    src={imageUrl || "/placeholder.svg"}
+    alt={option.title}
+    fill
+    className="object-contain"
+  />
+</Link>
 
-                  {/* Overlay - just subtle, no text */}
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
-                </Link>
-              )
-            })}
-          </div>
+    )
+  })}
+</div>
+
         </div>
       </section>
     </main>
