@@ -388,6 +388,8 @@ export const en = {
         cta: "Learn more",
       },
     ],
+    reserve: "Reserve",
+    offer: "Offer",
   },
   giftIdea: {
     pageTitle: "Gift Idea",
@@ -503,6 +505,8 @@ export const en = {
         cta: "Read more",
       },
     ],
+    reserve: "Reserve",
+    offer: "Offer",
   },
   hammamMassagePackage: {
     pageTitle: "Hammam Massage Package",

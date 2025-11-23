@@ -64,15 +64,17 @@ export default function HammamPage() {
                   <a
                     href="#"
                     className="block w-full text-center py-3 rounded-sm shadow-md text-sm font-medium bg-[#a87e72] text-white hover:bg-[#8a6a5e] transition-colors"
+                    aria-label={t.hammam?.reserve || "Reserve"}
                   >
-                    {t.hammam?.reserve || "Reserver"}
+                    {t.hammam?.reserve || "Reserve"}
                   </a>
 
                   <a
                     href="#"
                     className="block w-full text-center py-3 rounded-sm shadow-sm text-sm font-medium border border-[#a87e72] bg-white text-[#a87e72] hover:bg-[#fff1ee] transition-colors"
+                    aria-label={t.hammam?.offer || "Offer"}
                   >
-                    {t.hammam?.offer || "Offrir"}
+                    {t.hammam?.offer || "Offer"}
                   </a>
                 </div>
               </div>
@@ -133,15 +135,17 @@ export default function HammamPage() {
                   <a
                     href="#"
                     className="block w-full text-center py-3 rounded-sm shadow-md text-sm font-medium bg-[#a87e72] text-white hover:bg-[#8a6a5e] transition-colors"
+                    aria-label={t.hammam?.reserve || "Reserve"}
                   >
-                    {t.hammam?.reserve || "Reserver"}
+                    {t.hammam?.reserve || "Reserve"}
                   </a>
 
                   <a
                     href="#"
                     className="block w-full text-center py-3 rounded-sm shadow-sm text-sm font-medium border border-[#a87e72] bg-white text-[#a87e72] hover:bg-[#fff1ee] transition-colors"
+                    aria-label={t.hammam?.offer || "Offer"}
                   >
-                    {t.hammam?.offer || "Offrir"}
+                    {t.hammam?.offer || "Offer"}
                   </a>
                 </div>
               </div>

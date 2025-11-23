@@ -139,6 +139,15 @@
   .transition-delay-500 {
     transition-delay: 500ms;
   }
+
+  /* Added 120ms and 240ms delay utilities for feature card staggered animation */
+  .transition-delay-120 {
+    transition-delay: 120ms;
+  }
+
+  .transition-delay-240 {
+    transition-delay: 240ms;
+  }
 }
 
 .dark .text-gray-700 {
@@ -305,6 +314,22 @@ body {
   transform-origin: left;
   transition: transform 0.3s ease;
   transform: translateX(calc(var(--carousel-index, 0) * -33.333%));
+}
+
+/* added feature card animation classes */
+.feature-card {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.feature-card-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-card-hidden {
+  opacity: 0;
+  transform: translateY(16px);
 }
 
 .loader-container {

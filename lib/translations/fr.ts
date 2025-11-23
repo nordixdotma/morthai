@@ -72,7 +72,7 @@ export const fr = {
       massage:
         "Dans votre salle de traitement, pour rendre votre massage encore plus agréable, la température sera ajustée selon la saison et votre préférence. En hiver et pour votre confort, nous avons des matelas chauffants sur la table de massage.",
       afterMassage:
-        "Après votre massage, vous êtes invité(e) à prendre une douche, vous serez fourni(e) de tout ce dont vous avez besoin—serviettes et sèche-cheveux. Cependant, nous ne recommandons pas de prendre une douche immédiatement après le massage pour permettre à votre corps de continuer à profiter des bienfaits des huiles biologiques utilisées. D'autant plus que certaines huiles essentielles peuvent prendre plus d'une heure pour être absorbées par votre peau.",
+        "Après votre massage, vous êtes invité(e) à prendre une douche, vous serez fourni(e) de tout ce dont vous avez besoin���serviettes et sèche-cheveux. Cependant, nous ne recommandons pas de prendre une douche immédiatement après le massage pour permettre à votre corps de continuer à profiter des bienfaits des huiles biologiques utilisées. D'autant plus que certaines huiles essentielles peuvent prendre plus d'une heure pour être absorbées par votre peau.",
       conclusion:
         "Enfin, pour prolonger cette sensation de bien-être et de détente, vous serez invité(e) à l'espace détente pour déguster un thé aux herbes chaud dans la paix.",
       readMore: "Lire plus",
@@ -144,6 +144,8 @@ export const fr = {
         cta: "En savoir plus",
       },
     ],
+    reserve: "Réserver",
+    offer: "Offrir",
   },
   giftIdea: {
     pageTitle: "Idée cadeau",
@@ -256,6 +258,8 @@ export const fr = {
         cta: "Lire la suite",
       },
     ],
+    reserve: "Réserver",
+    offer: "Offrir",
   },
   hammamMassagePackage: {
     pageTitle: "Forfait Hammam Massage",

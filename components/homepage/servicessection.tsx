@@ -1,6 +1,4 @@
 "use client"
-
-import type React from "react"
 import { useState } from "react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useTranslations } from "@/lib/use-translations"
@@ -29,10 +27,7 @@ export default function servicessection() {
         <div className="relative pb-16">
           {/* Desktop carousel view */}
           <div className="hidden md:block overflow-hidden">
-            <div
-              className="flex transition-transform duration-300 carousel-container"
-              style={{ "--carousel-index": currentIndex } as React.CSSProperties}
-            >
+            <div className="flex transition-transform duration-300 carousel-container">
               {items.map((item, itemIndex) => (
                 <div key={itemIndex} className="w-1/3 flex-shrink-0 px-2">
                   <div className="bg-white rounded-xl overflow-hidden flex flex-col h-full border border-gray-100 transition-colors duration-300 hover:border-primary/20 shadow-md hover:shadow-lg">

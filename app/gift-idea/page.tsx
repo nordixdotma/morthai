@@ -56,7 +56,7 @@ export default function GiftIdeaPage() {
                 <p className="text-sm md:text-base leading-relaxed text-justify">{giftIdea?.aboutDescription1}</p>
                 <p className="text-sm md:text-base leading-relaxed text-justify">{giftIdea?.aboutDescription2}</p>
               </div>
-              <p className="text-sm md:text-base leading-relaxed text-center mt-6 text-[#43484e]">
+              <p className="font-trajan-pro font-bold text-sm md:text-base leading-relaxed text-center mt-6 text-[#43484e]">
                 {giftIdea?.aboutDescription3}
               </p>
             </div>

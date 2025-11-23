@@ -22,16 +22,15 @@ export default function WhatsAppButton() {
       initial: { opacity: 0, scale: 0.5, y: 0 },
       animate: {
         opacity: 1,
-        scale: [0.95, 1.05, 0.95, 1.05, 0.95],
+        scale: 1,
         y: [0, -8, 0, -6, 0],
         rotate: [0, -4, 0, 4, 0],
       },
       exit: { opacity: 0, scale: 0.5, y: 10 },
       transition: {
         duration: 0.5,
-        scale: { repeat: Number.POSITIVE_INFINITY, repeatType: "reverse", duration: 1.5, ease: "easeInOut" },
-        y: { repeat: Number.POSITIVE_INFINITY, repeatType: "reverse", duration: 1.5, ease: "easeInOut" },
-        rotate: { repeat: Number.POSITIVE_INFINITY, repeatType: "reverse", duration: 1.8, ease: "easeInOut" },
+        y: { repeat: Number.POSITIVE_INFINITY, duration: 1.5, ease: "easeInOut" as const, repeatDelay: 0.3 },
+        rotate: { repeat: Number.POSITIVE_INFINITY, duration: 1.8, ease: "easeInOut" as const, repeatDelay: 0.3 },
       },
     }),
     [],
@@ -44,8 +43,8 @@ export default function WhatsAppButton() {
         scale: [1, 1.05, 1],
       },
       transition: {
-        y: { repeat: Number.POSITIVE_INFINITY, duration: 1.2, ease: "easeInOut", repeatDelay: 0.5 },
-        scale: { repeat: Number.POSITIVE_INFINITY, duration: 1.2, ease: "easeInOut", repeatDelay: 0.5 },
+        y: { repeat: Number.POSITIVE_INFINITY, duration: 1.2, ease: "easeInOut" as const, repeatDelay: 0.5 },
+        scale: { repeat: Number.POSITIVE_INFINITY, duration: 1.2, ease: "easeInOut" as const, repeatDelay: 0.5 },
       },
     }),
     [],
@@ -164,6 +163,7 @@ export default function WhatsAppButton() {
 
       {/* Main button */}
       <motion.button
+        type="button"
         onClick={toggleOpen}
         className={`w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 will-change-transform
           ${isOpen ? "bg-green-700 hover:bg-green-800" : "bg-green-500 hover:bg-green-600"}`}

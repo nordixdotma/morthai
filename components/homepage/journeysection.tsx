@@ -95,12 +95,10 @@ export default function journeysection() {
               <motion.div
                 id="why-choose-content"
                 className="relative overflow-hidden"
-                // animate height between a fixed pixel (collapsed) and 'auto' (expanded)
                 initial={false}
                 animate={{ height: expanded ? "auto" : COLLAPSED_HEIGHT }}
                 transition={{ duration: 0.42, ease: [0.2, 0.8, 0.2, 1] }}
                 layout
-                aria-expanded={expanded ? "true" : "false"} // valid ARIA string value
               >
                 <div className="space-y-4 text-sm md:text-base leading-relaxed text-justify px-0 py-0">
                   <p>{t.homepage.journey.introduction}</p>
@@ -131,7 +129,7 @@ export default function journeysection() {
                 onClick={() => setExpanded((e) => !e)}
                 className="mt-4 inline-flex items-center gap-2 text-sm font-medium underline decoration-1"
                 aria-controls="why-choose-content"
-                aria-expanded={expanded ? "true" : "false"} // valid ARIA string value for linters
+                aria-expanded={expanded}
               >
                 {expanded ? t.homepage.journey.readLess : t.homepage.journey.readMore}
                 <svg

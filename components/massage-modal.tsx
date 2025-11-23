@@ -16,8 +16,11 @@ export default function MassageModal({ isOpen, title, details, onClose }: Massag
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto relative">
         <button
+          type="button"
           onClick={onClose}
           className="absolute top-4 right-4 bg-[#a87e72] hover:bg-[#94696a] text-white rounded-full p-2 transition-colors duration-200"
+          aria-label="Close modal"
+          title="Close"
         >
           <X size={20} />
         </button>

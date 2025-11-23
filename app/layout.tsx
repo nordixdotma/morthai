@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Lato } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -14,6 +14,12 @@ const lato = Lato({
   display: "swap",
   preload: true,
 })
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+}
 
 export const metadata: Metadata = {
   title: "Mor Thai | Thai Massage in Marrakech",
@@ -59,7 +65,6 @@ export const metadata: Metadata = {
     description: "Authentic Thai massage and spa services in Marrakech, Gueliz",
     images: ["https://morthai-marrakech.com/og-image.png"],
   },
-  viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
   robots: {
     index: true,
     follow: true,
