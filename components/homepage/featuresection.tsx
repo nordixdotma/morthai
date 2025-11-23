@@ -34,9 +34,8 @@ export default function featuresection() {
     <section ref={sectionRef} className="latest-articles-section py-16 md:py-24 overflow-hidden w-full relative">
       <div className="max-w-7xl mx-auto px-4">
         <h2
-          className={`text-xl md:text-2xl font-trajan-pro font-bold text-gray-900 mb-12 text-center transition-all duration-800 ease-out ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          }`}
+          className={`text-xl md:text-2xl font-trajan-pro font-bold text-gray-900 mb-12 text-center transition-all duration-800 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}
         >
           {t.homepage.features.heading}
         </h2>

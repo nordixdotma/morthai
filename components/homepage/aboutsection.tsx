@@ -42,17 +42,15 @@ export default function aboutsection() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center max-w-6xl mx-auto">
           <h2
-            className={`discovery-heading font-trajan-pro text-xl md:text-3xl font-bold mb-6 transition-all duration-1000 ease-out ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-            }`}
+            className={`discovery-heading font-trajan-pro text-xl md:text-3xl font-bold mb-6 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              }`}
           >
             {t.homepage.about.heading}
           </h2>
 
           <div
-            className={`flex items-center justify-center mb-8 transition-all duration-1000 ease-out delay-200 ${
-              isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
-            }`}
+            className={`flex items-center justify-center mb-8 transition-all duration-1000 ease-out delay-200 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+              }`}
           >
             <div className="separator-line"></div>
             <div className="header-separator mx-6">
@@ -71,9 +69,8 @@ export default function aboutsection() {
           </div>
 
           <div
-            className={`discovery-text font-nb-international space-y-6 transition-all duration-1000 ease-out delay-400 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`discovery-text font-nb-international space-y-6 transition-all duration-1000 ease-out delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               <p className="text-sm md:text-base leading-relaxed text-justify">{t.homepage.about.description1}</p>

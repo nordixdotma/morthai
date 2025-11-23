@@ -1,41 +1,11 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
 import PageHeroSection from "@/components/page-hero-section"
 import { useTranslations } from "@/lib/use-translations"
 import Image from "next/image"
 
 export default function FacialCarePage() {
   const t = useTranslations()
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "0px 0px -100px 0px",
-      },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
-
   const facialCare = t.facialCare
 
   return (
@@ -44,31 +14,70 @@ export default function FacialCarePage() {
 
       <section className="service-section py-16 md:py-24 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl">
         <div className="max-w-7xl mx-auto px-4 space-y-16 md:space-y-24">
-          <h2 className="font-trajan-pro text-xl md:text-2xl font-bold text-center text-[#43484e] mb-0 leading-relaxed">
+          <h2 className="font-trajan-pro text-xl md:text-2xl font-bold text-center text-[#43484e] leading-relaxed">
             {facialCare?.heroTitle}
           </h2>
         </div>
+
         <div className="max-w-7xl mx-auto px-4">
-          {/* Offers Section */}
-          <div
-            ref={sectionRef}
-            className={`space-y-16 md:space-y-20 transition-all duration-1000 ease-out ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-            }`}
-          >
+          {/* Offers Section — added spacing between title and offers with mt-12 */}
+          <div className="mt-12 space-y-16 md:space-y-20">
             {/* First Offer - Text Left, Image Right */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className="space-y-4">
-                <h3 className="font-trajan-pro text-2xl md:text-3xl font-bold text-[#43484e]">
+                <h3 className="font-trajan-pro text-center text-xl md:text-2xl font-bold text-[#43484e]">
                   {facialCare?.offers[0]?.title}
                 </h3>
+
+                {/* separator with centered SVG and lines on both sides */}
+                <div className="flex items-center gap-4 mb-6" aria-hidden="true" role="presentation">
+                  <span className="flex-1 h-[2px] bg-[#ead9d5]" />
+
+                  <div className="flex-shrink-0 px-3 flex items-center justify-center text-[#ead9d5]">
+                    {/* filled SVG (keeps the fill color) */}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 66 66" aria-hidden="true">
+                      <g transform="translate(1 1)">
+                        <g fill="#ead9d5" stroke="#ead9d5" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
+                          <path d="M44.7 17.5c1.9-1.3 4-2.5 6.1-3.4 1.6 3.8 2.5 7.7 2.8 11.5M11.9 25.4c.2-3.8 1.1-7.6 2.7-11.4 2.3 1 4.5 2.3 6.5 3.7M27.1 58.4C12.8 55.7 2 43.1 2 28c3.5 0 6.8.6 9.9 1.6 2.2.8 4.4 1.8 6.3 3M38.8 58.4C53.2 55.7 64 43.1 64 28c-3.7 0-7.2.6-10.4 1.8-2.1.7-4 1.7-5.8 2.8M33 59c14.3-14.4 14.3-37.6 0-52-7.2 7.2-10.8 16.6-10.8 26S25.8 51.8 33 59z" />
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+
+                  <span className="flex-1 h-[2px] bg-[#ead9d5]" />
+                </div>
+
                 <p className="text-sm md:text-base leading-relaxed text-justify text-gray-700">
                   {facialCare?.offers[0]?.description}
                 </p>
-                <button className="inline-flex items-center gap-2 text-[#a87e72] font-semibold hover:text-[#8a6a5e] transition-colors">
-                  {facialCare?.offers[0]?.cta} →
-                </button>
+
+                {/* CTA + two-column actions below it for improved UX */}
+                <div>
+                  <button className="mt-0 inline-flex items-center gap-2 text-[#a87e72] font-semibold hover:text-[#8a6a5e] transition-colors">
+                    {facialCare?.offers[0]?.cta} →
+                  </button>
+
+                  {/* Action buttons appear on the next line, 2 columns in one row */}
+                  <div className="grid grid-cols-2 gap-3 mt-4">
+                    <a
+                      href="#"
+                      className="block w-full text-center py-3 rounded-sm shadow-md text-sm font-medium bg-[#a87e72] text-white hover:bg-[#8a6a5e] transition-colors"
+                      aria-label={t.facialCare?.reserve || "Reserver"}
+                    >
+                      {t.facialCare?.reserve || "Reserver"}
+                    </a>
+
+                    <a
+                      href="#"
+                      className="block w-full text-center py-3 rounded-sm shadow-sm text-sm font-medium border border-[#a87e72] bg-white text-[#a87e72] hover:bg-[#fff1ee] transition-colors"
+                      aria-label={t.facialCare?.offer || "Offrir"}
+                    >
+                      {t.facialCare?.offer || "Offrir"}
+                    </a>
+                  </div>
+                </div>
               </div>
+
               <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
                 <Image
                   src="/sections/e1.webp"
@@ -79,8 +88,8 @@ export default function FacialCarePage() {
               </div>
             </div>
 
-            {/* Second Offer - Image Left, Text Right */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center md:grid-cols-2-reverse">
+            {/* Second Offer - Image Left on Desktop, Text Right */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg order-2 md:order-1">
                 <Image
                   src="/sections/e2.jpg"
@@ -89,16 +98,59 @@ export default function FacialCarePage() {
                   className="object-cover"
                 />
               </div>
+
               <div className="space-y-4 order-1 md:order-2">
-                <h3 className="font-trajan-pro text-2xl md:text-3xl font-bold text-[#43484e]">
+                <h3 className="font-trajan-pro text-center text-xl md:text-2xl font-bold text-[#43484e]">
                   {facialCare?.offers[1]?.title}
                 </h3>
+
+                {/* separator with centered SVG and lines on both sides */}
+                <div className="flex items-center gap-4 mb-6" aria-hidden="true" role="presentation">
+                  <span className="flex-1 h-[2px] bg-[#ead9d5]" />
+
+                  <div className="flex-shrink-0 px-3 flex items-center justify-center text-[#ead9d5]">
+                    {/* filled SVG (keeps the fill color) */}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 66 66" aria-hidden="true">
+                      <g transform="translate(1 1)">
+                        <g fill="#ead9d5" stroke="#ead9d5" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
+                          <path d="M44.7 17.5c1.9-1.3 4-2.5 6.1-3.4 1.6 3.8 2.5 7.7 2.8 11.5M11.9 25.4c.2-3.8 1.1-7.6 2.7-11.4 2.3 1 4.5 2.3 6.5 3.7M27.1 58.4C12.8 55.7 2 43.1 2 28c3.5 0 6.8.6 9.9 1.6 2.2.8 4.4 1.8 6.3 3M38.8 58.4C53.2 55.7 64 43.1 64 28c-3.7 0-7.2.6-10.4 1.8-2.1.7-4 1.7-5.8 2.8M33 59c14.3-14.4 14.3-37.6 0-52-7.2 7.2-10.8 16.6-10.8 26S25.8 51.8 33 59z" />
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+
+                  <span className="flex-1 h-[2px] bg-[#ead9d5]" />
+                </div>
+
                 <p className="text-sm md:text-base leading-relaxed text-justify text-gray-700">
                   {facialCare?.offers[1]?.description}
                 </p>
-                <button className="inline-flex items-center gap-2 text-[#a87e72] font-semibold hover:text-[#8a6a5e] transition-colors">
-                  {facialCare?.offers[1]?.cta} →
-                </button>
+
+                {/* CTA + two-column actions below it for improved UX */}
+                <div>
+                  <button className="mt-0 inline-flex items-center gap-2 text-[#a87e72] font-semibold hover:text-[#8a6a5e] transition-colors">
+                    {facialCare?.offers[1]?.cta} →
+                  </button>
+
+                  {/* Action buttons appear on the next line, 2 columns in one row */}
+                  <div className="grid grid-cols-2 gap-3 mt-4">
+                    <a
+                      href="#"
+                      className="block w-full text-center py-3 rounded-sm shadow-md text-sm font-medium bg-[#a87e72] text-white hover:bg-[#8a6a5e] transition-colors"
+                      aria-label={t.facialCare?.reserve || "Reserver"}
+                    >
+                      {t.facialCare?.reserve || "Reserver"}
+                    </a>
+
+                    <a
+                      href="#"
+                      className="block w-full text-center py-3 rounded-sm shadow-sm text-sm font-medium border border-[#a87e72] bg-white text-[#a87e72] hover:bg-[#fff1ee] transition-colors"
+                      aria-label={t.facialCare?.offer || "Offrir"}
+                    >
+                      {t.facialCare?.offer || "Offrir"}
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

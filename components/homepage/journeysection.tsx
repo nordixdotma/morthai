@@ -66,9 +66,8 @@ export default function journeysection() {
           {/* LEFT: TEXT */}
           <div>
             <h2
-              className={`text-xl md:text-3xl text-center font-trajan-pro font-bold text-gray-900 mb-6 transition-all duration-700 ease-out ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-              }`}
+              className={`text-xl md:text-3xl text-center font-trajan-pro font-bold text-gray-900 mb-6 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                }`}
             >
               {t.homepage.journey.heading}
             </h2>
