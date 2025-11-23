@@ -1,12 +1,12 @@
 "use client"
 
-import Link from "next/link"
-import Image from "next/image"
-import { Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react"
 import { Container } from "@/components/ui/container"
-import { useState } from "react"
-import { usePathname } from "next/navigation"
 import { useTranslations } from "@/lib/use-translations"
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useState } from "react"
 
 interface FooterProps {
   isHomepage?: boolean

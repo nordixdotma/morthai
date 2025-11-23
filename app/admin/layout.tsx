@@ -12,7 +12,8 @@ import {
   LogOut,
   Menu,
   X,
-  CreditCard
+  CreditCard,
+  Users
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
@@ -111,10 +112,11 @@ export default function AdminLayout({
     { href: '/admin/reservations', label: 'Reservations', icon: Calendar },
     { href: '/admin/offers', label: 'Offers', icon: Gift },
     { href: '/admin/gift-cards', label: 'Gift Cards', icon: CreditCard },
+    { href: '/admin/users', label: 'Gestion utilisateur', icon: Users },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="h-screen bg-gray-50 flex flex-col overflow-hidden">
       {/* Mobile sidebar toggle */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b p-4 flex items-center justify-between">
         <h1 className="text-xl font-bold">Mor Thai Admin</h1>
@@ -127,18 +129,18 @@ export default function AdminLayout({
         </Button>
       </div>
 
-      <div className="flex">
+      <div className="flex flex-1 overflow-hidden pt-16 lg:pt-0">
         {/* Sidebar */}
         <aside
           className={`${
             sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-40 w-64 bg-white border-r transform transition-transform duration-200 ease-in-out lg:transition-none pt-16 lg:pt-0`}
+          } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-40 w-64 bg-white border-r transform transition-transform duration-200 ease-in-out lg:transition-none h-screen lg:h-full`}
         >
           <div className="h-full flex flex-col">
-            <div className="p-6 border-b">
+            <div className="p-6 border-b flex-shrink-0">
               <h2 className="text-xl font-bold text-gray-800">Mor Thai Admin</h2>
             </div>
-            <nav className="flex-1 p-4 space-y-2">
+            <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
               {menuItems.map((item) => {
                 const IconComponent = item.icon;
                 const isActive = pathname === item.href;
@@ -159,7 +161,7 @@ export default function AdminLayout({
                 );
               })}
             </nav>
-            <div className="p-4 border-t">
+            <div className="p-4 border-t flex-shrink-0">
               <Button
                 variant="outline"
                 className="w-full"
@@ -173,7 +175,7 @@ export default function AdminLayout({
         </aside>
 
         {/* Main content */}
-        <main className="flex-1 lg:ml-0 pt-16 lg:pt-0">
+        <main className="flex-1 overflow-y-auto lg:ml-0">
           <div className="p-6">{children}</div>
         </main>
       </div>
