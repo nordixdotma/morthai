@@ -3,25 +3,38 @@
 import PageHeroSection from "@/components/page-hero-section"
 import { useTranslations } from "@/lib/use-translations"
 import Image from "next/image"
-import Link from "next/link"
+import { useState } from "react"
+import OfferBooking from "@/components/offer-booking"
+import { getAllServices, type GiftCard } from "@/lib/services-data"
 
 export default function GiftIdeaPage() {
   const t = useTranslations()
+  const [selectedGiftCardId, setSelectedGiftCardId] = useState<string | null>(null)
+
+  const services = getAllServices()
+  const giftCards = services.giftCards as GiftCard[]
 
   const giftIdea = t.giftIdea
 
-  // Gift card images cycling
-  const giftCardImages = [
-    "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    "https://en.morthai-marrakech.com/images/gift/model/default.png",
-  ]
+  if (selectedGiftCardId) {
+    return (
+      <main className="min-h-screen">
+        <PageHeroSection title={giftIdea?.heroTitle || "Gift Idea"} />
+
+        <section className="morocco-discovery-section py-16 md:py-24 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl overflow-hidden w-full relative">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="animate-slideInRight">
+              <OfferBooking
+                initialGiftCardId={selectedGiftCardId}
+                onClose={() => setSelectedGiftCardId(null)}
+                isGridLayout={true}
+              />
+            </div>
+          </div>
+        </section>
+      </main>
+    )
+  }
 
   return (
     <main className="min-h-screen">
@@ -69,19 +82,20 @@ export default function GiftIdeaPage() {
           </h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {giftIdea?.giftOptions?.map((option, index) => {
-              const imageUrl = giftCardImages[index % giftCardImages.length]
-              return (
-                <Link
-                  key={index}
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className={`${index === 0 ? "col-span-2 md:col-span-1" : "col-span-1"} block relative h-80 md:h-[480px]`}
-                >
-                  <Image src={imageUrl || "/placeholder.svg"} alt={option.title} fill className="object-contain" />
-                </Link>
-              )
-            })}
+            {giftCards.map((giftCard) => (
+              <button
+                key={giftCard.id}
+                onClick={() => setSelectedGiftCardId(giftCard.id)}
+                className="block relative h-80 md:h-[480px] rounded-lg overflow-hidden group hover:shadow-lg transition-all duration-300"
+              >
+                <Image
+                  src={giftCard.mainImage || "/placeholder.svg"}
+                  alt={giftCard.id}
+                  fill
+                  className="object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </button>
+            ))}
           </div>
         </div>
       </section>

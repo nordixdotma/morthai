@@ -148,6 +148,11 @@
   .transition-delay-240 {
     transition-delay: 240ms;
   }
+
+  /* Add smooth slide-in and slide-out animations for booking form */
+  .animate-slideInRight {
+    animation: slideInRight 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 .dark .text-gray-700 {
@@ -380,4 +385,27 @@ body {
 body {
   width: 100%;
   overflow-x: hidden;
+}
+
+/* Add smooth slide-in and slide-out animations for booking form */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }
