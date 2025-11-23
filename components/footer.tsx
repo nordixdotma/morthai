@@ -173,17 +173,7 @@ export default function Footer({ isHomepage = false }: FooterProps) {
             <p className="text-sm text-white/90 font-lato">
               © {currentYear} {t.footer.copyright}
             </p>
-            <p className="text-sm text-white/90 flex items-center font-lato">
-              {t.footer.madeBy}{" "}
-              <Link
-                href="https://nexusdweb.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary font-bold ml-1"
-              >
-                Nexusweb
-              </Link>
-            </p>
+            
           </div>
         </Container>
       </div>
