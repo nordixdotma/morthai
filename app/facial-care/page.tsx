@@ -16,7 +16,7 @@ export default function FacialCarePage() {
     <main className="min-h-screen">
       <PageHeroSection title="Facial Care" />
 
-      <section className="service-section py-16 md:py-24 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl">
+      <section className="service-section py-16 md:py-24 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl pb-24">
         <div className="max-w-7xl mx-auto px-4 space-y-16 md:space-y-24">
           <h2 className="font-trajan-pro text-xl md:text-2xl font-bold text-center text-[#43484e] leading-relaxed">
             {facialCare?.heroTitle}

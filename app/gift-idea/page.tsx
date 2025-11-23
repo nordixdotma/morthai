@@ -86,13 +86,13 @@ export default function GiftIdeaPage() {
               <button
                 key={giftCard.id}
                 onClick={() => setSelectedGiftCardId(giftCard.id)}
-                className="block relative h-80 md:h-[480px] rounded-lg overflow-hidden group hover:shadow-lg transition-all duration-300"
+                className="block relative h-80 md:h-[480px] rounded-lg overflow-hidden group"
               >
                 <Image
                   src={giftCard.mainImage || "/placeholder.svg"}
                   alt={giftCard.id}
                   fill
-                  className="object-contain group-hover:scale-105 transition-transform duration-300"
+                  className="object-contain transition-transform duration-300"
                 />
               </button>
             ))}

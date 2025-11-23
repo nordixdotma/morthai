@@ -17,7 +17,7 @@ export default function MassagesPage() {
       <PageHeroSection title={massageData?.pageTitle || "Massages"} />
 
       {/* Main Content Section */}
-      <section className="py-12 service-section md:py-16 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl">
+      <section className="py-12 service-section md:py-16 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl pb-24">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           {/* Intro Section with Image Left and Text Right */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16 items-center">
