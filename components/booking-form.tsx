@@ -249,9 +249,9 @@ export default function BookingForm({
               </div>
             </div>
 
-            {/* Date and Time (keep on same row; use flex + min-w-0 to prevent iOS overflow/collapse) */}
-            <div className="flex gap-4">
-              <div className="flex-1 min-w-0">
+            {/* Date and Time */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="pr-2"> {/* Add padding-right */}
                 <label htmlFor="reservationDate" className="block text-sm font-medium text-gray-700 mb-2">
                   {t.bookingForm?.reservationDate || "Reservation Date"} *
                 </label>
@@ -266,7 +266,7 @@ export default function BookingForm({
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
                 />
               </div>
-              <div className="flex-1 min-w-0">
+              <div className="pl-2"> {/* Add padding-left */}
                 <label htmlFor="reservationTime" className="block text-sm font-medium text-gray-700 mb-2">
                   {t.bookingForm?.reservationTime || "Reservation Time"} *
                 </label>
