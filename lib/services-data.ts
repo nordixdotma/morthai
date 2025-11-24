@@ -119,7 +119,7 @@ export const massagesData: Massage[] = [
       { duration: "1h30", price: 730, priceEUR: 73 },
       { duration: "2h", price: 930, priceEUR: 93 },
     ],
-    mainImage: "/massages/1.jpg",
+    mainImage: "/massages/1.webp",
   },
   {
     id: "thai-energy-harmony",

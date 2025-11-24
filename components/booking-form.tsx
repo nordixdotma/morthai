@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ChevronLeft } from "lucide-react"
 import Image from "next/image"
 import PhoneInput from "react-phone-input-2"
@@ -49,6 +48,13 @@ export default function BookingForm({
     note: "",
   })
   const [paymentMethod, setPaymentMethod] = useState<"spa" | "online">("spa")
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -97,29 +103,33 @@ export default function BookingForm({
             {/* Name Fields */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                   {t.bookingForm?.firstName || "First Name"} *
                 </label>
                 <input
+                  id="firstName"
                   type="text"
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
                   required
+                  aria-required="true"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
                   placeholder={language === "fr" ? "Jean" : "John"}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
                   {t.bookingForm?.lastName || "Last Name"} *
                 </label>
                 <input
+                  id="lastName"
                   type="text"
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
                   required
+                  aria-required="true"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
                   placeholder={language === "fr" ? "Dupont" : "Doe"}
                 />
@@ -129,35 +139,39 @@ export default function BookingForm({
             {/* Date and Time */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="reservationDate" className="block text-sm font-medium text-gray-700 mb-2">
                   {t.bookingForm?.reservationDate || "Reservation Date"} *
                 </label>
                 <input
+                  id="reservationDate"
                   type="date"
                   name="reservationDate"
                   value={formData.reservationDate}
                   onChange={handleInputChange}
                   required
+                  aria-required="true"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="reservationTime" className="block text-sm font-medium text-gray-700 mb-2">
                   {t.bookingForm?.reservationTime || "Reservation Time"} *
                 </label>
                 <input
+                  id="reservationTime"
                   type="time"
                   name="reservationTime"
                   value={formData.reservationTime}
                   onChange={handleInputChange}
                   required
+                  aria-required="true"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.bookingForm?.phoneNumber || "Phone Number"} *
               </label>
               <div className="react-phone-input-2 w-full">
@@ -166,7 +180,10 @@ export default function BookingForm({
                   value={formData.phoneNumber}
                   onChange={handlePhoneChange}
                   inputProps={{
+                    id: "phoneNumber",
                     required: true,
+                    "aria-required": "true",
+                    title: "Enter your phone number",
                   }}
                   containerClass="w-full"
                   inputClass="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition text-base"
@@ -177,15 +194,17 @@ export default function BookingForm({
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.bookingForm?.email || "Email"} *
               </label>
               <input
+                id="email"
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 required
+                aria-required="true"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
                 placeholder={language === "fr" ? "jean@exemple.com" : "john@example.com"}
               />
@@ -193,10 +212,11 @@ export default function BookingForm({
 
             {/* Note/Message */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="note" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.bookingForm?.noteMessage || "Note or Message"} ({t.bookingForm?.optional || "Optional"})
               </label>
               <textarea
+                id="note"
                 name="note"
                 value={formData.note}
                 onChange={handleInputChange}
@@ -287,11 +307,11 @@ export default function BookingForm({
                   <span className="ml-3 font-medium text-gray-900">{t.bookingForm?.payOnline || "Pay Online"}</span>
                 </div>
                 <Image
-                  src="https://en.morthai-marrakech.com/wp-content/uploads/2023/04/cb.png"
+                  src="/payment.png"
                   alt="Credit Card"
                   width={50}
                   height={30}
-                  className="h-8 w-auto"
+                  className="h-4 md:h-8 w-auto"
                 />
               </label>
             </div>

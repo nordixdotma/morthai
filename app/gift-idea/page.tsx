@@ -97,6 +97,8 @@ export default function GiftIdeaPage() {
                     key={giftCard.id}
                     onClick={() => setSelectedGiftCardId(giftCard.id)}
                     className="block relative h-80 md:h-[480px] rounded-lg overflow-hidden group"
+                    aria-label={`Select ${giftCard.id} gift option`}
+                    title={`Select ${giftCard.id} gift option`}
                   >
                     <Image
                       src={giftCard.mainImage || "/placeholder.svg"}

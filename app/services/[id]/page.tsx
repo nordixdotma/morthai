@@ -35,27 +35,25 @@ export default function ServiceDetailPage() {
   const [showMaxPeopleWarning, setShowMaxPeopleWarning] = useState(false)
 
   useEffect(() => {
-    let foundService: ServiceItem | null = null
+    let foundService: ServiceItem | undefined
     let type: "massage" | "hammam" | "facial" = "massage"
 
     foundService = massagesData.find((s) => s.id === serviceId)
     if (foundService) {
       type = "massage"
+      setService(foundService)
     } else {
       foundService = hammamData.find((s) => s.id === serviceId)
       if (foundService) {
         type = "hammam"
+        setService(foundService)
       } else {
         foundService = facialCareData.find((s) => s.id === serviceId)
         if (foundService) {
           type = "facial"
+          setService(foundService)
         }
       }
-    }
-
-    if (foundService) {
-      setService(foundService)
-      setServiceType(type)
     }
 
     setLoading(false)
