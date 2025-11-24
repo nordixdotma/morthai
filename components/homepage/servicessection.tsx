@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import type React from "react"
+import Link from "next/link"
 
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useTranslations } from "@/lib/use-translations"
@@ -10,6 +11,19 @@ export default function servicessection() {
   const t = useTranslations()
 
   const items = t.homepage.services.items
+
+  const serviceRoutes = [
+    "/hammam",
+    "/massages",
+    "/hammam-massage-package",
+    "/facial-care",
+    "/home-massage",
+    "/gift-idea",
+  ]
+
+  const getServiceRoute = (index: number): string => {
+    return serviceRoutes[index] || "/"
+  }
 
   const next = () => {
     if (currentIndex < items.length - 3) {
@@ -63,13 +77,13 @@ export default function servicessection() {
                       <p className="text-sm text-gray-600 mb-6 flex-1 font-lato leading-relaxed">{item.description}</p>
 
                       <div className="flex justify-end">
-                        <a
-                          href={`/${item.title.toLowerCase().replace(/\s+/g, "-")}`}
+                        <Link
+                          href={getServiceRoute(itemIndex)}
                           className="px-4 py-2 bg-primary text-white font-semibold text-sm rounded-md transition-all duration-300 hover:bg-primary/90 hover:shadow-md active:scale-95 inline-flex items-center gap-2 group"
                         >
                           <span>{t.homepage.services.discover}</span>
                           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -105,13 +119,13 @@ export default function servicessection() {
                   </p>
 
                   <div className="flex justify-end">
-                    <a
-                      href={`/${item.title.toLowerCase().replace(/\s+/g, "-")}`}
+                    <Link
+                      href={getServiceRoute(itemIndex)}
                       className="px-2 py-2 bg-primary text-white font-semibold text-xs rounded-sm transition-all duration-300 hover:bg-primary/90 inline-flex items-center gap-1 group"
                     >
                       <span>{t.homepage.services.discover}</span>
                       <span className="transition-transform duration-300 group-hover:translate-x-0.5 text-xs">→</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

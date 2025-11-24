@@ -25,7 +25,7 @@ export default function HomeMassagePage() {
           {/* Main Content - Image Left, Text Right */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
             <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
-              <Image src="/sections/e3.jpg" alt="Home massage" fill className="object-cover" />
+              <Image src="/homemassage/2.jpg" alt="Home massage" fill className="object-cover" />
             </div>
             <div className="space-y-4">
               <h3 className="font-trajan-pro text-center text-xl md:text-2xl font-bold text-[#43484e]">
