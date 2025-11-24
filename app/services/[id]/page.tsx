@@ -122,11 +122,10 @@ export default function ServiceDetailPage() {
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="relative">
             <div
-              className={`transition-all duration-700 ease-in-out ${
-                showBookingForm || showOfferBooking
+              className={`transition-all duration-700 ease-in-out ${showBookingForm || showOfferBooking
                   ? "-translate-x-full opacity-0 invisible"
                   : "translate-x-0 opacity-100 visible"
-              }`}
+                }`}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
                 <div className="relative overflow-hidden rounded-lg h-96 md:h-full min-h-96">
@@ -162,11 +161,10 @@ export default function ServiceDetailPage() {
                             <button
                               key={index}
                               onClick={() => setSelectedOptionIndex(index)}
-                              className={`w-full flex items-center justify-between p-4 rounded-lg transition-all ${
-                                isSelected
+                              className={`w-full flex items-center justify-between p-4 rounded-lg transition-all ${isSelected
                                   ? "border-2 border-primary bg-primary/10"
                                   : "border border-gray-200 bg-white hover:border-primary"
-                              }`}
+                                }`}
                             >
                               <span className="font-medium text-gray-900">{durationOrName}</span>
                               <div className="text-right">

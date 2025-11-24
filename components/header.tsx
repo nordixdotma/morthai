@@ -142,9 +142,8 @@ export default function Header() {
           <div className="relative z-20 language-dropdown-container">
             <button
               onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${
-                scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-              }`}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+                }`}
             >
               <img
                 src={languages.find((lang) => lang.code === language)?.flag || "/placeholder.svg"}
@@ -155,9 +154,8 @@ export default function Header() {
                 {language}
               </span>
               <ChevronDown
-                className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""} ${
-                  scrolled ? "text-gray-800" : "text-white"
-                }`}
+                className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""} ${scrolled ? "text-gray-800" : "text-white"
+                  }`}
               />
             </button>
 
@@ -170,9 +168,8 @@ export default function Header() {
                       setLanguage(lang.code as "en" | "fr")
                       setLanguageDropdownOpen(false)
                     }}
-                    className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${
-                      lang.code === language ? "bg-primary/10" : ""
-                    }`}
+                    className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${lang.code === language ? "bg-primary/10" : ""
+                      }`}
                   >
                     <img
                       src={lang.flag || "/placeholder.svg"}
@@ -204,9 +201,8 @@ export default function Header() {
             {/* Modern Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`relative flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors ${
-                scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-              }`}
+              className={`relative flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+                }`}
               aria-label="Toggle menu"
             >
               <svg
@@ -238,9 +234,8 @@ export default function Header() {
             <div className="relative language-dropdown-container">
               <button
                 onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
-                  scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-                }`}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+                  }`}
               >
                 <img
                   src={languages.find((lang) => lang.code === language)?.flag || "/placeholder.svg"}
@@ -251,9 +246,8 @@ export default function Header() {
                   {language}
                 </span>
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""} ${
-                    scrolled ? "text-gray-800" : "text-white"
-                  }`}
+                  className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""} ${scrolled ? "text-gray-800" : "text-white"
+                    }`}
                 />
               </button>
 
@@ -266,9 +260,8 @@ export default function Header() {
                         setLanguage(lang.code as "en" | "fr")
                         setLanguageDropdownOpen(false)
                       }}
-                      className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${
-                        lang.code === language ? "bg-primary/10" : ""
-                      }`}
+                      className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${lang.code === language ? "bg-primary/10" : ""
+                        }`}
                     >
                       <img
                         src={lang.flag || "/placeholder.svg"}
@@ -321,9 +314,8 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-all duration-300  relative group font-trajan-pro uppercase tracking-wider ${
-                    scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                  } ${pathname === link.href ? "text-primary" : ""}`}
+                  className={`text-sm font-medium transition-all duration-300  relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                    } ${pathname === link.href ? "text-primary" : ""}`}
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -400,9 +392,8 @@ export default function Header() {
                       >
                         <Link
                           href={link.href}
-                          className={`flex items-center py-2 md:py-3 px-4 rounded-xl text-gray-800 hover:bg-gray-100 transition-colors text-sm md:text-base ${
-                            pathname === link.href ? "bg-primary/20 text-primary" : ""
-                          }`}
+                          className={`flex items-center py-2 md:py-3 px-4 rounded-xl text-gray-800 hover:bg-gray-100 transition-colors text-sm md:text-base ${pathname === link.href ? "bg-primary/20 text-primary" : ""
+                            }`}
                           onClick={() => setIsMenuOpen(false)}
                         >
                           <span className="font-medium font-trajan-pro uppercase">{link.label}</span>
