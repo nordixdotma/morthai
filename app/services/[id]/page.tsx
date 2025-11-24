@@ -32,6 +32,7 @@ export default function ServiceDetailPage() {
   const [numberOfPeople, setNumberOfPeople] = useState(1)
   const [showBookingForm, setShowBookingForm] = useState(false)
   const [showOfferBooking, setShowOfferBooking] = useState(false)
+  const [showMaxPeopleWarning, setShowMaxPeopleWarning] = useState(false)
 
   useEffect(() => {
     let foundService: ServiceItem | null = null
@@ -101,6 +102,20 @@ export default function ServiceDetailPage() {
   const selectedOption = priceOptions[selectedOptionIndex]
   const selectedOptionName = "duration" in selectedOption ? selectedOption.duration : selectedOption.optionName
 
+  const handleNumberOfPeopleIncrement = () => {
+    if (numberOfPeople < 4) {
+      setNumberOfPeople(numberOfPeople + 1)
+      setShowMaxPeopleWarning(false)
+    } else {
+      setShowMaxPeopleWarning(true)
+    }
+  }
+
+  const handleNumberOfPeopleDecrement = () => {
+    setNumberOfPeople(Math.max(1, numberOfPeople - 1))
+    setShowMaxPeopleWarning(false)
+  }
+
   return (
     <main className="min-h-screen">
       <PageHeroSection title={title} />
@@ -136,35 +151,10 @@ export default function ServiceDetailPage() {
                     {description}
                   </p>
 
-                  {(serviceType === "massage" || serviceType === "facial") && (
-                    <div className="mb-8">
-                      <h3 className="text-lg md:text-xl font-trajan-pro font-bold text-gray-900 mb-4">
-                        Number of People
-                      </h3>
-                      <div className="flex gap-3 items-center">
-                        <button
-                          onClick={() => setNumberOfPeople(Math.max(1, numberOfPeople - 1))}
-                          className="px-4 py-2 border border-gray-300 rounded-lg hover:border-primary transition-colors font-semibold"
-                        >
-                          −
-                        </button>
-                        <span className="px-6 py-2 text-center min-w-16 font-bold text-lg">{numberOfPeople}</span>
-                        <button
-                          onClick={() => setNumberOfPeople(numberOfPeople + 1)}
-                          className="px-4 py-2 border border-gray-300 rounded-lg hover:border-primary transition-colors font-semibold"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  )}
-
                   {priceOptions.length > 0 && (
                     <div className="mb-8">
                       <h3 className="text-lg md:text-xl font-trajan-pro font-bold text-gray-900 mb-4">
-                        {serviceType === "massage" || serviceType === "facial"
-                          ? "Availability & Pricing"
-                          : "Options & Pricing"}
+                        {t.bookingForm?.availabilityPricing || "Availability & Pricing"}
                       </h3>
                       <div className="space-y-3">
                         {priceOptions.map((option, index) => {
@@ -194,20 +184,50 @@ export default function ServiceDetailPage() {
                     </div>
                   )}
 
+                  {(serviceType === "massage" || serviceType === "facial") && (
+                    <div className="mb-8">
+                      <h3 className="text-lg md:text-xl font-trajan-pro font-bold text-gray-900 mb-4">
+                        {t.bookingForm?.numberOfPeople || "Number of People"}
+                      </h3>
+                      <div className="flex gap-3 items-center">
+                        <button
+                          onClick={handleNumberOfPeopleDecrement}
+                          className="px-4 py-2 border border-gray-300 rounded-lg hover:border-primary transition-colors font-semibold"
+                        >
+                          −
+                        </button>
+                        <span className="px-6 py-2 text-center min-w-16 font-bold text-lg">{numberOfPeople}</span>
+                        <button
+                          onClick={handleNumberOfPeopleIncrement}
+                          className="px-4 py-2 border border-gray-300 rounded-lg hover:border-primary transition-colors font-semibold"
+                        >
+                          +
+                        </button>
+                      </div>
+                      {showMaxPeopleWarning && (
+                        <p className="text-red-500 text-sm mt-2 font-medium">
+                          {language === "fr"
+                            ? "Si vous voulez plus de 4 personnes, veuillez faire une réservation par contact."
+                            : "If you want more than 4 people, please contact us for a reservation."}
+                        </p>
+                      )}
+                    </div>
+                  )}
+
                   <div className="flex flex-col sm:flex-row gap-3 mt-auto pt-4">
                     <button
                       onClick={() => setShowBookingForm(true)}
                       className="flex-1 py-3 px-4 bg-primary text-white font-semibold text-center rounded-md hover:bg-primary/90 transition-colors"
                       aria-label={`Book ${title}`}
                     >
-                      Book Now
+                      {t.bookingForm?.bookNow || "Book Now"}
                     </button>
                     <button
                       onClick={() => setShowOfferBooking(true)}
                       className="flex-1 py-3 px-4 border-2 border-primary text-primary font-semibold text-center rounded-md hover:bg-primary/5 transition-colors"
                       aria-label={`Offer ${title}`}
                     >
-                      Offer as Gift
+                      {t.bookingForm?.offerAsGift || "Offer as Gift"}
                     </button>
                   </div>
                 </div>
@@ -232,6 +252,7 @@ export default function ServiceDetailPage() {
                   serviceTitle={title}
                   selectedOption={selectedOptionName}
                   numberOfPeople={numberOfPeople}
+                  selectedPrice={selectedOption?.price || 0}
                   onClose={() => setShowBookingForm(false)}
                 />
               </div>

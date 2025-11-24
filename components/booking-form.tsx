@@ -14,6 +14,7 @@ interface BookingFormProps {
   serviceTitle: string
   selectedOption: string
   numberOfPeople: number
+  selectedPrice?: number
   onClose: () => void
   isGridLayout?: boolean
 }
@@ -32,6 +33,7 @@ export default function BookingForm({
   serviceTitle,
   selectedOption,
   numberOfPeople,
+  selectedPrice = 0,
   onClose,
   isGridLayout = false,
 }: BookingFormProps) {
@@ -59,12 +61,16 @@ export default function BookingForm({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Booking submitted:", { ...formData, paymentMethod, numberOfPeople })
+    console.log("Booking submitted:", { ...formData, paymentMethod, numberOfPeople, totalPrice })
   }
 
-  const containerClass = isGridLayout ? "bg-white rounded-lg" : "min-h-screen bg-white w-full overflow-y-auto"
+  const totalPrice = selectedPrice * numberOfPeople
 
-  const contentClass = isGridLayout ? "p-4 md:p-6" : "p-4 md:p-6 max-w-7xl mx-auto pb-16"
+  const containerClass = isGridLayout
+    ? "bg-white rounded-lg"
+    : "min-h-screen bg-white w-full overflow-y-auto flex flex-col"
+
+  const contentClass = isGridLayout ? "p-4 md:p-6" : "p-4 md:p-6 max-w-7xl mx-auto pb-16 flex-grow"
 
   return (
     <div className={containerClass}>
@@ -73,12 +79,14 @@ export default function BookingForm({
         <button
           onClick={onClose}
           className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium mb-4"
-          aria-label="Back to service details"
+          aria-label={t.bookingForm?.backToServiceDetails || "Back to service details"}
         >
           <ChevronLeft size={24} />
-          Back
+          {t.bookingForm?.back || "Back"}
         </button>
-        <h2 className="text-2xl md:text-3xl font-trajan-pro font-bold text-gray-900">Complete Your Booking</h2>
+        <h2 className="text-2xl md:text-3xl font-trajan-pro font-bold text-gray-900">
+          {t.bookingForm?.completeYourBooking || "Complete Your Booking"}
+        </h2>
       </div>
 
       {/* Content */}
@@ -89,7 +97,9 @@ export default function BookingForm({
             {/* Name Fields */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.bookingForm?.firstName || "First Name"} *
+                </label>
                 <input
                   type="text"
                   name="firstName"
@@ -97,11 +107,13 @@ export default function BookingForm({
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
-                  placeholder="John"
+                  placeholder={language === "fr" ? "Jean" : "John"}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.bookingForm?.lastName || "Last Name"} *
+                </label>
                 <input
                   type="text"
                   name="lastName"
@@ -109,7 +121,7 @@ export default function BookingForm({
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
-                  placeholder="Doe"
+                  placeholder={language === "fr" ? "Dupont" : "Doe"}
                 />
               </div>
             </div>
@@ -117,7 +129,9 @@ export default function BookingForm({
             {/* Date and Time */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Reservation Date *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.bookingForm?.reservationDate || "Reservation Date"} *
+                </label>
                 <input
                   type="date"
                   name="reservationDate"
@@ -128,7 +142,9 @@ export default function BookingForm({
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Reservation Time *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.bookingForm?.reservationTime || "Reservation Time"} *
+                </label>
                 <input
                   type="time"
                   name="reservationTime"
@@ -140,10 +156,11 @@ export default function BookingForm({
               </div>
             </div>
 
-            {/* Phone Number - added .react-phone-input-2 styles for full width and increased height */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
-              <div className="react-phone-input-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {t.bookingForm?.phoneNumber || "Phone Number"} *
+              </label>
+              <div className="react-phone-input-2 w-full">
                 <PhoneInput
                   country={"ma"}
                   value={formData.phoneNumber}
@@ -160,7 +177,9 @@ export default function BookingForm({
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {t.bookingForm?.email || "Email"} *
+              </label>
               <input
                 type="email"
                 name="email"
@@ -168,20 +187,26 @@ export default function BookingForm({
                 onChange={handleInputChange}
                 required
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
-                placeholder="john@example.com"
+                placeholder={language === "fr" ? "jean@exemple.com" : "john@example.com"}
               />
             </div>
 
             {/* Note/Message */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Note or Message (Optional)</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {t.bookingForm?.noteMessage || "Note or Message"} ({t.bookingForm?.optional || "Optional"})
+              </label>
               <textarea
                 name="note"
                 value={formData.note}
                 onChange={handleInputChange}
                 rows={4}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition resize-none"
-                placeholder="Any special requests or additional information..."
+                placeholder={
+                  language === "fr"
+                    ? "Demandes spéciales ou informations supplémentaires..."
+                    : "Any special requests or additional information..."
+                }
               />
             </div>
           </form>
@@ -190,32 +215,46 @@ export default function BookingForm({
           <div className="space-y-4 md:space-y-6">
             {/* Booking Summary */}
             <div className="bg-[#fff8f5] rounded-lg p-6 space-y-4">
-              <h3 className="text-lg font-trajan-pro font-bold text-gray-900 mb-4">Booking Summary</h3>
+              <h3 className="text-lg font-trajan-pro font-bold text-gray-900 mb-4">
+                {t.bookingForm?.bookingSummary || "Booking Summary"}
+              </h3>
 
               <div className="space-y-3 border-b border-gray-300 pb-4">
                 <div className="flex justify-between items-start">
-                  <span className="text-gray-700 font-medium">Service:</span>
+                  <span className="text-gray-700 font-medium">{t.bookingForm?.service || "Service"}:</span>
                   <span className="text-right font-semibold text-gray-900">{serviceTitle}</span>
                 </div>
                 <div className="flex justify-between items-start">
-                  <span className="text-gray-700 font-medium">Option:</span>
+                  <span className="text-gray-700 font-medium">{t.bookingForm?.option || "Option"}:</span>
                   <span className="text-right font-semibold text-gray-900">{selectedOption}</span>
                 </div>
                 <div className="flex justify-between items-start">
-                  <span className="text-gray-700 font-medium">Number of People:</span>
+                  <span className="text-gray-700 font-medium">
+                    {t.bookingForm?.numberOfPeople || "Number of People"}:
+                  </span>
                   <span className="text-right font-semibold text-gray-900">{numberOfPeople}</span>
                 </div>
               </div>
 
-              <div className="flex justify-between items-center pt-4 text-lg">
-                <span className="font-trajan-pro font-bold text-gray-900">Total Price:</span>
-                <span className="text-primary font-bold text-xl">600 MAD</span>
+              <div className="space-y-2 pt-2">
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-gray-700">{t.bookingForm?.pricePerPerson || "Price per person"}:</span>
+                  <span className="font-semibold text-gray-900">{selectedPrice} MAD</span>
+                </div>
+                <div className="flex justify-between items-center pt-2 text-lg border-t border-gray-200">
+                  <span className="font-trajan-pro font-bold text-gray-900">
+                    {t.bookingForm?.totalPrice || "Total Price"}:
+                  </span>
+                  <span className="text-primary font-bold text-xl">{totalPrice} MAD</span>
+                </div>
               </div>
             </div>
 
             {/* Payment Method */}
             <div className="space-y-4">
-              <h3 className="text-lg font-trajan-pro font-bold text-gray-900">Payment Method</h3>
+              <h3 className="text-lg font-trajan-pro font-bold text-gray-900">
+                {t.bookingForm?.paymentMethod || "Payment Method"}
+              </h3>
 
               <label
                 className="flex items-center p-4 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-primary transition-colors"
@@ -229,7 +268,7 @@ export default function BookingForm({
                   onChange={(e) => setPaymentMethod("spa" as "spa" | "online")}
                   className="w-4 h-4 accent-primary"
                 />
-                <span className="ml-3 font-medium text-gray-900">Pay at the Spa</span>
+                <span className="ml-3 font-medium text-gray-900">{t.bookingForm?.payAtSpa || "Pay at the Spa"}</span>
               </label>
 
               <label
@@ -245,7 +284,7 @@ export default function BookingForm({
                     onChange={(e) => setPaymentMethod("online" as "spa" | "online")}
                     className="w-4 h-4 accent-primary"
                   />
-                  <span className="ml-3 font-medium text-gray-900">Pay Online</span>
+                  <span className="ml-3 font-medium text-gray-900">{t.bookingForm?.payOnline || "Pay Online"}</span>
                 </div>
                 <Image
                   src="https://en.morthai-marrakech.com/wp-content/uploads/2023/04/cb.png"
@@ -262,10 +301,10 @@ export default function BookingForm({
               <label className="flex items-start p-4 bg-gray-50 rounded-lg cursor-pointer">
                 <input type="checkbox" required className="w-4 h-4 mt-1 accent-primary" />
                 <span className="ml-3 text-sm text-gray-700">
-                  By clicking CONFIRM, you acknowledge that you have read, understood, and accepted the terms and
-                  conditions of sale described in our{" "}
-                  <a href="/privacy-policy" className="text-primary font-medium hover:underline">
-                    privacy policy
+                  {t.bookingForm?.acceptanceText ||
+                    "By clicking CONFIRM, you acknowledge that you have read, understood, and accepted the terms and conditions of sale described in our"}{" "}
+                  <a href="/conditions" className="text-primary font-medium hover:underline">
+                    {t.bookingForm?.conditions || "conditions"}
                   </a>
                   .
                 </span>
@@ -278,7 +317,7 @@ export default function BookingForm({
               type="submit"
               className="w-full py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors mt-6"
             >
-              Confirm Booking
+              {t.bookingForm?.confirmBooking || "Confirm Booking"}
             </button>
           </div>
         </div>
