@@ -251,37 +251,6 @@ export default function BookingForm({
 
             {/* Date and Time */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="pr-2"> {/* Add padding-right */}
-                <label htmlFor="reservationDate" className="block text-sm font-medium text-gray-700 mb-2">
-                  {t.bookingForm?.reservationDate || "Reservation Date"} *
-                </label>
-                <input
-                  id="reservationDate"
-                  type="date"
-                  name="reservationDate"
-                  value={formData.reservationDate}
-                  onChange={handleInputChange}
-                  required
-                  aria-required="true"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
-                />
-              </div>
-              <div className="pl-2"> {/* Add padding-left */}
-                <label htmlFor="reservationTime" className="block text-sm font-medium text-gray-700 mb-2">
-                  {t.bookingForm?.reservationTime || "Reservation Time"} *
-                </label>
-                <input
-                  id="reservationTime"
-                  type="time"
-                  name="reservationTime"
-                  value={formData.reservationTime}
-                  onChange={handleInputChange}
-                  required
-                  aria-required="true"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
-                />
-              </div>
-            </div><div className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="reservationDate" className="block text-sm font-medium text-gray-700 mb-2">
                   {t.bookingForm?.reservationDate || "Reservation Date"} *
