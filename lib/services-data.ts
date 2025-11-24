@@ -119,7 +119,7 @@ export const massagesData: Massage[] = [
       { duration: "1h30", price: 730, priceEUR: 73 },
       { duration: "2h", price: 930, priceEUR: 93 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/1.jpg",
   },
   {
     id: "thai-energy-harmony",
@@ -136,7 +136,7 @@ export const massagesData: Massage[] = [
       { duration: "1h30", price: 820, priceEUR: 82 },
       { duration: "2h", price: 1020, priceEUR: 102 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/2.jpg",
   },
   {
     id: "healing-anti-stress-signature",
@@ -153,7 +153,7 @@ export const massagesData: Massage[] = [
       { duration: "1h30", price: 870, priceEUR: 87 },
       { duration: "2h", price: 1070, priceEUR: 107 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/3.jpg",
   },
   {
     id: "cradle-of-palms",
@@ -170,7 +170,7 @@ export const massagesData: Massage[] = [
       { duration: "1h30", price: 820, priceEUR: 82 },
       { duration: "2h", price: 1020, priceEUR: 102 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/4.jpg",
   },
   {
     id: "secret-medicinal-herbs-kalasin",
@@ -186,7 +186,7 @@ export const massagesData: Massage[] = [
       { duration: "1h", price: 930, priceEUR: 93 },
       { duration: "1h30", price: 1150, priceEUR: 115 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/5.jpg",
   },
   {
     id: "mum-to-be-sacred-moment",
@@ -202,7 +202,7 @@ export const massagesData: Massage[] = [
       { duration: "1h", price: 620, priceEUR: 62 },
       { duration: "1h30", price: 870, priceEUR: 87 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/6.jpg",
   },
   {
     id: "balinese-escape",
@@ -219,7 +219,7 @@ export const massagesData: Massage[] = [
       { duration: "1h30", price: 820, priceEUR: 82 },
       { duration: "2h", price: 1020, priceEUR: 102 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/7.jpg",
   },
   {
     id: "sculpted-silhouette",
@@ -235,7 +235,7 @@ export const massagesData: Massage[] = [
       { duration: "30min", price: 400, priceEUR: 40 },
       { duration: "1h", price: 680, priceEUR: 68 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/8.jpg",
   },
   {
     id: "sports-muscle-revival",
@@ -251,7 +251,7 @@ export const massagesData: Massage[] = [
       { duration: "1h", price: 600, priceEUR: 60 },
       { duration: "1h30", price: 850, priceEUR: 85 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/9.jpg",
   },
   {
     id: "thai-four-hands-symphony",
@@ -264,7 +264,7 @@ export const massagesData: Massage[] = [
       fr: "Dorlotez-vous et profitez au maximum de l'expérience du massage thaï en choisissant le massage à quatre mains. Deux thérapeutes experts, formés et expérimentés dans la pratique de ce massage, effectuent des mouvements parfaitement synchronisés avec une pression identique. Un massage multisensoriel magique combinant les propriétés des huiles essentielles, la musique relaxante et les mouvements profonds harmonisés, vous emmène dans un voyage de sérénité absolue et de liberté ultime.",
     },
     availability: [{ duration: "1h", price: 1020, priceEUR: 102 }],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/10.jpg",
   },
   {
     id: "foot-reflexology",
@@ -280,7 +280,7 @@ export const massagesData: Massage[] = [
       { duration: "30min", price: 350, priceEUR: 35 },
       { duration: "1h", price: 580, priceEUR: 58 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/11.jpg",
   },
   {
     id: "head-neck-tension-release",
@@ -296,7 +296,7 @@ export const massagesData: Massage[] = [
       { duration: "30min", price: 350, priceEUR: 35 },
       { duration: "1h", price: 580, priceEUR: 58 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/12.jpg",
   },
   {
     id: "back-shoulders-therapy",
@@ -312,7 +312,7 @@ export const massagesData: Massage[] = [
       { duration: "30min", price: 380, priceEUR: 38 },
       { duration: "1h", price: 630, priceEUR: 63 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/13.jpg",
   },
   {
     id: "little-angel",
@@ -325,9 +325,10 @@ export const massagesData: Massage[] = [
       fr: "Chez Mor Thai, nous ne cessons jamais de penser au bien-être de chacun de nos invités, même les plus jeunes ! C'est pourquoi nous avons créé un massage spécialement dédié aux enfants jusqu'à 12 ans. Les bénéfices de ce massage sont innombrables, idéaux pour aider les enfants à surmonter les difficultés auxquelles ils peuvent être confrontés. Cela peut être particulièrement utile pendant les périodes d'examen stressantes et tendues, leur offrant des moments de relaxation et de bien-être dans un environnement zen et merveilleux. La pression des mains du thérapeute est ajustée, les huiles aromatiques adaptées parfaitement à leur goût, leur offriront de la joie et du plaisir. Pendant ce massage, l'enfant doit être accompagné d'un parent. Le parent peut choisir d'être également dorloté avec un agréable massage ou simplement attendre son enfant en profitant de la paix et du calme dans notre salon. Pour une expérience inoubliable et intime pour toute la famille, nous avons des cabines doubles ou triples où tout le monde peut être massé l'un à côté de l'autre.",
     },
     availability: [{ duration: "1h", price: 430, priceEUR: 43 }],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/massages/14.jpg",
   },
-]
+];
+
 
 // ============================================
 // HAMMAM DATA
@@ -349,7 +350,7 @@ export const hammamData: Hammam[] = [
       { optionName: "En Couple/Amis", price: 800, priceEUR: 80 },
       { optionName: "Parent et Enfant", price: 700, priceEUR: 70 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/hammam/1.webp",
   },
   {
     id: "hammam-atlas-majesty",
@@ -366,7 +367,7 @@ export const hammamData: Hammam[] = [
       { optionName: "En Couple/Amis", price: 1000, priceEUR: 100 },
       { optionName: "Parent et Enfant", price: 900, priceEUR: 90 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/hammam/2.jpg",
   },
 ]
 
@@ -516,7 +517,7 @@ export const facialCareData: FacialCare[] = [
       { duration: "30min", price: 400, priceEUR: 40 },
       { duration: "1h", price: 550, priceEUR: 55 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/facial-care/1.jpg",
   },
   {
     id: "anti-aging-prestige-facial",
@@ -533,7 +534,7 @@ export const facialCareData: FacialCare[] = [
       { duration: "2h", price: 900, priceEUR: 86 },
       { duration: "2h30", price: 1100, priceEUR: 105 },
     ],
-    mainImage: "/sections/l4.webp",
+    mainImage: "/facial-care/2.jpg",
   },
 ]
 
@@ -544,23 +545,23 @@ export const facialCareData: FacialCare[] = [
 export const giftCardsData: GiftCard[] = [
   {
     id: "gift-card-deluxe",
-    mainImage: "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    previewImage: "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    mainImage: "/gift-cards/1.png",
+    previewImage: "/giftt-cards/1-preview.png",
   },
   {
     id: "gift-card-wellness",
-    mainImage: "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    previewImage: "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    mainImage: "/gift-cards/1.png",
+    previewImage: "/gift-cards/1-preview.png",
   },
   {
     id: "gift-card-massage-selection",
-    mainImage: "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    previewImage: "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    mainImage: "/gift-cards/1.png",
+    previewImage: "/gift-cards/1-preview.png",
   },
   {
     id: "gift-card-couple-experience",
-    mainImage: "https://en.morthai-marrakech.com/images/gift/model/default.png",
-    previewImage: "https://en.morthai-marrakech.com/images/gift/model/default.png",
+    mainImage: "/gift-cards/1.png",
+    previewImage: "/gift-cards/1-preview.png",
   },
 ]
 

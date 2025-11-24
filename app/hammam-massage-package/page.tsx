@@ -28,6 +28,7 @@ export default function HammamMassagePackagePage() {
     const ritual = rituals[selectedRitualIndex]
     const selectedOption = selectedOptions[selectedRitualIndex] || "solo"
     const selectedPrice = selectedOption === "solo" ? ritual.soloPrice : ritual.duoPrice
+    const priceNumber = Number.parseInt(selectedPrice.split(" ")[0], 10)
 
     return (
       <main className="min-h-screen">
@@ -39,6 +40,7 @@ export default function HammamMassagePackagePage() {
                 serviceTitle={language === "en" ? ritual.title.en : ritual.title.fr}
                 selectedOption={selectedOption === "solo" ? ritual.soloLabel : ritual.duoLabel}
                 numberOfPeople={1}
+                selectedPrice={priceNumber}
                 onClose={() => setShowBookingForm(false)}
                 isGridLayout={true}
               />

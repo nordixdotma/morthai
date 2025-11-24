@@ -1,5 +1,7 @@
 "use client"
 import { useState } from "react"
+import type React from "react"
+
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useTranslations } from "@/lib/use-translations"
 
@@ -27,14 +29,21 @@ export default function servicessection() {
         <div className="relative pb-16">
           {/* Desktop carousel view */}
           <div className="hidden md:block overflow-hidden">
-            <div className="flex transition-transform duration-300 carousel-container">
+            <div
+              className="flex transition-transform duration-300 carousel-container"
+              style={
+                {
+                  "--carousel-index": currentIndex,
+                } as React.CSSProperties
+              }
+            >
               {items.map((item, itemIndex) => (
                 <div key={itemIndex} className="w-1/3 flex-shrink-0 px-2">
                   <div className="bg-white rounded-xl overflow-hidden flex flex-col h-full border border-gray-100 transition-colors duration-300 hover:border-primary/20 shadow-md hover:shadow-lg">
                     {/* Image container with improved aspect ratio */}
                     <div className="relative overflow-hidden bg-gray-100 h-64">
                       <img
-                        src={`/sections/e${itemIndex + 1}.${itemIndex === 0 || itemIndex === 3 || itemIndex === 4 ? "webp" : "jpg"}`}
+                        src={`/sections/e${itemIndex + 1}.${itemIndex === 0 || itemIndex === 3 || itemIndex === 4 || itemIndex === 5 ? "webp" : "jpg"}`}
                         alt={item.title}
                         className="w-full h-full object-cover"
                       />
@@ -78,7 +87,7 @@ export default function servicessection() {
                 {/* Image container */}
                 <div className="relative overflow-hidden bg-gray-100 h-32">
                   <img
-                    src={`/sections/e${itemIndex + 1}.${itemIndex === 0 || itemIndex === 3 || itemIndex === 4 ? "webp" : "jpg"}`}
+                    src={`/sections/e${itemIndex + 1}.${itemIndex === 0 || itemIndex === 3 || itemIndex === 4 || itemIndex === 5 ? "webp" : "jpg"}`}
                     alt={item.title}
                     className="w-full h-full object-cover"
                   />
