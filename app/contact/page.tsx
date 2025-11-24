@@ -75,7 +75,7 @@ export default function ContactPage() {
       {/* Contact Info Cards */}
       <section className="py-16 md:py-20 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl">
         <Container className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 ms:grid-cols-4 gap-2 md:gap-6 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 mb-16">
             {contactInfo.map((item, index) => {
               const Icon = item.icon
               return (
@@ -103,7 +103,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-20 bg-[#fff8f5]">
         <Container className="max-w-4xl mx-auto px-2 md:px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-trajan-pro font-bold text-gray-900 mb-4">{t.contact.heading}</h2>

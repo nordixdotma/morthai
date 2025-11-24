@@ -138,7 +138,7 @@ export default function ServiceDetailPage() {
                   />
                 </div>
 
-                <div className="flex flex-col h-full">
+                <div className="flex flex-col">
                   <h1 className="text-2xl md:text-3xl font-trajan-pro font-bold text-gray-900 mb-4 text-balance">
                     {title}
                   </h1>

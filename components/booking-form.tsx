@@ -16,6 +16,7 @@ interface BookingFormProps {
   selectedPrice?: number
   onClose: () => void
   isGridLayout?: boolean
+  onReservationSuccess?: (reservation: ReservationData) => void
 }
 
 interface FormData {
@@ -28,6 +29,17 @@ interface FormData {
   note: string
 }
 
+export interface ReservationData extends FormData {
+  serviceTitle: string
+  selectedOption: string
+  numberOfPeople: number
+  selectedPrice: number
+  paymentMethod: "spa" | "online"
+  totalPrice: number
+  id: string
+  createdAt: string
+}
+
 export default function BookingForm({
   serviceTitle,
   selectedOption,
@@ -35,6 +47,7 @@ export default function BookingForm({
   selectedPrice = 0,
   onClose,
   isGridLayout = false,
+  onReservationSuccess,
 }: BookingFormProps) {
   const { language } = useLanguage()
   const t = useTranslations()
@@ -48,6 +61,8 @@ export default function BookingForm({
     note: "",
   })
   const [paymentMethod, setPaymentMethod] = useState<"spa" | "online">("spa")
+  const [validationError, setValidationError] = useState("")
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
   useEffect(() => {
     window.scrollTo({
@@ -59,15 +74,74 @@ export default function BookingForm({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
+    setValidationError("") // Clear error when user starts typing
   }
 
   const handlePhoneChange = (value: string) => {
     setFormData((prev) => ({ ...prev, phoneNumber: value }))
+    setValidationError("") // Clear error when user changes phone
+  }
+
+  const validateForm = (): boolean => {
+    const requiredFields = ["firstName", "lastName", "reservationDate", "reservationTime", "phoneNumber", "email"]
+    const emptyFields = requiredFields.filter((field) => !formData[field as keyof FormData])
+
+    if (emptyFields.length > 0) {
+      setValidationError(
+        language === "fr" ? "Veuillez remplir tous les champs obligatoires" : "Please fill in all required fields",
+      )
+      return false
+    }
+
+    if (!formData.email.includes("@")) {
+      setValidationError(language === "fr" ? "Veuillez entrer un email valide" : "Please enter a valid email")
+      return false
+    }
+
+    return true
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Booking submitted:", { ...formData, paymentMethod, numberOfPeople, totalPrice })
+
+    if (!validateForm()) {
+      return
+    }
+
+    if (paymentMethod === "online") {
+      setValidationError(
+        language === "fr" ? "Le paiement en ligne sera disponible bientôt" : "Online payment will be available soon",
+      )
+      return
+    }
+
+    const reservation: ReservationData = {
+      ...formData,
+      serviceTitle,
+      selectedOption,
+      numberOfPeople,
+      selectedPrice,
+      paymentMethod,
+      totalPrice: selectedPrice * numberOfPeople,
+      id: Date.now().toString(),
+      createdAt: new Date().toISOString(),
+    }
+
+    // Save to localStorage
+    const existingReservations = JSON.parse(localStorage.getItem("reservations") || "[]")
+    existingReservations.push(reservation)
+    localStorage.setItem("reservations", JSON.stringify(existingReservations))
+
+    // Show success message and trigger callback
+    setShowSuccessMessage(true)
+    if (onReservationSuccess) {
+      onReservationSuccess(reservation)
+    }
+
+    // Close form after delay
+    setTimeout(() => {
+      onClose()
+    }, 2000)
   }
 
   const totalPrice = selectedPrice * numberOfPeople
@@ -76,7 +150,46 @@ export default function BookingForm({
     ? "bg-white rounded-lg"
     : "min-h-screen bg-white w-full overflow-y-auto flex flex-col"
 
-  const contentClass = isGridLayout ? "p-4 md:p-6" : "p-4 md:p-6 max-w-7xl mx-auto pb-16 flex-grow"
+  const contentClass = isGridLayout ? "p-4 md:p-6" : "p-3 md:p-6 max-w-7xl mx-auto pb-16 flex-grow"
+
+  if (showSuccessMessage) {
+    return (
+      <div className={containerClass}>
+        <div className="sticky top-0 bg-white border-b border-gray-200 p-4 md:p-6 z-1">
+          <h2 className="text-2xl md:text-3xl font-trajan-pro font-bold text-gray-900">
+            {t.bookingForm?.completeYourBooking || "Complete Your Booking"}
+          </h2>
+        </div>
+
+        <div className={contentClass}>
+          <div className="flex items-center justify-center min-h-96">
+            <div className="text-center space-y-4">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">
+                {language === "fr" ? "Réservation confirmée!" : "Reservation Confirmed!"}
+              </h3>
+              <p className="text-gray-600 max-w-sm">
+                {language === "fr"
+                  ? "Votre réservation a été enregistrée avec succès. Vous recevrez bientôt un email de confirmation."
+                  : "Your reservation has been saved successfully. You will receive a confirmation email shortly."}
+              </p>
+              <p className="text-sm text-gray-500">
+                {language === "fr" ? "Paiement à effectuer à la spa" : "Payment to be made at the spa"}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className={containerClass}>
@@ -306,15 +419,15 @@ export default function BookingForm({
                   />
                   <span className="ml-3 font-medium text-gray-900">{t.bookingForm?.payOnline || "Pay Online"}</span>
                 </div>
-                <Image
-                  src="/payment.png"
-                  alt="Credit Card"
-                  width={50}
-                  height={30}
-                  className="h-4 md:h-8 w-auto"
-                />
+                <Image src="/payment.png" alt="Credit Card" width={50} height={30} className="h-4 md:h-8 w-auto" />
               </label>
             </div>
+
+            {validationError && (
+              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-sm text-red-700">{validationError}</p>
+              </div>
+            )}
 
             {/* Terms and Conditions */}
             <div className="space-y-4 pt-4">

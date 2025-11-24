@@ -268,7 +268,6 @@ body {
   .latest-articles-section {
     background-size: 150px 150px !important;
   }
-
 }
 
 .discovery-heading {
@@ -404,5 +403,29 @@ body {
   to {
     transform: translateX(-100%);
     opacity: 0;
+  }
+}
+
+/* Override react-phone-input-2 library styling to ensure full width on all devices */
+.react-phone-input-2 {
+  width: 100% !important;
+}
+
+.react-phone-input-2 input {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.react-phone-input-2 .flag-dropdown {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure phone input respects container width on mobile */
+@media (max-width: 768px) {
+  .react-phone-input-2 input {
+    width: 100% !important;
+    font-size: 16px; /* Prevents zoom on iOS */
   }
 }

@@ -1,5 +1,7 @@
 "use client"
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect, useRef } from "react"
+import type React from "react"
+
 import { ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { getAllServices, type GiftCard, type Massage, type FacialCare, type Hammam } from "@/lib/services-data"
@@ -34,9 +36,17 @@ export default function OfferBooking({
   const [senderName, setSenderName] = useState("")
   const [senderNote, setSenderNote] = useState("")
   const [showBookingForm, setShowBookingForm] = useState(false)
+  const [currentDate] = useState(() => {
+    const now = new Date()
+    return now
+  })
+
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const audioTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const isAudioPlayingRef = useRef(false)
 
   const services = getAllServices()
-  const giftCards = services.giftCards as GiftCard[]
+  const giftCards: GiftCard[] = services.giftCards
   const allServices = services
 
   const currentGiftCard = useMemo(() => {
@@ -45,12 +55,12 @@ export default function OfferBooking({
   }, [selectedGiftCard, giftCards])
 
   const currentServices = useMemo(() => {
-    return allServices[selectedServiceType] as Service[]
+    return (allServices[selectedServiceType] as Service[]) || []
   }, [selectedServiceType, allServices])
 
   const currentService = useMemo(() => {
     if (!selectedService) return null
-    return currentServices.find((s) => s.id === selectedService)
+    return (currentServices as Service[]).find((s: Service) => s.id === selectedService)
   }, [selectedService, currentServices])
 
   const currentOptions = useMemo(() => {
@@ -62,6 +72,50 @@ export default function OfferBooking({
     }
     return []
   }, [currentService])
+
+  const formatDate = (date: Date) => {
+    const day = String(date.getDate()).padStart(2, "0")
+    const month = String(date.getMonth() + 1).padStart(2, "0")
+    const year = date.getFullYear()
+    return `${day}/${month}/${year}`
+  }
+
+  const playTypingSound = () => {
+    if (!audioRef.current) return
+
+    // Clear existing timeout
+    if (audioTimeoutRef.current) {
+      clearTimeout(audioTimeoutRef.current)
+    }
+
+    // If audio is not already playing, start it
+    if (!isAudioPlayingRef.current) {
+      audioRef.current.currentTime = 0
+      audioRef.current.play().catch(() => {
+        // Silently fail if audio can't play
+      })
+      isAudioPlayingRef.current = true
+    }
+
+    // Set timeout to stop audio after 300ms of inactivity
+    audioTimeoutRef.current = setTimeout(() => {
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current.currentTime = 0
+      }
+      isAudioPlayingRef.current = false
+    }, 300)
+  }
+
+  const handleRecipientNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRecipientName(e.target.value)
+    playTypingSound()
+  }
+
+  const handleSenderNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSenderName(e.target.value)
+    playTypingSound()
+  }
 
   const isThemeComplete = !!selectedGiftCard
   const isServiceComplete = !!selectedService && !!selectedOption
@@ -92,6 +146,13 @@ export default function OfferBooking({
     return labels[currentStep - 1] || ""
   }
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }, [])
+
   if (showBookingForm && currentService) {
     const serviceTitle = "title" in currentService ? currentService.title.en : ""
     return (
@@ -109,6 +170,8 @@ export default function OfferBooking({
 
   return (
     <div className={containerClass}>
+      <audio ref={audioRef} src="/writing.mp3" />
+
       {/* Step Indicator - Centered at top */}
       <div className="flex flex-col items-center pt-6 md:pt-8 px-4">
         <div className="flex gap-2 md:gap-3 mb-4">
@@ -144,15 +207,15 @@ export default function OfferBooking({
                 <button
                   key={gc.id}
                   onClick={() => setSelectedGiftCard(gc.id)}
-                  className={`relative h-40 md:h-56 rounded-lg overflow-hidden group transition-all ${
-                    selectedGiftCard === gc.id ? "ring-2 ring-primary" : "hover:shadow-lg"
+                  className={`relative h-56 md:h-80 rounded-lg overflow-hidden group transition-all ${
+                    selectedGiftCard === gc.id ? "ring-2 ring-primary" : ""
                   }`}
                 >
                   <Image
                     src={gc.mainImage || "/placeholder.svg"}
                     alt={gc.id}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-contain transition-transform duration-300"
                   />
                   {selectedGiftCard === gc.id && (
                     <div className="absolute inset-0 border-3 border-primary rounded-lg" />
@@ -242,90 +305,116 @@ export default function OfferBooking({
         {/* Step 4: Recipient Info */}
         {currentStep === 4 && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mt-4 md:mt-6">
-            {/* Left: Images */}
-            <div className="space-y-4">
+            {/* Left: Images with Preview Overlay */}
+            <div className="space-y-3 md:space-y-4">
               <h3 className="text-base md:text-lg font-trajan-pro font-bold text-gray-900">Gift Card Preview</h3>
-              <div className="grid grid-cols-2 gap-3 md:gap-4">
+              <div className="space-y-3">
                 {currentGiftCard && (
                   <>
-                    <Image
-                      src={currentGiftCard.mainImage || "/placeholder.svg"}
-                      alt="Gift card main"
-                      width={200}
-                      height={150}
-                      className="w-full h-32 md:h-48 object-cover rounded-lg"
-                    />
-                    <Image
-                      src={currentGiftCard.previewImage || "/placeholder.svg"}
-                      alt="Gift card preview"
-                      width={200}
-                      height={150}
-                      className="w-full h-32 md:h-48 object-cover rounded-lg"
-                    />
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="relative h-52 md:h-80 rounded-lg overflow-hidden">
+                        <Image
+                          src={currentGiftCard.mainImage || "/placeholder.svg"}
+                          alt="Gift card main"
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+
+                      <div className="relative h-52 md:h-80 rounded-lg overflow-hidden">
+                        <Image
+                          src={currentGiftCard.previewImage || "/placeholder.svg"}
+                          alt="Gift card preview"
+                          fill
+                          className="object-contain"
+                        />
+
+                        {/* Recipient Name Overlay */}
+                        <div className="absolute top-4 left-3 right-3">
+                          <p className="text-xs md:text-sm font-semibold text-gray-800 truncate">
+                            {recipientName || "To dearest"}
+                          </p>
+                        </div>
+
+                        {/* Sender Name Overlay */}
+                        <div className="absolute bottom-7 left-3 right-3">
+                          <p className="text-xs md:text-sm font-semibold text-gray-800 truncate">
+                            {senderName || "From"}
+                          </p>
+                        </div>
+
+                        {/* Validity Date Overlay */}
+                        <div className="absolute bottom-2 left-3 right-3">
+                          <p className="text-xs md:text-sm text-gray-700">
+                            Valid for 1 year from: {formatDate(currentDate)}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </>
                 )}
               </div>
             </div>
 
             {/* Right: Form */}
-            <form className="space-y-4 md:space-y-6">
+            <form className="space-y-3 md:space-y-4">
               <div>
-                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">To my dearest *</label>
+                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1.5">To my dearest *</label>
                 <input
                   type="text"
                   value={recipientName}
-                  onChange={(e) => setRecipientName(e.target.value)}
+                  onChange={handleRecipientNameChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition text-sm"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition text-sm"
                   placeholder="Recipient name"
                 />
               </div>
 
               <div>
-                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">Email *</label>
+                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1.5">Email *</label>
                 <input
                   type="email"
                   value={recipientEmail}
                   onChange={(e) => setRecipientEmail(e.target.value)}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition text-sm"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition text-sm"
                   placeholder="Recipient email"
                 />
               </div>
 
               <div>
-                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1.5">Phone Number *</label>
                 <input
                   type="tel"
                   value={recipientPhone}
                   onChange={(e) => setRecipientPhone(e.target.value)}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition text-sm"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition text-sm"
                   placeholder="Recipient phone"
                 />
               </div>
 
-              <div className="pt-3 md:pt-4 border-t border-gray-200">
-                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">From *</label>
+              <div className="pt-2 md:pt-3 border-t border-gray-200">
+                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1.5">From *</label>
                 <input
                   type="text"
                   value={senderName}
-                  onChange={(e) => setSenderName(e.target.value)}
+                  onChange={handleSenderNameChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition text-sm"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition text-sm"
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1.5">
                   Note or Message (Optional)
                 </label>
                 <textarea
                   value={senderNote}
                   onChange={(e) => setSenderNote(e.target.value)}
                   rows={3}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition resize-none text-sm"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition resize-none text-sm"
                   placeholder="Add a personal message..."
                 />
               </div>

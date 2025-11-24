@@ -11,29 +11,17 @@ import { motion, AnimatePresence } from "framer-motion"
 import { usePathname } from "next/navigation"
 import { useLanguage } from "@/lib/language-context"
 import { useTranslations } from "@/lib/use-translations"
+import type { ReservationData } from "@/components/booking-form"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false)
   const [reservationModalOpen, setReservationModalOpen] = useState(false)
-  const [reservationCount] = useState(3) // Mock data - replace with real data
+  const [reservations, setReservations] = useState<ReservationData[]>([])
   const pathname = usePathname()
   const { language, setLanguage } = useLanguage()
   const t = useTranslations()
-
-  const languages = [
-    {
-      code: "fr",
-      name: "Français",
-      flag: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg",
-    },
-    {
-      code: "en",
-      name: "English",
-      flag: "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
-    },
-  ]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,6 +42,33 @@ export default function Header() {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [languageDropdownOpen])
+
+  useEffect(() => {
+    const loadReservations = () => {
+      const stored = localStorage.getItem("reservations")
+      if (stored) {
+        try {
+          setReservations(JSON.parse(stored))
+        } catch (e) {
+          console.error("Failed to parse reservations:", e)
+        }
+      }
+    }
+
+    loadReservations()
+
+    const handleStorageChange = () => {
+      loadReservations()
+    }
+
+    window.addEventListener("storage", handleStorageChange)
+    window.addEventListener("reservationUpdated", handleStorageChange)
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange)
+      window.removeEventListener("reservationUpdated", handleStorageChange)
+    }
+  }, [])
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -79,6 +94,19 @@ export default function Header() {
     }
   }, [reservationModalOpen])
 
+  const languages = [
+    {
+      code: "fr",
+      name: "Français",
+      flag: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg",
+    },
+    {
+      code: "en",
+      name: "English",
+      flag: "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
+    },
+  ]
+
   const navigationLinks = [
     { href: "/", label: t.header.home },
     { href: "/massages", label: t.header.massages },
@@ -90,6 +118,15 @@ export default function Header() {
     { href: "/gift-idea", label: t.header.giftIdea },
     { href: "/contact", label: t.header.contact },
   ]
+
+  const formatDate = (dateString: string) => {
+    try {
+      const date = new Date(dateString)
+      return date.toLocaleDateString(language === "fr" ? "fr-FR" : "en-US")
+    } catch {
+      return dateString
+    }
+  }
 
   return (
     <header
@@ -105,8 +142,9 @@ export default function Header() {
           <div className="relative z-20 language-dropdown-container">
             <button
               onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-                }`}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${
+                scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+              }`}
             >
               <img
                 src={languages.find((lang) => lang.code === language)?.flag || "/placeholder.svg"}
@@ -117,8 +155,9 @@ export default function Header() {
                 {language}
               </span>
               <ChevronDown
-                className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""
-                  } ${scrolled ? "text-gray-800" : "text-white"}`}
+                className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""} ${
+                  scrolled ? "text-gray-800" : "text-white"
+                }`}
               />
             </button>
 
@@ -131,8 +170,9 @@ export default function Header() {
                       setLanguage(lang.code as "en" | "fr")
                       setLanguageDropdownOpen(false)
                     }}
-                    className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${lang.code === language ? "bg-primary/10" : ""
-                      }`}
+                    className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${
+                      lang.code === language ? "bg-primary/10" : ""
+                    }`}
                   >
                     <img
                       src={lang.flag || "/placeholder.svg"}
@@ -164,8 +204,9 @@ export default function Header() {
             {/* Modern Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`relative flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-                }`}
+              className={`relative flex flex-col justify-center items-center w-10 h-10 rounded-lg transition-colors ${
+                scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+              }`}
               aria-label="Toggle menu"
             >
               <svg
@@ -197,8 +238,9 @@ export default function Header() {
             <div className="relative language-dropdown-container">
               <button
                 onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
-                  }`}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
+                  scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"
+                }`}
               >
                 <img
                   src={languages.find((lang) => lang.code === language)?.flag || "/placeholder.svg"}
@@ -209,8 +251,9 @@ export default function Header() {
                   {language}
                 </span>
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""
-                    } ${scrolled ? "text-gray-800" : "text-white"}`}
+                  className={`w-4 h-4 transition-transform duration-300 ${languageDropdownOpen ? "rotate-180" : ""} ${
+                    scrolled ? "text-gray-800" : "text-white"
+                  }`}
                 />
               </button>
 
@@ -223,8 +266,9 @@ export default function Header() {
                         setLanguage(lang.code as "en" | "fr")
                         setLanguageDropdownOpen(false)
                       }}
-                      className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${lang.code === language ? "bg-primary/10" : ""
-                        }`}
+                      className={`flex items-center space-x-3 w-full px-4 py-2.5 text-left hover:bg-primary/20 transition-colors ${
+                        lang.code === language ? "bg-primary/10" : ""
+                      }`}
                     >
                       <img
                         src={lang.flag || "/placeholder.svg"}
@@ -259,9 +303,9 @@ export default function Header() {
                 aria-label="Reservation history"
               >
                 <Calendar className="w-5 h-5" />
-                {reservationCount > 0 && (
+                {reservations.length > 0 && (
                   <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                    {reservationCount}
+                    {reservations.length}
                   </span>
                 )}
               </button>
@@ -277,8 +321,9 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-all duration-300  relative group font-trajan-pro uppercase tracking-wider ${scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
-                    } ${pathname === link.href ? "text-primary" : ""}`}
+                  className={`text-sm font-medium transition-all duration-300  relative group font-trajan-pro uppercase tracking-wider ${
+                    scrolled ? "text-gray-800 hover:text-primary" : "text-white hover:text-white/80"
+                  } ${pathname === link.href ? "text-primary" : ""}`}
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -355,8 +400,9 @@ export default function Header() {
                       >
                         <Link
                           href={link.href}
-                          className={`flex items-center py-2 md:py-3 px-4 rounded-xl text-gray-800 hover:bg-gray-100 transition-colors text-sm md:text-base ${pathname === link.href ? "bg-primary/20 text-primary" : ""
-                            }`}
+                          className={`flex items-center py-2 md:py-3 px-4 rounded-xl text-gray-800 hover:bg-gray-100 transition-colors text-sm md:text-base ${
+                            pathname === link.href ? "bg-primary/20 text-primary" : ""
+                          }`}
                           onClick={() => setIsMenuOpen(false)}
                         >
                           <span className="font-medium font-trajan-pro uppercase">{link.label}</span>
@@ -381,9 +427,9 @@ export default function Header() {
                   >
                     <Calendar className="h-5 w-5 mr-2" />
                     {t.header.reservations}
-                    {reservationCount > 0 && (
+                    {reservations.length > 0 && (
                       <span className="ml-auto bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                        {reservationCount}
+                        {reservations.length}
                       </span>
                     )}
                   </motion.button>
@@ -454,19 +500,33 @@ export default function Header() {
                 {/* Content */}
                 <div className="p-4 max-h-80 overflow-y-auto">
                   <div className="space-y-2">
-                    {/* Sample reservation items - replace with real data */}
-                    <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                      <h3 className="font-semibold text-gray-900 text-sm mb-1">Thai Massage</h3>
-                      <p className="text-xs text-gray-600">Nov 15, 2025 - 2:00 PM</p>
-                    </div>
-                    <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                      <h3 className="font-semibold text-gray-900 text-sm mb-1">Hammam Treatment</h3>
-                      <p className="text-xs text-gray-600">Nov 10, 2025 - 4:30 PM</p>
-                    </div>
-                    <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                      <h3 className="font-semibold text-gray-900 text-sm mb-1">Facial Care</h3>
-                      <p className="text-xs text-gray-600">Nov 5, 2025 - 11:00 AM</p>
-                    </div>
+                    {reservations.length > 0 ? (
+                      reservations.map((reservation) => (
+                        <div key={reservation.id} className="p-3 bg-gray-50 rounded border border-gray-200">
+                          <h3 className="font-semibold text-gray-900 text-sm mb-1">{reservation.serviceTitle}</h3>
+                          <p className="text-xs text-gray-600 mb-2">
+                            {formatDate(reservation.reservationDate)} - {reservation.reservationTime}
+                          </p>
+                          <p className="text-xs text-gray-600 mb-1">
+                            {language === "fr" ? "Client:" : "Name:"} {reservation.firstName} {reservation.lastName}
+                          </p>
+                          <p className="text-xs font-medium text-primary">
+                            {reservation.totalPrice} MAD -{" "}
+                            {reservation.paymentMethod === "spa"
+                              ? language === "fr"
+                                ? "Paiement à la spa"
+                                : "Pay at spa"
+                              : "Online"}
+                          </p>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-center py-8">
+                        <p className="text-gray-500 text-sm">
+                          {language === "fr" ? "Aucune réservation" : "No reservations"}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -476,7 +536,7 @@ export default function Header() {
                     onClick={() => setReservationModalOpen(false)}
                     className="w-full bg-primary text-white py-2 px-4 rounded font-medium text-sm hover:bg-primary/90 transition-colors"
                   >
-                    Close
+                    {language === "fr" ? "Fermer" : "Close"}
                   </button>
                 </div>
               </div>
