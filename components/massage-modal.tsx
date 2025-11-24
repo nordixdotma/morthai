@@ -122,12 +122,13 @@ export default function OfferBooking({
           {[1, 2, 3, 4].map((step) => (
             <div key={step} className="flex items-center gap-2">
               <div
-                className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-semibold text-xs md:text-sm ${step < currentStep
+                className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-semibold text-xs md:text-sm ${
+                  step < currentStep
                     ? "bg-primary text-white"
                     : step === currentStep
                       ? "bg-primary text-white"
                       : "bg-gray-200 text-gray-700"
-                  }`}
+                }`}
               >
                 {step < currentStep ? "✓" : step}
               </div>
@@ -150,8 +151,9 @@ export default function OfferBooking({
                 <button
                   key={gc.id}
                   onClick={() => setSelectedGiftCard(gc.id)}
-                  className={`relative h-40 md:h-56 rounded-lg overflow-hidden group transition-all ${selectedGiftCard === gc.id ? "ring-2 ring-primary" : "hover:shadow-lg"
-                    }`}
+                  className={`relative h-40 md:h-56 rounded-lg overflow-hidden group transition-all ${
+                    selectedGiftCard === gc.id ? "ring-2 ring-primary" : "hover:shadow-lg"
+                  }`}
                 >
                   <Image
                     src={gc.mainImage || "/placeholder.svg"}
@@ -181,10 +183,11 @@ export default function OfferBooking({
                     setSelectedService(null)
                     setSelectedOption(null)
                   }}
-                  className={`px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-all ${selectedServiceType === type
+                  className={`px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-all ${
+                    selectedServiceType === type
                       ? "bg-primary text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
+                  }`}
                 >
                   {type === "packages" ? "Hammam & Massage" : type.charAt(0).toUpperCase() + type.slice(1)}
                 </button>
@@ -200,10 +203,11 @@ export default function OfferBooking({
                     setSelectedService(service.id)
                     setSelectedOption(null)
                   }}
-                  className={`p-3 md:p-4 rounded-lg border-2 text-center transition-all ${selectedService === service.id
+                  className={`p-3 md:p-4 rounded-lg border-2 text-center transition-all ${
+                    selectedService === service.id
                       ? "border-primary bg-primary/5"
                       : "border-gray-200 hover:border-primary/50"
-                    }`}
+                  }`}
                 >
                   <p className="font-semibold text-xs md:text-sm text-gray-900 line-clamp-2">
                     {"title" in service ? service.title.en : service.id}
@@ -229,10 +233,11 @@ export default function OfferBooking({
                 <button
                   key={option}
                   onClick={() => setSelectedOption(option)}
-                  className={`px-4 md:px-6 py-2 md:py-3 rounded-lg border-2 font-medium text-sm md:text-base transition-all ${selectedOption === option
+                  className={`px-4 md:px-6 py-2 md:py-3 rounded-lg border-2 font-medium text-sm md:text-base transition-all ${
+                    selectedOption === option
                       ? "border-primary bg-primary text-white"
                       : "border-gray-300 text-gray-900 hover:border-primary"
-                    }`}
+                  }`}
                 >
                   {option}
                 </button>

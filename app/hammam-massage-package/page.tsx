@@ -187,7 +187,6 @@ export default function HammamMassagePackagePage() {
                           }}
                           className="flex-1 px-4 py-3 border-2 border-primary text-primary font-semibold rounded-md transition-all duration-300 hover:bg-primary/10 active:scale-95 inline-flex items-center justify-center gap-2 group"
                         >
-                          <span className="transition-transform duration-300 group-hover:scale-110">✨</span>
                           <span>Offer</span>
                         </button>
                       </div>
