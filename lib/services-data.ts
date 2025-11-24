@@ -64,6 +64,18 @@ export interface HammamMassagePackage {
     en: string
     fr: string
   }
+  hammamTitle: string
+  hammamDescription: string
+  massageTitle: string
+  massageDuration: string
+  massageOptions: string
+  soloLabel: string
+  soloPrice: string
+  soloPriceEur: string
+  duoLabel: string
+  duoPrice: string
+  duoPriceEur: string
+  cta: string
   options: PackageOption[]
 }
 
@@ -322,7 +334,6 @@ export const massagesData: Massage[] = [
 // ============================================
 
 export const hammamData: Hammam[] = [
-
   {
     id: "hammam-secret-ghassoul",
     title: {
@@ -374,6 +385,20 @@ export const hammamMassagePackagesData: HammamMassagePackage[] = [
       en: "30 to 40 minutes of Hammam: Application of moisturizing eucalyptus black soap followed by a pleasant body scrub for perfectly cleansed and smoothed skin, then the application of nourishing shampoo and mask with wheat germ, and finally a relaxing shower. Followed by: 60 min Massage of your choice (Ancestral Thai in Kimono, Thai Energy Harmony, Anti-Stress Healing Touch, Balinese Escape, Cradle of Palms).",
       fr: "30 à 40 minutes de Hammam: Application de savon noir eucalyptus hydratant suivi d'un agréable gommage du corps pour une peau parfaitement nettoyée et lissée, puis l'application d'un shampooing nourrissant et d'un masque au germe de blé, et enfin une douche relaxante. Suivi de: 60 min de massage de votre choix (Thai ancestral en Kimono, Harmonie Énergétique Thaï, Toucher Guérisseur Anti-Stress, Évasion Balinaise, Berceau des Paumes).",
     },
+    hammamTitle: "30 to 40 minutes of Hammam",
+    hammamDescription:
+      "Application of moisturizing eucalyptus black soap followed by a pleasant body scrub for a perfectly cleansed and smoothed skin, then the application of a nourishing shampoo and mask with wheat germ, and finally a relaxing shower.",
+    massageTitle: "Followed by:",
+    massageDuration: "60 min Massage of your choice",
+    massageOptions:
+      "Ancestral Thai in Kimono, Thai Energy Harmony, Anti-Stress Healing Touch, Balinese Escape, Cradle of Palms.",
+    soloLabel: "En Solo",
+    soloPrice: "830 MAD",
+    soloPriceEur: "€83",
+    duoLabel: "Duo",
+    duoPrice: "1600 MAD",
+    duoPriceEur: "€160",
+    cta: "Book",
     options: [
       { optionName: "En Solo", price: 830, priceEUR: 83 },
       { optionName: "Duo", price: 1600, priceEUR: 160 },
@@ -389,36 +414,20 @@ export const hammamMassagePackagesData: HammamMassagePackage[] = [
       en: "30 to 40 minutes of Hammam: Application of moisturizing eucalyptus black soap followed by a pleasant body scrub for perfectly cleansed and smoothed skin, then the application of nourishing shampoo and mask with wheat germ, and finally a relaxing shower. Followed by: 90 min Massage of your choice (Ancestral Thai in Kimono, Thai Energy Harmony, Anti-Stress Healing Touch, Balinese Escape, Cradle of Palms).",
       fr: "30 à 40 minutes de Hammam: Application de savon noir eucalyptus hydratant suivi d'un agréable gommage du corps pour une peau parfaitement nettoyée et lissée, puis l'application d'un shampooing nourrissant et d'un masque au germe de blé, et enfin une douche relaxante. Suivi de: 90 min de massage de votre choix (Thai ancestral en Kimono, Harmonie Énergétique Thaï, Toucher Guérisseur Anti-Stress, Évasion Balinaise, Berceau des Paumes).",
     },
-    options: [
-      { optionName: "En Solo", price: 1030, priceEUR: 103 },
-      { optionName: "Duo", price: 2000, priceEUR: 200 },
-    ],
-  },
-  {
-    id: "ritual-eternity-within",
-    title: {
-      en: "Ritual Eternity Within",
-      fr: "Rituel L'Éternité en Soi",
-    },
-    description: {
-      en: "45 to 55 minutes of Beldi Hammam: Soft application of eucalyptus black soap followed by a pleasant body scrub for perfectly cleansed and soothed skin, then on the body application of rhassoul enriched with seven aromatic plants making the skin soft and silky, on the face a Thai herbal mask is applied—ideal for refining and brightening the skin tone, afterwards nourishing shampoo and mask with wheat germs is gently applied, and finally a relaxing shower with the refreshing scent of aloe vera. Followed by: 60 min Massage of your choice (Ancestral Thai in Kimono, Thai Energy Harmony, Anti-Stress Healing Touch, Balinese Escape, Cradle of Palms).",
-      fr: "45 à 55 minutes de Hammam Beldi: Application douce du savon noir eucalyptus suivie d'un agréable gommage du corps pour une peau parfaitement nettoyée et apaisée, puis sur le corps application de rhassoul enrichi de sept plantes aromatiques rendant la peau douce et soyeuse, sur le visage un masque facial aux herbes thaïlandaises est appliqué—idéal pour affiner et illuminer le teint de la peau, ensuite un shampooing nourrissant et un masque aux germes de blé sont doucement appliqués, et enfin une douche relaxante au parfum rafraîchissant d'aloe vera. Suivi de: 60 min de massage de votre choix (Thai ancestral en Kimono, Harmonie Énergétique Thaï, Toucher Guérisseur Anti-Stress, Évasion Balinaise, Berceau des Paumes).",
-    },
-    options: [
-      { optionName: "En Solo", price: 930, priceEUR: 93 },
-      { optionName: "Duo", price: 1800, priceEUR: 180 },
-    ],
-  },
-  {
-    id: "majestic-rebirth-ritual",
-    title: {
-      en: "Majestic Rebirth Ritual",
-      fr: "Rituel de la Renaissance Majestueuse",
-    },
-    description: {
-      en: "45 to 55 minutes of Beldi Hammam: Soft application of eucalyptus black soap followed by a pleasant body scrub for perfectly cleansed and soothed skin, then on the body application of rhassoul enriched with seven aromatic plants making the skin soft and silky, on the face a Thai herbal mask is applied—ideal for refining and brightening the skin tone, afterwards nourishing shampoo and mask with wheat germs is gently applied, and finally a relaxing shower with the refreshing scent of aloe vera. Followed by: 90 min Massage of your choice (Ancestral Thai in Kimono, Thai Energy Harmony, Anti-Stress Healing Touch, Balinese Escape, Cradle of Palms).",
-      fr: "45 à 55 minutes de Hammam Beldi: Application douce du savon noir eucalyptus suivie d'un agréable gommage du corps pour une peau parfaitement nettoyée et apaisée, puis sur le corps application de rhassoul enrichi de sept plantes aromatiques rendant la peau douce et soyeuse, sur le visage un masque facial aux herbes thaïlandaises est appliqué—idéal pour affiner et illuminer le teint de la peau, ensuite un shampooing nourrissant et un masque aux germes de blé sont doucement appliqués, et enfin une douche relaxante au parfum rafraîchissant d'aloe vera. Suivi de: 90 min de massage de votre choix (Thai ancestral en Kimono, Harmonie Énergétique Thaï, Toucher Guérisseur Anti-Stress, Évasion Balinaise, Berceau des Paumes).",
-    },
+    hammamTitle: "30 to 40 minutes of Hammam",
+    hammamDescription:
+      "Application of moisturizing eucalyptus black soap followed by a pleasant body scrub for a perfectly cleansed and smoothed skin, then the application of a nourishing shampoo and mask with wheat germ, and finally a relaxing shower.",
+    massageTitle: "Followed by:",
+    massageDuration: "90 min Massage of your choice",
+    massageOptions:
+      "Ancestral Thai in Kimono, Thai Energy Harmony, Anti-Stress Healing Touch, Balinese Escape, Cradle of Palms.",
+    soloLabel: "En Solo",
+    soloPrice: "1030 MAD",
+    soloPriceEur: "€103",
+    duoLabel: "Duo",
+    duoPrice: "2000 MAD",
+    duoPriceEur: "€200",
+    cta: "Book",
     options: [
       { optionName: "En Solo", price: 1030, priceEUR: 103 },
       { optionName: "Duo", price: 2000, priceEUR: 200 },
@@ -439,7 +448,7 @@ export const facialCareData: FacialCare[] = [
     },
     description: {
       en: "Are you looking for a hydrating and deep cleansing treatment for your face? This purifying face care, combined with the quality of natural cosmetic products from Thailand and the expertise of traditional modeling practiced manually, eliminates effectively dead cells, energizes and hydrates the skin deeply. It all starts with the application of warm compresses to open the pores, then a deep cleansing with virgin coconut oil and rose water to revitalize the skin, followed by a regenerating scrub using a Thai herbal hydrating mask, and to finish peacefully, a relaxing facial massage with a hydrating cream to bring you a soft, smooth and radiant skin and a perfectly relaxed mind.",
-      fr: "Recherchez-vous un traitement hydratant et nettoyant en profondeur pour votre visage? Ce soin facial purifiant, associé à la qualité des produits cosmétiques naturels de Thaïlande et à l'expertise du modelage traditionnel pratiqué manuellement, élimine efficacement les cellules mortes, dynamise et hydrate la peau en profondeur. Cela commence par l'application de compresses chaudes pour ouvrir les pores, puis un nettoyage profond à l'huile de noix de coco vierge et à l'eau de rose pour revitaliser la peau, suivi d'un gommage régénérant utilisant un masque hydratant aux herbes thaïlandaises, et pour finir tranquillement, un massage facial relaxant avec une crème hydratante pour vous apporter une peau douce, lisse et radieuse et un esprit parfaitement détendu.",
+      fr: "Recherchez-vous un traitement hydratant et nettoyant en profondeur pour votre visage? Ce soin facial purifiant, associé à la qualité des produits cosmétiques naturels de Thaïlande et à l'expertise du modelage traditionnel pratiqué manuellement, élimine efficacement les cellules mortes, dynamise et hydrate la peau en profondeur. Cela commence par l'application de compresses chaudes pour ouvrir les pores, suivie d'un nettoyage profond à l'huile de noix de coco vierge et à l'eau de rose pour revitaliser la peau, suivi d'un gommage régénérant utilisant un masque hydratant aux herbes thaïlandaises, et pour finir tranquillement, un massage facial relaxant avec une crème hydratante pour vous apporter une peau douce, lisse et radieuse et un esprit parfaitement détendu.",
     },
     availability: [
       { duration: "30min", price: 400, priceEUR: 40 },

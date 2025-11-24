@@ -1,6 +1,7 @@
 "use client"
 
 import { X } from "lucide-react"
+import { useEffect } from "react"
 
 interface MassageModalProps {
   isOpen: boolean
@@ -10,11 +11,51 @@ interface MassageModalProps {
 }
 
 export default function MassageModal({ isOpen, title, details, onClose }: MassageModalProps) {
+  useEffect(() => {
+    if (!isOpen) return
+
+    const handleBackdropClick = (e: MouseEvent) => {
+      if (e.target === e.currentTarget) {
+        onClose()
+      }
+    }
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose()
+      }
+    }
+
+    const backdrop = document.querySelector("[data-modal-backdrop]")
+    if (backdrop) {
+      backdrop.addEventListener("click", handleBackdropClick)
+    }
+
+    window.addEventListener("keydown", handleEscape)
+
+    return () => {
+      if (backdrop) {
+        backdrop.removeEventListener("click", handleBackdropClick)
+      }
+      window.removeEventListener("keydown", handleEscape)
+    }
+  }, [isOpen, onClose])
+
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto relative">
+    <div
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+      onClick={onClose}
+      data-modal-backdrop
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div
+        className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto relative md:p-8 md:p-10 py-8 px-6"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           type="button"
           onClick={onClose}
@@ -26,8 +67,10 @@ export default function MassageModal({ isOpen, title, details, onClose }: Massag
         </button>
 
         {/* Content */}
-        <div className="p-8 md:p-10 pr-12">
-          <h2 className="font-trajan-pro text-2xl md:text-3xl font-bold text-[#43484e] mb-6">{title}</h2>
+        <div className="pr-8 md:pr-12">
+          <h2 id="modal-title" className="font-trajan-pro text-2xl md:text-3xl font-bold text-[#43484e] mb-6">
+            {title}
+          </h2>
           <div className="space-y-4">
             {details.split("\n\n").map((paragraph, index) => (
               <p

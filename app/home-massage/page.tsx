@@ -23,7 +23,7 @@ export default function HomeMassagePage() {
           </h2>
 
           {/* Main Content - Image Left, Text Right */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
             <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
               <Image src="/sections/e3.jpg" alt="Home massage" fill className="object-cover" />
             </div>
@@ -51,6 +51,25 @@ export default function HomeMassagePage() {
               <p className="text-xs md:text-sm leading-relaxed text-justify text-gray-700">
                 {homeMassage?.mainDescription}
               </p>
+
+              <div className="flex gap-3 mt-6 pt-4 border-t border-gray-200">
+                <a
+                  href="https://wa.me/212610200040"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 px-4 py-2 bg-green-500 text-white rounded-md font-semibold text-center text-sm hover:bg-green-600 transition-colors"
+                  aria-label="Contact via WhatsApp"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  href="tel:+212610200040"
+                  className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-md font-semibold text-center text-sm hover:bg-blue-600 transition-colors"
+                  aria-label="Call us"
+                >
+                  Call
+                </a>
+              </div>
             </div>
           </div>
 

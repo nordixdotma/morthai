@@ -203,7 +203,7 @@ body {
 
 .latest-articles-section {
   background-color: #fff8f5;
-  background-image: url("/4.png");
+  background-image: url("/11.png");
   background-size: 300px 300px;
   background-position: right bottom;
   background-repeat: no-repeat;
@@ -217,7 +217,7 @@ body {
   background-color: #fff8f5;
 
   /* Two images */
-  background-image: url("/8.png"), url("/7.png");
+  background-image: url("/13.png"), url("/12.png");
 
   /* First image (7.png) then second image (6.png) */
   background-position: left top, right top;
@@ -240,7 +240,7 @@ body {
 /* Add service-section styling for all new service pages */
 .service-section {
   background-color: #fff8f5;
-  background-image: url("/8.png"), url("/7.png"), url("/6.png"), url("/4.png");
+  background-image: url("/13.png"), url("/12.png"), url("/10.png"), url("/11.png");
   background-position: left top, right top, center left, right bottom;
   background-size: 300px 300px, 300px 300px, 300px 300px, 300px 300px;
   background-repeat: no-repeat;
@@ -300,7 +300,7 @@ body {
 
 .why-choose-section {
   background-color: #fff8f5;
-  background-image: url("/8.png");
+  background-image: url("/10.png");
   background-size: 300px 300px;
   background-position: top left;
   background-repeat: no-repeat;

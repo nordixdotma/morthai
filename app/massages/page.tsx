@@ -48,8 +48,7 @@ export default function MassagesPage() {
               {selectedLang === "fr" ? "Nos Massages" : "Our Massages"}
             </h3>
 
-            {/* Desktop Grid (3 columns) and Mobile Grid (2 columns) */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6 py-1 md:py-6">
               {massagesData?.map((service, index) => (
                 <div
                   key={service.id}
@@ -75,7 +74,7 @@ export default function MassagesPage() {
                     <div className="w-8 h-0.5 bg-primary mb-3 md:mb-4"></div>
 
                     {/* Price */}
-                    <div className="mb-4 md:mb-6 flex-1">
+                    <div className="mb-1 md:mb-2 flex-1">
                       <p className="text-xs md:text-sm text-gray-600 font-lato">
                         <span className="font-semibold">{massageData?.priceFrom}</span>
                       </p>
@@ -86,21 +85,27 @@ export default function MassagesPage() {
                       )}
                     </div>
 
-                    <div className="flex justify-end">
-                      <div className="flex gap-2 w-full">
+                    {/* Buttons Section */}
+                    <div className="space-y-3 flex-1 flex flex-col justify-end">
+                      <Link
+                        href={`/services/${service.id}`}
+                        className="text-xs md:text-sm text-primary font-semibold hover:underline transition-colors"
+                      >
+                        {t.massages?.readMore || "Read More"} →
+                      </Link>
+                      <div className="flex gap-2">
                         <Link
                           href={`/services/${service.id}`}
-                          className="flex-1 px-3 md:px-4 py-2 border-2 font-semibold text-xs md:text-sm rounded-md transition-all duration-300 border-primary bg-primary text-white inline-flex items-center justify-center gap-1 hover:bg-[#8a6a5e] hover:border-[#8a6a5e]"
+                          className="flex-1 px-3 md:px-4 py-2 font-semibold text-xs md:text-sm rounded-md transition-all duration-300 bg-primary text-white hover:bg-primary/90 inline-flex items-center justify-center"
                         >
-                          <span>{massageData?.readMore}</span>
-                          <span className="transition-transform duration-300 hover:translate-x-0.5">→</span>
+                          {t.massages?.book || "Book"}
                         </Link>
                         <Link
                           href={`/services/${service.id}?offer=true`}
-                          className="flex-0 px-3 md:px-4 py-2 border-2 font-semibold text-xs md:text-sm rounded-md transition-all duration-300 border-primary text-primary hover:bg-primary/5"
-                          title="Offer as gift"
+                          className="flex-1 px-3 md:px-4 py-2 border-2 border-primary font-semibold text-xs md:text-sm text-primary rounded-md transition-all duration-300 hover:bg-primary/5 inline-flex items-center justify-center"
+                          title={t.massages?.offerTitle || "Offer as gift"}
                         >
-                          🎁
+                          {t.massages?.offer || "Offer"}
                         </Link>
                       </div>
                     </div>

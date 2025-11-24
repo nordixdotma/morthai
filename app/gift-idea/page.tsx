@@ -16,26 +16,6 @@ export default function GiftIdeaPage() {
 
   const giftIdea = t.giftIdea
 
-  if (selectedGiftCardId) {
-    return (
-      <main className="min-h-screen">
-        <PageHeroSection title={giftIdea?.heroTitle || "Gift Idea"} />
-
-        <section className="morocco-discovery-section py-16 md:py-24 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl overflow-hidden w-full relative">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="animate-slideInRight">
-              <OfferBooking
-                initialGiftCardId={selectedGiftCardId}
-                onClose={() => setSelectedGiftCardId(null)}
-                isGridLayout={true}
-              />
-            </div>
-          </div>
-        </section>
-      </main>
-    )
-  }
-
   return (
     <main className="min-h-screen">
       <PageHeroSection title={giftIdea?.heroTitle || "Gift Idea"} />
@@ -76,28 +56,60 @@ export default function GiftIdeaPage() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 mt-5">
-          <h2 className="font-trajan-pro text-xl md:text-3xl font-bold text-center text-[#43484e] mb-12 md:mb-16">
-            {giftIdea?.optionsTitle}
-          </h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {giftCards.map((giftCard) => (
-              <button
-                key={giftCard.id}
-                onClick={() => setSelectedGiftCardId(giftCard.id)}
-                className="block relative h-80 md:h-[480px] rounded-lg overflow-hidden group"
-              >
-                <Image
-                  src={giftCard.mainImage || "/placeholder.svg"}
-                  alt={giftCard.id}
-                  fill
-                  className="object-contain transition-transform duration-300"
-                />
-              </button>
-            ))}
+        {selectedGiftCardId ? (
+          <div className="max-w-7xl mx-auto px-4 mt-5">
+            <div className="animate-slideInRight">
+              <OfferBooking
+                initialGiftCardId={selectedGiftCardId}
+                onClose={() => setSelectedGiftCardId(null)}
+                isGridLayout={true}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="max-w-7xl mx-auto px-4 mt-5">
+            <h2 className="font-trajan-pro text-xl md:text-3xl font-bold text-center text-[#43484e] mb-12 md:mb-16">
+              {giftIdea?.optionsTitle}
+            </h2>
+
+            <div className="grid gap-4 md:gap-6">
+              <style>{`
+                .gift-grid {
+                  display: grid;
+                  grid-template-columns: repeat(2, 1fr);
+                  gap: 1rem;
+                }
+                .gift-grid > :first-child {
+                  grid-column: 1 / -1;
+                }
+                @media (min-width: 768px) {
+                  .gift-grid {
+                    grid-template-columns: repeat(3, 1fr);
+                  }
+                  .gift-grid > :first-child {
+                    grid-column: auto;
+                  }
+                }
+              `}</style>
+              <div className="gift-grid">
+                {giftCards.map((giftCard) => (
+                  <button
+                    key={giftCard.id}
+                    onClick={() => setSelectedGiftCardId(giftCard.id)}
+                    className="block relative h-80 md:h-[480px] rounded-lg overflow-hidden group"
+                  >
+                    <Image
+                      src={giftCard.mainImage || "/placeholder.svg"}
+                      alt={giftCard.id}
+                      fill
+                      className="object-contain transition-transform duration-300"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </section>
     </main>
   )

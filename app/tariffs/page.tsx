@@ -18,13 +18,12 @@ const massageServices = [
   { name: "Relâchement Tête & Nuque", "30": 350, "60": 580, "90": "x", "120": "x" },
   { name: "Thérapie Dos & Épaules", "30": 380, "60": 630, "90": "x", "120": "x" },
   { name: "Petit Ange (2–10 ans)", "30": "x", "60": 430, "90": "x", "120": "x" },
-];
+]
 
 const facialServices = [
   { name: "Soin Pureté Éclat", "30": 400, "60": 550, "90": "x", "120": "x" },
   { name: "Soin Prestige Anti-Âge", "30": 450, "60": 600, "90": "x", "120": "x" },
-];
-
+]
 
 const PriceTable = ({ title, data, t }: { title: string; data: typeof massageServices; t: any }) => (
   <div className="space-y-4">
@@ -92,13 +91,18 @@ export default function TariffsPage() {
             <PriceTable title={t.tariffs.facialCare} data={facialServices} t={t} />
           </div>
 
-          {/* Info Section */}
           <div className="mt-16 pt-12 border-t border-[#e5d5cc]">
             <p className="font-lato text-[#666] text-center text-sm md:text-base leading-relaxed">
               {t.tariffs.infoText}
               <br className="hidden sm:block" />
-              {t.tariffs.contactInfo} <span className="font-semibold text-[#b64a26]">+212 610 200 040</span>{" "}
-              {t.tariffs.or} <span className="font-semibold text-[#b64a26]">+212 610 705 876</span>
+              {t.tariffs.contactInfo}{" "}
+              <a href="tel:+212610200040" className="font-semibold text-[#b64a26] hover:underline transition-colors">
+                +212 610 200 040
+              </a>{" "}
+              {t.tariffs.or}{" "}
+              <a href="tel:+212610705876" className="font-semibold text-[#b64a26] hover:underline transition-colors">
+                +212 610 705 876
+              </a>
             </p>
           </div>
         </div>

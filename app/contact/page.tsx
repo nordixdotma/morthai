@@ -75,26 +75,26 @@ export default function ContactPage() {
       {/* Contact Info Cards */}
       <section className="py-16 md:py-20 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl">
         <Container className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-2 ms:grid-cols-4 gap-2 md:gap-6 mb-16">
             {contactInfo.map((item, index) => {
               const Icon = item.icon
               return (
                 <div
                   key={index}
-                  className="bg-white rounded-lg p-6 hover:shadow-lg transition-shadow border border-gray-200"
+                  className="bg-white rounded-md p-2 md:p-6 border border-gray-200"
                 >
-                  <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-lg mb-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-md mb-4">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-trajan-pro font-bold text-gray-900 mb-2 text-lg">{item.title}</h3>
+                  <h3 className="font-trajan-pro font-bold text-gray-900 mb-2 text-base md:text-lg">{item.title}</h3>
                   {item.link ? (
-                    <a href={item.link} className="text-primary hover:underline font-lato font-medium">
+                    <a href={item.link} className="text-primary text-sm md:text-base hover:underline font-lato font-medium">
                       {item.details}
                     </a>
                   ) : (
                     <p className="text-gray-700 font-lato font-medium">{item.details}</p>
                   )}
-                  {item.subDetails && <p className="text-gray-600 text-sm font-lato mt-1">{item.subDetails}</p>}
+                  {item.subDetails && <p className="text-gray-600 text-xs md:text-sm font-lato mt-1">{item.subDetails}</p>}
                 </div>
               )
             })}
@@ -110,7 +110,7 @@ export default function ContactPage() {
             <p className="text-gray-600 font-lato">{t.contact.description}</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-gray-50 rounded-lg shadow-md p-8 border border-gray-200">
+          <form onSubmit={handleSubmit} className="bg-gray-50 rounded-lg shadow-md p-2 md:p-8 border border-gray-200">
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block text-sm font-trajan-pro font-bold text-gray-900 mb-2">
