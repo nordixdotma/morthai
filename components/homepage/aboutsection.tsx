@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
 import { useTranslations } from "@/lib/use-translations"
+import { useEffect, useRef, useState } from "react"
 
 export default function aboutsection() {
   const [isVisible, setIsVisible] = useState(false)

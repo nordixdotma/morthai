@@ -202,7 +202,7 @@ body {
 }
 
 .latest-articles-section {
-  background-color: #fff8f5;
+  background-color: #ffffff;
   background-image: url("/11.png");
   background-size: 300px 300px;
   background-position: right bottom;
@@ -214,7 +214,7 @@ body {
 }
 
 .morocco-discovery-section {
-  background-color: #fff8f5;
+  background-color: #ffffff;
 
   /* Two images */
   background-image: url("/13.png"), url("/12.png");
@@ -230,7 +230,7 @@ body {
 
 /* Added tariffs page styling with same background images as about section */
 .tariffs-section {
-  background-color: #fff8f5;
+  background-color: #FFFFFF;
   background-image: url("/8.png"), url("/7.png"), url("/6.png"), url("/4.png");
   background-position: left top, right top, center left, right bottom;
   background-size: 300px 300px, 300px 300px, 300px 300px, 300px 300px;
@@ -239,7 +239,7 @@ body {
 
 /* Add service-section styling for all new service pages */
 .service-section {
-  background-color: #fff8f5;
+  background-color: #ffffff;
   background-image: url("/13.png"), url("/12.png"), url("/10.png"), url("/11.png");
   background-position: left top, right top, center left, right bottom;
   background-size: 300px 300px, 300px 300px, 300px 300px, 300px 300px;
@@ -298,7 +298,7 @@ body {
 }
 
 .why-choose-section {
-  background-color: #fff8f5;
+  background-color: #ffffff;
   background-image: url("/10.png");
   background-size: 300px 300px;
   background-position: top left;
