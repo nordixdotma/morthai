@@ -24,7 +24,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
-import { Search, X, Calendar, Gift, Clock, CheckCircle, XCircle } from 'lucide-react';
+import { Search, X, Calendar, Gift, Clock, CheckCircle, XCircle, Filter, ChevronDown, ChevronUp, RotateCcw } from 'lucide-react';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
@@ -74,7 +74,7 @@ export default function ReservationsPage() {
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [allReservations, setAllReservations] = useState<Reservation[]>([]); // For KPIs
   const [loading, setLoading] = useState(true);
-  
+
   // Filters
   const [searchReference, setSearchReference] = useState('');
   const [searchDate, setSearchDate] = useState('');
@@ -84,6 +84,7 @@ export default function ReservationsPage() {
   const [paymentFilter, setPaymentFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
   const [useDateRange, setUseDateRange] = useState(false);
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(true);
 
   // Track previous reservations count to detect new ones
   const previousCountRef = useRef(0);
@@ -139,18 +140,18 @@ export default function ReservationsPage() {
         typeFilter,
         url: finalUrl
       });
-      
+
       const response = await fetch(finalUrl, {
         headers: getAuthHeaders(),
       });
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const data = await response.json();
       const newReservations = Array.isArray(data) ? data : [];
-      
+
       // Check for new reservations and show notification
       const currentCount = newReservations.length;
       if (previousCountRef.current > 0 && currentCount > previousCountRef.current) {
@@ -159,7 +160,7 @@ export default function ReservationsPage() {
           duration: 3000,
         });
       }
-      
+
       previousCountRef.current = currentCount;
       console.log('Reservations received:', newReservations.length);
       setReservations(newReservations);
@@ -169,7 +170,7 @@ export default function ReservationsPage() {
       }
     } finally {
       if (!silent) {
-      setLoading(false);
+        setLoading(false);
       }
     }
   }, [statusFilter, paymentFilter, typeFilter, searchReference, searchDate, dateRangeStart, dateRangeEnd, useDateRange]);
@@ -205,7 +206,7 @@ export default function ReservationsPage() {
   // WebSocket connection for real-time updates
   useEffect(() => {
     const socketUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-    
+
     // Initialize socket connection
     socketRef.current = io(socketUrl, {
       transports: ['websocket', 'polling'],
@@ -228,7 +229,7 @@ export default function ReservationsPage() {
       toast.success('Nouvelle réservation reçue !', {
         duration: 3000,
       });
-      
+
       // Always refresh the list to show the new reservation
       fetchReservations(true); // Silent refresh
       fetchAllReservationsForKPIs(); // Refresh KPIs
@@ -275,6 +276,19 @@ export default function ReservationsPage() {
     setTypeFilter('all');
     setUseDateRange(false);
   };
+
+  // Calculate active filter count
+  const getActiveFilterCount = () => {
+    let count = 0;
+    if (searchReference) count++;
+    if (searchDate || dateRangeStart || dateRangeEnd) count++;
+    if (statusFilter !== 'all') count++;
+    if (paymentFilter !== 'all') count++;
+    if (typeFilter !== 'all') count++;
+    return count;
+  };
+
+  const activeFilterCount = getActiveFilterCount();
 
   const updateStatus = async (id: string, newStatus: string) => {
     try {
@@ -428,7 +442,7 @@ export default function ReservationsPage() {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
         {kpiCards.map((kpi) => {
           const IconComponent = kpi.icon;
           return (
@@ -447,146 +461,208 @@ export default function ReservationsPage() {
         })}
       </div>
 
-      {/* Search and Filters */}
-      <div className="bg-white rounded-lg border p-4 mb-6 space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Search by Reference or Name */}
-          <div className="space-y-2">
-            <Label htmlFor="search-reference">Recherche par référence ou nom</Label>
-            <div className="flex gap-2">
-              <Input
-                id="search-reference"
-                value={searchReference}
-                onChange={(e) => setSearchReference(e.target.value)}
-                placeholder="N° cmd ou nom..."
-                onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-              />
+      {/* Search and Filters - Redesigned */}
+      <div className="mb-6 space-y-4">
+        {/* Main Search Bar */}
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl"></div>
+          <div className="relative bg-white border-2 border-gray-200 rounded-xl p-2 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex gap-2 items-center">
+              <div className="flex-1 relative">
+                <Input
+                  value={searchReference}
+                  onChange={(e) => setSearchReference(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                  placeholder="Rechercher par N° commande ou nom client..."
+                  className="border-0 bg-transparent focus:outline-none focus:ring-0 text-base placeholder:text-gray-400"
+                />
+              </div>
+              {searchReference && (
+                <button
+                  onClick={() => setSearchReference('')}
+                  className="p-1.5 hover:bg-primary/10 rounded-lg transition-colors flex-shrink-0"
+                  title="Effacer la recherche"
+                  aria-label="Effacer la recherche"
+                >
+                  <X className="h-4 w-4 text-primary" />
+                </button>
+              )}
             </div>
           </div>
+        </div>
 
-          {/* Search by Date */}
-          <div className="space-y-2">
-            <Label htmlFor="search-date">
-              {useDateRange ? 'Date de début' : 'Recherche par date de commande jj-mm-aaaa'}
-            </Label>
-            <Input
-              id="search-date"
-              type="date"
-              value={useDateRange ? dateRangeStart : searchDate}
-              onChange={(e) => {
-                if (useDateRange) {
-                  setDateRangeStart(e.target.value);
-                } else {
-                  setSearchDate(e.target.value);
-                }
-              }}
-              placeholder="jj-mm-aaaa"
-            />
-          </div>
+        {/* Filter Pills and Toggle */}
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+            className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all ${showAdvancedFilters
+              ? 'bg-primary text-white shadow-md hover:bg-primary/90 hover:shadow-lg'
+              : 'bg-white border-2 border-primary/20 text-primary hover:bg-primary/5'
+              }`}
+          >
+            <Filter className="h-4 w-4" />
+            <span>Filtres avancés</span>
+            {showAdvancedFilters ? (
+              <ChevronUp className="h-4 w-4 ml-1" />
+            ) : (
+              <ChevronDown className="h-4 w-4 ml-1" />
+            )}
+          </button>
 
-          {/* Date Range End */}
-          {useDateRange && (
-            <div className="space-y-2">
-              <Label htmlFor="date-end">Date de fin</Label>
-              <Input
-                id="date-end"
-                type="date"
-                value={dateRangeEnd}
-                onChange={(e) => setDateRangeEnd(e.target.value)}
-              />
+          {activeFilterCount > 0 && (
+            <div className="flex items-center gap-2 px-3 py-2.5 bg-primary/10 rounded-lg border border-primary/20">
+              <span className="text-sm font-medium text-primary">
+                {activeFilterCount} filtre{activeFilterCount > 1 ? 's' : ''}
+              </span>
+              <button
+                onClick={handleClearFilters}
+                className="p-1 hover:bg-primary/20 rounded transition-colors"
+                title="Réinitialiser les filtres"
+                aria-label="Réinitialiser les filtres"
+              >
+                <X className="h-4 w-4 text-primary" />
+              </button>
             </div>
           )}
 
-          {/* Date Range Toggle */}
-          <div className="space-y-2 flex items-end">
-            <Button
-              variant="outline"
-              onClick={() => {
-                setUseDateRange(!useDateRange);
-                if (!useDateRange) {
-                  // When switching to date range, clear single date
-                  setSearchDate('');
-                } else {
-                  // When switching to single date, clear range
-                  setDateRangeStart('');
-                  setDateRangeEnd('');
-                }
-              }}
-              className="w-full"
-            >
-              {useDateRange ? 'Un jour' : 'Plage de jours'}
-            </Button>
-          </div>
-        </div>
+          <div className="flex-1"></div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Status Filter */}
-          <div className="space-y-2">
-            <Label htmlFor="status-filter">État cmd</Label>
-        <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger id="status-filter">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {STATUS_OPTIONS.map((opt) => (
-                  <SelectItem key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* Payment Filter */}
-          <div className="space-y-2">
-            <Label htmlFor="payment-filter">Paiement</Label>
-            <Select value={paymentFilter} onValueChange={setPaymentFilter}>
-              <SelectTrigger id="payment-filter">
-                <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-                {PAYMENT_OPTIONS.map((opt) => (
-                  <SelectItem key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </SelectItem>
-                ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-          {/* Type Filter */}
-          <div className="space-y-2">
-            <Label htmlFor="type-filter">Offre/Réservation</Label>
-            <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger id="type-filter">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {TYPE_OPTIONS.map((opt) => (
-                  <SelectItem key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        <div className="flex gap-2">
-          <Button onClick={handleSearch} className="flex items-center gap-2">
-            <Search className="h-4 w-4" />
+          <Button
+            onClick={handleSearch}
+            className="bg-primary hover:bg-primary/90 text-white font-medium px-6 shadow-md hover:shadow-lg transition-all"
+          >
+            <Search className="h-4 w-4 mr-2" />
             Rechercher
           </Button>
-          <Button variant="outline" onClick={handleClearFilters} className="flex items-center gap-2">
-            <X className="h-4 w-4" />
-            Effacer les filtres
-          </Button>
         </div>
 
-        {/* New Messages Counter */}
-        <div className="text-sm text-gray-600">
-          Nouveau message (0)
-        </div>
+        {/* Advanced Filters Section */}
+        {showAdvancedFilters && (
+          <div className="bg-white border-2 border-primary/10 rounded-xl p-6 shadow-sm space-y-4">
+            {/* Filters Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+              {/* Date Filter */}
+              <div className="lg:col-span-2">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label className="font-semibold text-sm text-gray-700">
+                      {useDateRange ? 'Période' : 'Date'}
+                    </Label>
+                    <button
+                      onClick={() => {
+                        setUseDateRange(!useDateRange);
+                        if (!useDateRange) {
+                          setSearchDate('');
+                        } else {
+                          setDateRangeStart('');
+                          setDateRangeEnd('');
+                        }
+                      }}
+                      className="text-xs px-2 py-1 rounded bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-medium"
+                    >
+                      {useDateRange ? 'Plage' : 'Jour'}
+                    </button>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="relative">
+                      <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary pointer-events-none" />
+                      <Input
+                        type="date"
+                        value={useDateRange ? dateRangeStart : searchDate}
+                        onChange={(e) => {
+                          if (useDateRange) {
+                            setDateRangeStart(e.target.value);
+                          } else {
+                            setSearchDate(e.target.value);
+                          }
+                        }}
+                        className="pl-10 border-primary/20 focus:border-primary focus:ring-primary/20"
+                      />
+                    </div>
+                    {useDateRange && (
+                      <div className="relative">
+                        <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary pointer-events-none" />
+                        <Input
+                          type="date"
+                          value={dateRangeEnd}
+                          onChange={(e) => setDateRangeEnd(e.target.value)}
+                          className="pl-10 border-primary/20 focus:border-primary focus:ring-primary/20"
+                          min={dateRangeStart}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Status Filter */}
+              <div className="space-y-2">
+                <Label className="font-semibold text-sm text-gray-700">État</Label>
+                <Select value={statusFilter} onValueChange={setStatusFilter}>
+                  <SelectTrigger className="border-primary/20 focus:border-primary focus:ring-primary/20">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {STATUS_OPTIONS.map((opt) => (
+                      <SelectItem key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Payment Filter */}
+              <div className="space-y-2">
+                <Label className="font-semibold text-sm text-gray-700">Paiement</Label>
+                <Select value={paymentFilter} onValueChange={setPaymentFilter}>
+                  <SelectTrigger className="border-primary/20 focus:border-primary focus:ring-primary/20">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {PAYMENT_OPTIONS.map((opt) => (
+                      <SelectItem key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Type Filter */}
+              <div className="space-y-2">
+                <Label className="font-semibold text-sm text-gray-700">Type</Label>
+                <Select value={typeFilter} onValueChange={setTypeFilter}>
+                  <SelectTrigger className="border-primary/20 focus:border-primary focus:ring-primary/20">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {TYPE_OPTIONS.map((opt) => (
+                      <SelectItem key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            {/* Results Summary */}
+            <div className="pt-2 border-t border-primary/10 flex justify-between items-center">
+              <div className="text-sm text-gray-600">
+                <span className="font-semibold text-primary">{reservations.length}</span>
+                {' '}résultat{reservations.length !== 1 ? 's' : ''} trouvé{reservations.length !== 1 ? 's' : ''}
+              </div>
+              {activeFilterCount > 0 && (
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/20 rounded-full">
+                  <span className="text-xs font-medium text-primary">
+                    {activeFilterCount} filtre{activeFilterCount > 1 ? 's' : ''} actif{activeFilterCount > 1 ? 's' : ''}
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Reservations Table */}

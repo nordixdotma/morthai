@@ -179,7 +179,7 @@ export default function AdminLayout({
               })}
             </nav>
             <div className="p-4 border-t flex-shrink-0">
-              <Button variant="outline" className="w-full bg-transparent" onClick={handleLogout}>
+              <Button variant="outline" className="w-full bg-red-500 text-white hover:bg-red-600 hover:text-white" onClick={handleLogout}>
                 <LogOut className="h-4 w-4 mr-2" />
                 Logout
               </Button>
