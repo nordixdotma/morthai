@@ -85,16 +85,40 @@ export default function HammamPage() {
                       <div className="grid grid-cols-2 gap-3 mt-4">
                         <Link
                           href={`/services/${hammamService.id}`}
-                          className="block w-full text-center py-3 rounded-sm shadow-md text-sm font-medium bg-[#a87e72] text-white hover:bg-[#8a6a5e] transition-colors"
+                          className="relative overflow-hidden group block w-full text-center py-3 rounded-sm shadow-md text-sm font-medium bg-gradient-to-r from-primary to-primary text-white border-2 border-primary transition-all duration-500"
                         >
-                          {t.hammam?.reserve || "Reserve"}
+                          {/* left half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 left-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right pointer-events-none z-0 bg-white"
+                          />
+                          {/* right half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 right-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none z-0 bg-white"
+                          />
+                          <span className="relative z-10 group-hover:text-primary transition-colors duration-500">
+                            {t.hammam?.reserve || "Reserve"}
+                          </span>
                         </Link>
 
                         <Link
                           href={`/services/${hammamService.id}?offer=true`}
-                          className="block w-full text-center py-3 rounded-sm shadow-sm text-sm font-medium border border-[#a87e72] bg-white text-[#a87e72] hover:bg-[#fff1ee] transition-colors"
+                          className="relative overflow-hidden group block w-full text-center py-3 rounded-sm shadow-sm text-sm font-medium border-2 border-primary bg-white text-primary transition-all duration-500"
                         >
-                          {t.hammam?.offer || "Offer"}
+                          {/* left half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 left-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right pointer-events-none z-0 bg-gradient-to-r from-primary to-primary"
+                          />
+                          {/* right half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 right-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none z-0 bg-gradient-to-r from-primary to-primary"
+                          />
+                          <span className="relative z-10 group-hover:text-white transition-colors duration-500">
+                            {t.hammam?.offer || "Offer"}
+                          </span>
                         </Link>
                       </div>
                     </div>

@@ -79,10 +79,24 @@ export default function servicessection() {
                       <div className="flex justify-end">
                         <Link
                           href={getServiceRoute(itemIndex)}
-                          className="px-4 py-2 bg-primary text-white font-semibold text-sm rounded-md transition-all duration-300 hover:bg-primary/90 hover:shadow-md active:scale-95 inline-flex items-center gap-2 group"
+                          className="relative overflow-hidden group px-4 py-2 bg-gradient-to-r from-primary to-primary text-white font-semibold text-sm rounded-md transition-all duration-500 hover:shadow-md active:scale-95 inline-flex items-center gap-2 border-2 border-primary"
                         >
-                          <span>{t.homepage.services.discover}</span>
-                          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                          {/* left half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 left-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right pointer-events-none z-0 bg-white"
+                          />
+                          {/* right half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 right-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none z-0 bg-white"
+                          />
+                          <span className="relative z-10 group-hover:text-primary transition-colors duration-500">
+                            {t.homepage.services.discover}
+                          </span>
+                          <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-primary">
+                            →
+                          </span>
                         </Link>
                       </div>
                     </div>
@@ -121,10 +135,24 @@ export default function servicessection() {
                   <div className="flex justify-end">
                     <Link
                       href={getServiceRoute(itemIndex)}
-                      className="px-2 py-2 bg-primary text-white font-semibold text-xs rounded-sm transition-all duration-300 hover:bg-primary/90 inline-flex items-center gap-1 group"
+                      className="relative overflow-hidden group px-2 py-2 bg-gradient-to-r from-primary to-primary text-white font-semibold text-xs rounded-sm transition-all duration-500 inline-flex items-center gap-1 border-2 border-primary"
                     >
-                      <span>{t.homepage.services.discover}</span>
-                      <span className="transition-transform duration-300 group-hover:translate-x-0.5 text-xs">→</span>
+                      {/* left half fill */}
+                      <span
+                        aria-hidden="true"
+                        className="absolute top-0 bottom-0 left-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right pointer-events-none z-0 bg-white"
+                      />
+                      {/* right half fill */}
+                      <span
+                        aria-hidden="true"
+                        className="absolute top-0 bottom-0 right-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none z-0 bg-white"
+                      />
+                      <span className="relative z-10 group-hover:text-primary transition-colors duration-500">
+                        {t.homepage.services.discover}
+                      </span>
+                      <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 text-xs group-hover:text-primary">
+                        →
+                      </span>
                     </Link>
                   </div>
                 </div>

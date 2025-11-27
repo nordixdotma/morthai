@@ -205,12 +205,24 @@ export default function ContactPage() {
               </div>
             )}
 
-            <Button
+            <button
               type="submit"
-              className="w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-trajan-pro font-bold py-3 px-8 rounded-lg transition-colors uppercase"
+              className="w-full md:w-auto px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg font-bold transition-all duration-500 relative overflow-hidden group border-2 border-primary font-trajan-pro uppercase"
             >
-              {t.contact.submitButton}
-            </Button>
+              {/* left half fill */}
+              <span
+                aria-hidden="true"
+                className="absolute top-0 bottom-0 left-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right pointer-events-none z-0 bg-white"
+              />
+              {/* right half fill */}
+              <span
+                aria-hidden="true"
+                className="absolute top-0 bottom-0 right-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none z-0 bg-white"
+              />
+              <span className="relative z-10 group-hover:text-primary transition-colors duration-500">
+                {t.contact.submitButton}
+              </span>
+            </button>
           </form>
         </Container>
 
@@ -261,11 +273,24 @@ export default function ContactPage() {
             </div>
             <div className="text-center md:text-right">
               <p className="text-gray-600 font-lato mb-2">{t.contact.followText}</p>
-              <Link href="tel:+212524207055">
-                <Button className="bg-primary hover:bg-primary/90 text-white font-trajan-pro font-bold uppercase">
-                  {t.contact.callNow}
-                </Button>
-              </Link>
+              <a
+                href="tel:+212524207055"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-lg font-semibold text-sm transition-all duration-500 relative overflow-hidden group border-2 border-primary font-trajan-pro uppercase"
+                aria-label="Call us"
+              >
+                {/* left half fill */}
+                <span
+                  aria-hidden="true"
+                  className="absolute top-0 bottom-0 left-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right pointer-events-none z-0 bg-white"
+                />
+                {/* right half fill */}
+                <span
+                  aria-hidden="true"
+                  className="absolute top-0 bottom-0 right-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none z-0 bg-white"
+                />
+                <Phone size={18} className="relative z-10 group-hover:text-primary transition-colors duration-500" />
+                <span className="relative z-10 group-hover:text-primary transition-colors duration-500">{t.contact.callNow}</span>
+              </a>
             </div>
           </div>
         </Container>

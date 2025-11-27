@@ -191,19 +191,45 @@ export default function HammamMassagePackagePage() {
                             setSelected(cardSelected)
                             setShowBookingForm(true)
                           }}
-                          className="flex-1 px-4 py-3 bg-primary text-white font-semibold rounded-md transition-all duration-300 hover:bg-primary/90 active:scale-95 inline-flex items-center justify-center gap-2 group"
+                          className="relative overflow-hidden group flex-1 px-4 py-3 bg-gradient-to-r from-primary to-primary text-white font-semibold rounded-md transition-all duration-500 active:scale-95 inline-flex items-center justify-center gap-2 border-2 border-primary"
                         >
-                          <span>{language === "en" ? ritual.cta.en : ritual.cta.fr}</span>
-                          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                          {/* left half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 left-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right pointer-events-none z-0 bg-white"
+                          />
+                          {/* right half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 right-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none z-0 bg-white"
+                          />
+                          <span className="relative z-10 group-hover:text-primary transition-colors duration-500">
+                            {language === "en" ? ritual.cta.en : ritual.cta.fr}
+                          </span>
+                          <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-primary">
+                            →
+                          </span>
                         </button>
                         <button
                           onClick={() => {
                             setSelectedRitualIndex(index)
                             setShowOfferBooking(true)
                           }}
-                          className="flex-1 px-4 py-3 border-2 border-primary text-primary font-semibold rounded-md transition-all duration-300 hover:bg-primary/10 active:scale-95 inline-flex items-center justify-center gap-2 group"
+                          className="relative overflow-hidden group flex-1 px-4 py-3 border-2 border-primary bg-white text-primary font-semibold rounded-md transition-all duration-500 active:scale-95 inline-flex items-center justify-center gap-2"
                         >
-                          <span>Offer</span>
+                          {/* left half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 left-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none z-0 bg-gradient-to-r from-primary to-primary"
+                          />
+                          {/* right half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 right-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none z-0 bg-gradient-to-r from-primary to-primary"
+                          />
+                          <span className="relative z-10 group-hover:text-white transition-colors duration-500">
+                            Offer
+                          </span>
                         </button>
                       </div>
                     </div>

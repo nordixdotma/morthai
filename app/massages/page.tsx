@@ -96,16 +96,40 @@ export default function MassagesPage() {
                       <div className="flex gap-2">
                         <Link
                           href={`/services/${service.id}`}
-                          className="flex-1 px-3 md:px-4 py-2 font-semibold text-xs md:text-sm rounded-md transition-all duration-300 bg-primary text-white hover:bg-primary/90 inline-flex items-center justify-center"
+                          className="relative overflow-hidden group flex-1 px-3 md:px-4 py-2 font-semibold text-xs md:text-sm rounded-md transition-all duration-500 bg-gradient-to-r from-primary to-primary text-white border-2 border-primary inline-flex items-center justify-center"
                         >
-                          {t.massages?.book || "Book"}
+                          {/* left half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 left-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right pointer-events-none z-0 bg-white"
+                          />
+                          {/* right half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 right-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none z-0 bg-white"
+                          />
+                          <span className="relative z-10 group-hover:text-primary transition-colors duration-500">
+                            {t.massages?.book || "Book"}
+                          </span>
                         </Link>
                         <Link
                           href={`/services/${service.id}?offer=true`}
-                          className="flex-1 px-3 md:px-4 py-2 border-2 border-primary font-semibold text-xs md:text-sm text-primary rounded-md transition-all duration-300 hover:bg-primary/5 inline-flex items-center justify-center"
+                          className="relative overflow-hidden group flex-1 px-3 md:px-4 py-2 border-2 border-primary font-semibold text-xs md:text-sm text-primary bg-white rounded-md transition-all duration-500 inline-flex items-center justify-center"
                           title={t.massages?.offerTitle || "Offer as gift"}
                         >
-                          {t.massages?.offer || "Offer"}
+                          {/* left half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 left-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right pointer-events-none z-0 bg-gradient-to-r from-primary to-primary"
+                          />
+                          {/* right half fill */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-0 bottom-0 right-0 w-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none z-0 bg-gradient-to-r from-primary to-primary"
+                          />
+                          <span className="relative z-10 group-hover:text-white transition-colors duration-500">
+                            {t.massages?.offer || "Offer"}
+                          </span>
                         </Link>
                       </div>
                     </div>
