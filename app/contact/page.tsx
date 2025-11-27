@@ -73,7 +73,7 @@ export default function ContactPage() {
       <PageHeroSection title={t.contact.pageTitle} />
 
       {/* Contact Info Cards */}
-      <section className="py-16 md:py-20 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl">
+      <section className="service-section py-16 md:py-20 bg-[#fff8f5] rounded-t-xl md:rounded-t-3xl">
         <Container className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 mb-16">
             {contactInfo.map((item, index) => {
@@ -81,29 +81,41 @@ export default function ContactPage() {
               return (
                 <div
                   key={index}
-                  className="bg-white rounded-md p-2 md:p-6 border border-gray-200"
+                  className="bg-white rounded-md p-2 md:p-6 border border-gray-200 transition-all duration-300 hover:border-primary hover:shadow-lg hover:ring-2 hover:ring-primary/20"
                 >
-                  <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-md mb-4">
-                    <Icon className="w-6 h-6 text-white" />
+                  <div className="transition-transform duration-300 ease-in-out hover:scale-105">
+                    <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-md mb-4">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+
+                    <h3 className="font-trajan-pro font-bold text-gray-900 mb-2 text-base md:text-lg">
+                      {item.title}
+                    </h3>
+
+                    {item.link ? (
+                      <a
+                        href={item.link}
+                        className="text-primary text-sm md:text-base hover:underline font-lato font-medium"
+                      >
+                        {item.details}
+                      </a>
+                    ) : (
+                      <p className="text-gray-700 font-lato font-medium">{item.details}</p>
+                    )}
+
+                    {item.subDetails && (
+                      <p className="text-gray-600 text-xs md:text-sm font-lato mt-1">
+                        {item.subDetails}
+                      </p>
+                    )}
                   </div>
-                  <h3 className="font-trajan-pro font-bold text-gray-900 mb-2 text-base md:text-lg">{item.title}</h3>
-                  {item.link ? (
-                    <a href={item.link} className="text-primary text-sm md:text-base hover:underline font-lato font-medium">
-                      {item.details}
-                    </a>
-                  ) : (
-                    <p className="text-gray-700 font-lato font-medium">{item.details}</p>
-                  )}
-                  {item.subDetails && <p className="text-gray-600 text-xs md:text-sm font-lato mt-1">{item.subDetails}</p>}
                 </div>
+
               )
             })}
+
           </div>
         </Container>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="py-16 md:py-20 bg-[#fff8f5]">
         <Container className="max-w-4xl mx-auto px-2 md:px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-trajan-pro font-bold text-gray-900 mb-4">{t.contact.heading}</h2>
@@ -201,11 +213,8 @@ export default function ContactPage() {
             </Button>
           </form>
         </Container>
-      </section>
 
-      {/* Map Section */}
-      <section className="py-16 md:py-20 bg-[#fff8f5]">
-        <Container className="max-w-6xl mx-auto">
+        <Container className="max-w-6xl mx-auto mt-12">
           <h2 className="text-3xl md:text-4xl font-trajan-pro font-bold text-gray-900 mb-8 text-center">
             {t.contact.visitHeading}
           </h2>

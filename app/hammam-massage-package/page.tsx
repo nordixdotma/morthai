@@ -38,7 +38,15 @@ export default function HammamMassagePackagePage() {
             <div className="animate-slideInRight">
               <BookingForm
                 serviceTitle={language === "en" ? ritual.title.en : ritual.title.fr}
-                selectedOption={selectedOption === "solo" ? ritual.soloLabel : ritual.duoLabel}
+                selectedOption={
+                  selectedOption === "solo"
+                    ? language === "en"
+                      ? ritual.soloLabel.en
+                      : ritual.soloLabel.fr
+                    : language === "en"
+                      ? ritual.duoLabel.en
+                      : ritual.duoLabel.fr
+                }
                 numberOfPeople={1}
                 selectedPrice={priceNumber}
                 onClose={() => setShowBookingForm(false)}
@@ -111,10 +119,10 @@ export default function HammamMassagePackagePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 py-2 md:py-6">
               {rituals.map((ritual, index) => {
                 const cardSelected = selectedOptions[index] || "solo"
-                const labelSolo = ritual.soloLabel
+                const labelSolo = language === "en" ? ritual.soloLabel.en : ritual.soloLabel.fr
                 const priceSolo = ritual.soloPrice
                 const priceEurSolo = ritual.soloPriceEur
-                const labelDuo = ritual.duoLabel
+                const labelDuo = language === "en" ? ritual.duoLabel.en : ritual.duoLabel.fr
                 const priceDuo = ritual.duoPrice
                 const priceEurDuo = ritual.duoPriceEur
 
@@ -131,16 +139,24 @@ export default function HammamMassagePackagePage() {
                       <div className="w-12 h-0.5 bg-primary mb-6"></div>
 
                       <div className="mb-6">
-                        <p className="font-semibold text-[#43484e] mb-2">{ritual.hammamTitle}</p>
-                        <p className="text-sm leading-relaxed text-gray-700 text-justify">{ritual.hammamDescription}</p>
+                        <p className="font-semibold text-[#43484e] mb-2">
+                          {language === "en" ? ritual.hammamTitle.en : ritual.hammamTitle.fr}
+                        </p>
+                        <p className="text-sm leading-relaxed text-gray-700 text-justify">
+                          {language === "en" ? ritual.hammamDescription.en : ritual.hammamDescription.fr}
+                        </p>
                       </div>
 
                       <div className="mb-6">
-                        <p className="font-semibold text-[#43484e] mb-2">{ritual.massageTitle}</p>
-                        <p className="text-sm leading-relaxed text-gray-700 text-justify mb-2">
-                          {ritual.massageDuration}
+                        <p className="font-semibold text-[#43484e] mb-2">
+                          {language === "en" ? ritual.massageTitle.en : ritual.massageTitle.fr}
                         </p>
-                        <p className="text-sm leading-relaxed text-gray-700">{ritual.massageOptions}</p>
+                        <p className="text-sm leading-relaxed text-gray-700 text-justify mb-2">
+                          {language === "en" ? ritual.massageDuration.en : ritual.massageDuration.fr}
+                        </p>
+                        <p className="text-sm leading-relaxed text-gray-700">
+                          {language === "en" ? ritual.massageOptions.en : ritual.massageOptions.fr}
+                        </p>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4 mb-6 py-6 border-t border-b border-gray-200">
@@ -177,7 +193,7 @@ export default function HammamMassagePackagePage() {
                           }}
                           className="flex-1 px-4 py-3 bg-primary text-white font-semibold rounded-md transition-all duration-300 hover:bg-primary/90 active:scale-95 inline-flex items-center justify-center gap-2 group"
                         >
-                          <span>{ritual.cta}</span>
+                          <span>{language === "en" ? ritual.cta.en : ritual.cta.fr}</span>
                           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                         </button>
                         <button
